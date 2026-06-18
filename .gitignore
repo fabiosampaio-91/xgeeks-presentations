@@ -1,0 +1,17 @@
+# ── Sensitive: never publish ──────────────────────────────
+# Private source-of-truth: signatory names, contacts, route-ins, per-deal values.
+private/
+*PRIVATE*
+*.xlsx
+*.docx
+
+# ── OS / editor cruft ─────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+node_modules/
+.env
+.env.*
