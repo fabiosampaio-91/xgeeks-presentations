@@ -8,7 +8,8 @@ Live at: https://fabiosampaio-91.github.io/kcd-sponsor-engagement/
 > pricing, internal cost numbers, or meeting notes. See [`CLAUDE.md`](CLAUDE.md).
 
 The sensitive source-of-truth — signatory names, route-in contacts, per-deal sponsorship values —
-lives only in `private/PRIVATE-account-playbook.md` (git-ignored) and the private companion repo.
+lives only in the **private companion repo** [`kcd-sponsor-engagement-private`](https://github.com/fabiosampaio-91/kcd-sponsor-engagement-private)
+(and locally as `private/PRIVATE-account-playbook.md`, git-ignored here).
 
 ## What this is
 
