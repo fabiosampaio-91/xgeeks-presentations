@@ -43,10 +43,16 @@ ABM / demand-gen for services & tech: Salesmotion; ZoomInfo (×2); New North; Di
 2. Segmented every account into CLIENT / PARTNER / COMPETITOR-NEUTRAL using xgeeks' ICP
    (Kubernetes-native, product/enterprise that augments engineering, scaling signals,
    budget-holder present).
-3. Tiered into ABM Tier 1 / 2 / 3; for Tier 1/2 separated **TARGET** (signatory) from
-   **ROUTE-IN** (warm contact), with a one-line hypothesised engineering pain.
-4. Mapped each priority account onto the dual-track (sponsorship vs. business-dev) timeline
-   anchored to the KCD Porto 2026 calendar.
+3. Read **engageability** per account from two signals — past-sponsor? (from the billing ledgers)
+   and current contact heat (from the DB status: negotiating/call/inbound = hot, contacted = warm,
+   one-touch-no-reply = cold).
+4. Tiered into ABM Tier 1 (warm + reach), 2, 3; for Tier 1/2 separated **TARGET** (signatory) from
+   **ROUTE-IN** (warm contact — incl. senior engineering contacts from the onboarding form, e.g. MC
+   Sonae's Head of Architecture & Platforms, Feedzai's Platform Engineering Manager).
+5. Defined a per-account **state matrix** (closed / negotiating / no / no-reply / past-only / never)
+   governing when/by-whom/how the business track may open, with double-opt-in hand-off patterns.
+6. Mapped each onto the dual-track timeline anchored to KCD Porto 2026, and specified a **BD CRM**
+   (`bd-crm-spec.md`) as the engine combining KCD + meetup contacts.
 
 ## Public / private boundary
 

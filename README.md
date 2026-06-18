@@ -32,8 +32,9 @@ vendor-neutral integrity. Anchored to **KCD Porto 2026 (Nov 19–20, SuperBock A
 | File | Contents |
 |---|---|
 | [`action-plan.md`](action-plan.md) | The full engagement action plan (public, aggregated) |
+| [`bd-crm-spec.md`](bd-crm-spec.md) | BD CRM spec — label system, fields, seed sources, CSV template |
 | [`methodology.md`](methodology.md) | Inputs analysed, web research, strategy sources, method |
-| `private/PRIVATE-account-playbook.md` | 🔒 Named TARGET + ROUTE-IN + values — **git-ignored, not published** |
+| `private/PRIVATE-account-playbook.md` | 🔒 State matrix, named TARGET↔ROUTE-IN maps, the bench, values — **git-ignored, not published** |
 
 ## Updating
 
