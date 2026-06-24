@@ -46,15 +46,29 @@ CLAUDE.md               Design system docs and component vocabulary
 
 ## Before you act
 
-You need three things:
+You need four things — ask for any that are genuinely unclear before touching files:
 
 | | How to get it |
 |---|---|
-| **Slug** | Derive from the title: lowercase, hyphens, no spaces (e.g. `team-offsite-2026`) |
-| **Title** | Ask if not provided — everything else can be derived or placeholder |
-| **Description** | One sentence; use a placeholder if the user doesn't supply one |
+| **Title** | Ask if not provided |
+| **Audience** | Ask if not clear from context — see profiles below |
+| **Slug** | Derive from title: lowercase, hyphens (e.g. `team-offsite-2026`). Never ask. |
+| **Description** | Derive from title + audience; user can refine later |
 
-Ask only for the title if it's missing. Never ask for the slug — derive it.
+## Audience profiles
+
+The audience drives tone, structure, component choices, and slide count. Apply it before writing any content.
+
+| Audience | Tone | Structure focus | Lean on | Slides |
+|---|---|---|---|---|
+| **Business** | Direct, data-led | Opportunity → recommendation → evidence → ask | `.kpi`, `.smx`, `.rule-strip`, `.tag-row` | 8–15 |
+| **Community** | Warm, story-driven | Human moment → journey → learning → invite | `.pull-quote`, `.card`, `.msg`, `.grid-3` | 6–12 |
+| **Events** | Inspiring, broad appeal | Hook → insight → vision → CTA | `h2.display` with `<em>`, `.pull-quote`, `.kpi` | 10–18 |
+| **Marketing** | Punchy, benefit-led | Pain → solution → proof → CTA | `.doors`, `.rule-strip`, `.card.is-accent` | 6–10 |
+| **Technical** | Precise, peer-to-peer | Problem → approach → trade-offs → results | `.dt`, `.smx`, `.schema`, `.gantt` | 10–20 |
+| **Internal / Leadership** | Direct, honest, action | Status → learnings → next steps → owners | `.gantt`, `.smx`, `.tag-row`, `.kpi` | 8–15 |
+
+Cover framing by audience: **Business** = outcome/numbers headline; **Community** = question or shared moment; **Events** = bold single idea with serif `<em>` emphasis; **Marketing** = benefit headline naming the target; **Technical** = clear problem statement; **Internal** = state of play + date, no spin.
 
 ## Execution
 
@@ -65,17 +79,39 @@ mkdir -p <slug>
 cp _template/index.html <slug>/index.html
 ```
 
+### Step 1b — Read source content from `Sources/<slug>/`
+
+Check whether a sources folder exists:
+
+```bash
+ls Sources/<slug>/
+```
+
+If it does, read every file inside. Supported formats: **PDF, Markdown, plain text, CSV, images (PNG, JPG, GIF, WebP, …)**. Skip any `.docx` or `.xlsx` files.
+
+- PDFs ≤ 10 pages: read in one call; > 10 pages read in chunks via the `pages` parameter.
+- CSV, Markdown, plain text: read directly with the Read tool.
+- Images: read directly — Claude is multimodal and interprets visual content. Extract slide structures, data, diagrams, or on-screen text. Flag anything ambiguous so the user can correct misreads.
+- Extract from all sources: key facts, numbers, dates, section headings, outcomes, named organisations.
+
+Use this content as the source of truth — populate slides from it rather than writing placeholders. Never copy individual contact details, per-deal pricing, or signed-contract contents into the deck (see `CLAUDE.md` public/private rule).
+
+If the folder doesn't exist, continue with placeholders.
+
 ### Step 2 — Customise the deck
 
-Edit `<slug>/index.html`. Update only these elements — everything else (the entire `<style>` block, the `<script>` block, the `.deck-progress` nav) must remain untouched:
+Apply the audience profile first — it decides tone, which components to reach for, how many content slides to aim for, and how to frame the cover and close. Reference it for every content decision.
+
+Edit `<slug>/index.html`. Update only these elements — the `<style>` block, `<script>` block, and `.deck-progress` nav structure are untouched:
 
 - **`<title>`** → `{Title} · synvert xgeeks`
-- **`<meta name="description">`** → one-sentence description
-- **Chrome left label on every slide** (`class="chrome__left"`) → real section labels using `LABEL <span class="dot"></span> SUBLABEL` format
-- **Cover slide (`s1`)**: kicker text, `h1.display` headline, `.subhead`, and `.cover-meta` (slide count + date/occasion)
-- **Closing slide (last)**: `h2.display`, `.pull-quote`, `.cover-meta`
+- **`<meta name="description">`** → one-sentence description in the profile's voice
+- **Chrome left label (every slide)** → real labels in the language register of the profile
+- **Cover slide (`s1`)**: kicker, `h1.display` framed for the audience, `.subhead` in profile tone, `.cover-meta` (slide count + date)
+- **Content slides (`s2`–`s(N-1)`)**: structured and populated using the profile's recommended components and slide count
+- **Closing slide**: `h2.display` closing ask/invitation/vision, `.pull-quote` (the one line that stays), `.cover-meta`
 
-Remove `<!-- EDIT: ... -->` comments as you update each item — they are scaffolding hints, not permanent content. Keep the `<!-- NNN Slide title -->` structural comments.
+Remove `<!-- EDIT: ... -->` comments as you go. Keep `<!-- NNN Slide title -->` structural comments. Update `.deck-progress` nav entries to match the real slide count.
 
 ### Step 3 — Register in the gallery
 
