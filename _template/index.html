@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{TITLE}} · synvert xgeeks</title>
-<meta name="description" content="{{DESCRIPTION}}">
+<!-- EDIT: title and description -->
+<title>Presentation Title · synvert xgeeks</title>
+<meta name="description" content="One-line description of this presentation.">
 <meta name="theme-color" content="#03161a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Fraunces:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
 <style>
+/* ─── Design tokens ──────────────────────────────────────────────────────── */
 :root {
   --bg:#03161a; --bg-2:#082023; --bg-3:#0d2a2e;
   --ink:#ffffff; --ink-2:#c7d8d4; --ink-3:#7f9591; --ink-4:#4c6562;
@@ -24,20 +26,24 @@
   --serif:'Fraunces',Georgia,serif;
   --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 }
+/* ─── Reset & base ───────────────────────────────────────────────────────── */
 * { box-sizing:border-box; }
 html, body { margin:0; padding:0; background:#000; color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
 html { scroll-behavior:smooth; }
 body { min-height:100vh; scroll-snap-type:y mandatory; overflow-y:scroll; overscroll-behavior:contain; }
 .deck { display:block; }
+/* ─── Slide shell ────────────────────────────────────────────────────────── */
 .slide { position:relative; min-height:100vh; background:var(--bg); scroll-snap-align:start; scroll-snap-stop:always; overflow:hidden; display:flex; flex-direction:column; }
 .slide::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 1200px 800px at 8% -10%, rgba(0,235,182,0.08), transparent 60%), radial-gradient(ellipse 900px 600px at 95% 100%, rgba(0,235,182,0.05), transparent 60%); pointer-events:none; z-index:0; }
 .frame { position:relative; flex:1; padding:100px 92px 70px; display:flex; flex-direction:column; z-index:1; max-width:1520px; margin:0 auto; width:100%; }
+/* ─── Chrome (top bar) ───────────────────────────────────────────────────── */
 .chrome { position:absolute; top:28px; left:92px; right:92px; display:flex; justify-content:space-between; align-items:center; z-index:2; font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-3); }
 .chrome .dot { display:inline-block; width:6px; height:6px; background:var(--accent); border-radius:999px; margin:0 12px 2px; vertical-align:middle; box-shadow:0 0 12px rgba(0,235,182,0.6); }
 .chrome__right { display:flex; align-items:center; gap:16px; }
 .chrome__mark { font-family:var(--display); font-weight:600; font-size:14px; letter-spacing:0.04em; text-transform:none; color:var(--ink); }
 .chrome__mark b { color:var(--accent); font-weight:600; }
 .chrome__pageno { border-left:1px solid var(--line-2); padding-left:16px; color:var(--ink-3); }
+/* ─── Typography ─────────────────────────────────────────────────────────── */
 .kicker { font-family:var(--mono); font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); display:inline-flex; align-items:center; gap:14px; margin:0 0 22px 0; }
 .kicker::before { content:''; width:32px; height:1px; background:var(--accent); }
 .display { font-family:var(--display); font-weight:400; line-height:0.98; letter-spacing:-0.025em; color:var(--ink); margin:0; }
@@ -54,21 +60,31 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .accent-text { color:var(--accent); } .warm-text { color:var(--warm); } .muted { color:var(--ink-3); }
 .plain { font-family:var(--display); font-size:13px; line-height:1.5; color:var(--ink-3); border-left:2px solid var(--accent-dim); padding:4px 0 4px 14px; margin:14px 0 0; max-width:980px; }
 .plain b { color:var(--ink-2); font-weight:500; }
+.pull-quote { font-family:var(--display); font-weight:300; font-size:clamp(24px,3.5vw,44px); line-height:1.15; letter-spacing:-0.02em; color:var(--ink); max-width:1140px; margin:0; }
+.pull-quote em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }
+/* ─── Bottom bar ─────────────────────────────────────────────────────────── */
 .slide__bottom { position:absolute; bottom:28px; left:92px; right:92px; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-4); z-index:2; }
 .slide__bottom .hint { display:flex; align-items:center; gap:10px; }
 .slide__bottom .hint .arrow { display:inline-block; width:18px; height:1px; background:var(--ink-4); position:relative; }
 .slide__bottom .hint .arrow::after { content:''; position:absolute; right:-1px; top:-3px; width:7px; height:7px; border-right:1px solid var(--ink-4); border-bottom:1px solid var(--ink-4); transform:rotate(-45deg); }
+/* ─── Progress rail ──────────────────────────────────────────────────────── */
 .deck-progress { position:fixed; right:26px; top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; gap:5px; font-family:var(--mono); font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-4); }
 .deck-progress a { color:inherit; text-decoration:none; display:flex; align-items:center; gap:9px; padding:2px 0; cursor:pointer; transition:color 200ms; }
 .deck-progress a:hover { color:var(--ink-2); }
 .deck-progress a::before { content:''; width:16px; height:1px; background:var(--line-2); transition:background 200ms,width 200ms; }
 .deck-progress a.is-active { color:var(--accent); }
 .deck-progress a.is-active::before { background:var(--accent); width:28px; }
+/* ─── Cover helpers ──────────────────────────────────────────────────────── */
+.cover-slot { margin-top:auto; display:flex; flex-direction:column; gap:16px; }
+.cover-meta { font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-3); display:flex; gap:16px; flex-wrap:wrap; }
+.cover-meta span + span::before { content:'·'; margin-right:16px; color:var(--ink-4); }
+/* ─── Grids ──────────────────────────────────────────────────────────────── */
 .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; }
 .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
 .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 .divider { height:1px; background:var(--line-2); margin:24px 0; }
 .divider--accent { background:linear-gradient(90deg,var(--accent),transparent); }
+/* ─── Cards ──────────────────────────────────────────────────────────────── */
 .card { background:var(--bg-2); border:1px solid var(--line-2); padding:20px 22px; border-radius:4px; position:relative; overflow:hidden; }
 .card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--line-2),transparent); }
 .card .card-num { font-family:var(--display); font-weight:300; font-size:38px; line-height:0.9; color:var(--ink-4); letter-spacing:-0.02em; }
@@ -78,13 +94,14 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .card.is-accent .card-num { color:var(--accent); }
 .card.is-warm { border-color:var(--warm); background:linear-gradient(180deg,rgba(255,150,110,0.07),var(--bg-2)); }
 .card.is-warm .card-num { color:var(--warm); }
+/* ─── KPIs ───────────────────────────────────────────────────────────────── */
 .kpi { background:var(--bg-2); border:1px solid var(--line-2); padding:22px 24px; border-radius:4px; display:flex; flex-direction:column; gap:6px; position:relative; overflow:hidden; }
 .kpi::after { content:''; position:absolute; left:0; right:0; top:0; height:2px; background:linear-gradient(90deg,var(--accent),transparent 80%); }
 .kpi .kpi-label { font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); }
 .kpi .kpi-value { font-family:var(--display); font-weight:400; font-size:48px; line-height:1; color:var(--ink); letter-spacing:-0.025em; margin-top:6px; }
 .kpi .kpi-value em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }
 .kpi .kpi-sub { font-family:var(--mono); font-size:12px; color:var(--ink-3); margin-top:4px; }
-/* lanes */
+/* ─── Lanes (two-track) ──────────────────────────────────────────────────── */
 .lanes { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:24px; }
 .lane { border:1px solid var(--line-2); border-radius:6px; padding:22px 24px; background:var(--bg-2); }
 .lane.a { border-top:3px solid var(--warm); } .lane.b { border-top:3px solid var(--accent); }
@@ -92,17 +109,19 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .lane .lane-title { font-family:var(--display); font-weight:500; font-size:20px; color:var(--ink); margin:6px 0 12px; }
 .lane.a .lane-title { color:var(--warm); } .lane.b .lane-title { color:var(--accent); }
 .lane ul { margin:0; padding-left:18px; } .lane li { font-size:13.5px; color:var(--ink-2); line-height:1.5; margin-bottom:7px; }
+/* ─── Rule strip ─────────────────────────────────────────────────────────── */
 .rule-strip { margin-top:22px; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
 .rule-strip .rule-item { border:1px solid var(--line-2); border-radius:4px; padding:14px 16px; background:var(--bg-2); }
 .rule-strip .rule-n { font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.12em; }
 .rule-strip .rule-t { font-family:var(--display); font-weight:500; font-size:13.5px; color:var(--ink); margin-top:7px; line-height:1.35; }
 .rule-strip .rule-d { font-size:11.5px; color:var(--ink-3); line-height:1.45; margin-top:5px; }
-/* generic data table */
+/* ─── Data table ─────────────────────────────────────────────────────────── */
 .dt { margin-top:18px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; font-size:12.5px; }
 .dt .dt-h, .dt .dt-r { display:grid; align-items:center; }
 .dt .dt-h { background:var(--bg-3); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); padding:10px 16px; }
 .dt .dt-r { padding:10px 16px; border-top:1px solid var(--line); background:var(--bg-2); color:var(--ink-2); }
 .dt .dt-r b { color:var(--ink); font-weight:500; }
+/* ─── Status chips ───────────────────────────────────────────────────────── */
 .heat { font-family:var(--mono); font-size:10px; letter-spacing:0.06em; text-transform:uppercase; padding:2px 9px; border-radius:999px; display:inline-block; }
 .heat.hot { color:var(--warm); border:1px solid var(--warm); }
 .heat.warm { color:var(--warn); border:1px solid rgba(251,191,36,0.5); }
@@ -112,8 +131,8 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .tag-pill.par { color:var(--warm); border:1px solid var(--warm); }
 .tag-pill.com { color:var(--ink-3); border:1px solid var(--line-2); }
 .tag-pill.yes { color:var(--accent); border:1px solid var(--accent-dim); }
-.tag-pill.no { color:var(--ink-3); border:1px solid var(--line-2); }
-/* state matrix */
+.tag-pill.no  { color:var(--ink-3); border:1px solid var(--line-2); }
+/* ─── State matrix ───────────────────────────────────────────────────────── */
 .smx { margin-top:20px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; }
 .smx .smx-h, .smx .smx-r { display:grid; grid-template-columns:1.3fr 1fr 1.1fr 1.6fr; }
 .smx .smx-h { background:var(--bg-3); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); }
@@ -122,7 +141,7 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .smx .smx-r .st { font-family:var(--display); font-weight:500; color:var(--ink); }
 .smx .smx-r b { color:var(--ink); font-weight:500; }
 .go-yes { color:var(--accent); font-weight:500; } .go-no { color:var(--bad); font-weight:500; } .go-soft { color:var(--warn); font-weight:500; }
-/* schematic */
+/* ─── Route-in schematic ─────────────────────────────────────────────────── */
 .schema { display:grid; grid-template-columns:1fr 64px 1fr; gap:0; align-items:center; margin-top:24px; }
 .schema .col-h { font-family:var(--mono); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:12px; }
 .schema .routeins .col-h { color:var(--warm); } .schema .targets .col-h { color:var(--accent); }
@@ -134,7 +153,7 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .schema .arrow-col { display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--accent); }
 .schema .arrow-col .ln { font-family:var(--mono); font-size:8.5px; letter-spacing:0.08em; color:var(--ink-3); text-transform:uppercase; text-align:center; }
 .schema .arrow-col .ar { font-size:22px; line-height:1; color:var(--accent); }
-/* bench */
+/* ─── Person / bench ─────────────────────────────────────────────────────── */
 .bench { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:8px; }
 .person { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:13px 15px; }
 .person .pn { font-family:var(--display); font-weight:500; font-size:15px; color:var(--ink); }
@@ -142,14 +161,14 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .person .pb { font-size:12px; color:var(--ink-2); line-height:1.45; }
 .person.open { border-left:3px solid var(--warm); } .person.open .pr { color:var(--warm); }
 .person.tech { border-left:3px solid var(--accent); }
-/* doors */
+/* ─── Doors ──────────────────────────────────────────────────────────────── */
 .doors { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; margin-top:22px; }
 .door { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:16px 17px; display:flex; flex-direction:column; gap:7px; }
 .door .door-phase { font-family:var(--mono); font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); }
 .door .door-name { font-family:var(--display); font-weight:500; font-size:15.5px; color:var(--ink); line-height:1.2; }
 .door .door-body { font-size:11.5px; color:var(--ink-2); line-height:1.45; }
 .door.hot { border-color:var(--accent-dim); background:linear-gradient(180deg,rgba(0,235,182,0.06),var(--bg-2)); }
-/* segmentation compact */
+/* ─── Segmentation table ─────────────────────────────────────────────────── */
 .segtable { margin-top:20px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; font-size:12px; }
 .segtable .seg-row { display:grid; grid-template-columns:150px 1fr; border-bottom:1px solid var(--line); }
 .segtable .seg-row:last-child { border-bottom:0; }
@@ -157,7 +176,7 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .segtable .seg-h.client { color:var(--accent); } .segtable .seg-h.partner { color:var(--warm); } .segtable .seg-h.neutral { color:var(--ink-3); }
 .segtable .seg-names { padding:12px 16px; color:var(--ink-2); line-height:1.55; background:var(--bg-2); }
 .segtable .seg-names b { color:var(--ink); font-weight:500; } .segtable .seg-names .dual { color:var(--warm); }
-/* tiers */
+/* ─── Tiers ──────────────────────────────────────────────────────────────── */
 .tiers { display:flex; flex-direction:column; gap:11px; margin-top:18px; }
 .tier { display:grid; grid-template-columns:118px 1fr; gap:20px; align-items:center; background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:15px 22px; }
 .tier.t1 { border-left:3px solid var(--accent); } .tier.reach { border-left:3px solid var(--warn); } .tier.t2 { border-left:3px solid var(--warm); } .tier.t3 { border-left:3px solid var(--ink-4); }
@@ -165,14 +184,14 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .tier .tier-tag small { display:block; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); margin-top:4px; }
 .tier .tier-body { font-size:13.5px; color:var(--ink-2); line-height:1.5; }
 .tier .tier-body strong { color:var(--ink); font-weight:500; }
-/* board */
+/* ─── Account board ──────────────────────────────────────────────────────── */
 .board { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; margin-top:22px; }
 .acct { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:15px 16px; display:flex; flex-direction:column; gap:6px; }
 .acct .acct-name { font-family:var(--display); font-weight:500; font-size:15px; color:var(--ink); }
 .acct .acct-pain { font-size:11.5px; color:var(--ink-2); line-height:1.4; flex:1; }
 .acct .acct-status { font-family:var(--mono); font-size:9px; letter-spacing:0.06em; text-transform:uppercase; }
 .acct .acct-status.closed { color:var(--accent); } .acct .acct-status.live { color:var(--warn); }
-/* crm tree */
+/* ─── CRM tree ───────────────────────────────────────────────────────────── */
 .crm { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:22px; }
 .crm-col { background:var(--bg-2); border:1px solid var(--line-2); border-radius:6px; padding:20px 22px; }
 .crm-col.kcd { border-top:3px solid var(--accent); } .crm-col.meet { border-top:3px solid var(--warm); }
@@ -182,7 +201,7 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .crm-col .lab b { color:var(--ink); }
 .crm-fields { margin-top:18px; border:1px solid var(--line-2); border-radius:6px; padding:16px 20px; background:var(--bg-2); font-size:13px; color:var(--ink-2); line-height:1.6; }
 .crm-fields b { color:var(--ink); font-weight:500; }
-/* gantt */
+/* ─── Gantt ──────────────────────────────────────────────────────────────── */
 .gantt { margin-top:26px; border-top:1px solid var(--line-2); }
 .gantt-cols { display:grid; grid-template-columns:120px repeat(6,1fr); font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-3); padding:12px 0 14px; border-bottom:1px solid var(--line); }
 .gantt-cols span { text-align:center; } .gantt-cols span:first-child { text-align:left; }
@@ -195,27 +214,23 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 .bar.ghost { background:var(--bg-3); border:1px dashed var(--line-2); color:var(--ink-3); }
 .event-flag { position:absolute; top:-8px; bottom:-8px; width:2px; background:var(--accent); }
 .event-flag span { position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-family:var(--mono); font-size:9px; letter-spacing:0.1em; color:var(--accent); white-space:nowrap; }
-/* messages */
+/* ─── Messages ───────────────────────────────────────────────────────────── */
 .msgwrap { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:22px; }
 .msg { border-left:2px solid var(--accent); background:var(--bg-2); padding:13px 18px; border-radius:0 4px 4px 0; margin-bottom:12px; }
 .msg .msg-label { font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
 .msg .msg-text { font-family:var(--serif); font-style:italic; font-size:14.5px; color:var(--ink-2); line-height:1.5; }
 .msg .msg-text b { font-style:normal; color:var(--ink); }
 .redline { border-left-color:var(--bad); } .redline .msg-label { color:var(--bad); } .redline .msg-text { font-style:normal; font-family:var(--display); }
-.pull-quote { font-family:var(--display); font-weight:300; font-size:clamp(24px,3.5vw,44px); line-height:1.15; letter-spacing:-0.02em; color:var(--ink); max-width:1140px; margin:0; }
-.pull-quote em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }
-.cover-slot { margin-top:auto; display:flex; flex-direction:column; gap:16px; }
-.cover-meta { font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-3); display:flex; gap:16px; flex-wrap:wrap; }
-.cover-meta span + span::before { content:'·'; margin-right:16px; color:var(--ink-4); }
+/* ─── Tag row ────────────────────────────────────────────────────────────── */
 .tag-row { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:28px; }
 .tag-row .tag { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:16px 18px; }
 .tag .tag-head { font-family:var(--display); font-weight:500; font-size:13.5px; color:var(--ink); margin-bottom:6px; }
 .tag .tag-body { font-size:11.5px; color:var(--ink-3); line-height:1.5; }
+/* ─── Reveal animation ───────────────────────────────────────────────────── */
 .fade-up { opacity:0; transform:translateY(18px); transition:opacity 700ms cubic-bezier(0.2,0.7,0.2,1),transform 700ms cubic-bezier(0.2,0.7,0.2,1); }
 .fade-up.in { opacity:1; transform:translateY(0); }
 .fade-up.d1 { transition-delay:90ms; } .fade-up.d2 { transition-delay:180ms; } .fade-up.d3 { transition-delay:270ms; } .fade-up.d4 { transition-delay:360ms; }
-.alt-view { position:fixed; left:30px; bottom:22px; z-index:50; font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-3); text-decoration:none; padding:6px 12px; border:1px solid var(--line-2); border-radius:999px; background:rgba(3,22,26,0.6); backdrop-filter:blur(8px); transition:color 180ms,border-color 180ms; }
-.alt-view:hover { color:var(--accent); border-color:var(--accent); }
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width:1150px) {
   .frame { padding:90px 46px 62px; }
   .chrome, .slide__bottom { left:46px; right:46px; }
@@ -229,55 +244,232 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
   .segtable .seg-row, .dt .dt-h, .dt .dt-r { grid-template-columns:1fr !important; }
   .deck-progress { display:none; }
 }
-@media (max-width:700px) { .frame { padding:78px 20px 54px; } .chrome, .slide__bottom { left:20px; right:20px; font-size:10px; } .grid-4, .board, .doors, .rule-strip, .tag-row, .bench { grid-template-columns:1fr; } .tier { grid-template-columns:1fr; gap:8px; } .alt-view { left:14px; bottom:14px; } }
+@media (max-width:700px) {
+  .frame { padding:78px 20px 54px; }
+  .chrome, .slide__bottom { left:20px; right:20px; font-size:10px; }
+  .grid-4, .board, .doors, .rule-strip, .tag-row, .bench { grid-template-columns:1fr; }
+  .tier { grid-template-columns:1fr; gap:8px; }
+}
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .fade-up { transition:none; opacity:1; transform:none; } }
 </style>
 </head>
 <body>
 
+<!-- EDIT: update href targets and slide count to match your deck -->
 <nav class="deck-progress" aria-label="Deck progress">
-  <a href="#s1" data-target="s1"><span>001</span></a><a href="#s2" data-target="s2"><span>002</span></a>
+  <a href="#s1" data-target="s1"><span>001</span></a>
+  <a href="#s2" data-target="s2"><span>002</span></a>
   <a href="#s3" data-target="s3"><span>003</span></a>
+  <a href="#s4" data-target="s4"><span>004</span></a>
 </nav>
 
 <main class="deck">
 
-<!-- 001 Cover -->
-<section class="slide" id="s1">
-  <div class="chrome"><div class="chrome__left">{{KICKER_LABEL}} <span class="dot"></span> {{KICKER_SUB}}</div><div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">001 / 003</span></div></div>
-  <div class="frame">
-    <p class="kicker fade-up">{{EYEBROW}}</p>
-    <h1 class="display fade-up d1">{{TITLE}}</h1>
-    <p class="subhead fade-up d2">{{SUBTITLE}}</p>
-    <div class="cover-slot fade-up d3"><div class="cover-meta"><span>3 slides</span><span>Prepared {{DATE}}</span></div></div>
-  </div>
-  <div class="slide__bottom"><span>001 · Cover</span><span class="hint">Begin <span class="arrow"></span></span></div>
-</section>
+<!-- ═══════════════════════════════════════════════════════════════
+  SLIDE SKELETON — copy this block for every new slide:
 
-<!-- 002 Content -->
-<section class="slide" id="s2">
-  <div class="chrome"><div class="chrome__left">SECTION LABEL <span class="dot"></span> SUBLABEL</div><div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">002 / 003</span></div></div>
-  <div class="frame">
-    <p class="kicker fade-up">Eyebrow line</p>
-    <h2 class="display fade-up d1">A headline with <em>serif emphasis</em> and an <span class="accent">accent</span>.</h2>
-    <p class="subhead fade-up d2">A short supporting line. Replace this slide with your real content using the component vocabulary documented in CLAUDE.md.</p>
-    <div class="grid-3 fade-up d3" style="margin-top:42px;">
-      <div class="card is-accent"><div class="card-num">01</div><div class="card-label">Point one</div><div class="card-body">Body copy for the first card.</div></div>
-      <div class="card"><div class="card-num">02</div><div class="card-label">Point two</div><div class="card-body">Body copy for the second card.</div></div>
-      <div class="card is-warm"><div class="card-num">03</div><div class="card-label">Point three</div><div class="card-body">Body copy for the third card.</div></div>
+  <section class="slide" id="sNN">
+    <div class="chrome">
+      <div class="chrome__left">SECTION LABEL <span class="dot"></span> SUBLABEL</div>
+      <div class="chrome__right">
+        <span class="chrome__mark">synvert <b>xgeeks</b></span>
+        <span class="chrome__pageno">0NN / 0TT</span>
+      </div>
+    </div>
+    <div class="frame">
+      <p class="kicker fade-up">Eyebrow line</p>
+      <h2 class="display fade-up d1">Headline with <em>serif emphasis</em> and <span class="accent">accent</span>.</h2>
+      <p class="subhead fade-up d2">Supporting sentence.</p>
+      ... content components with fade-up d1..d4 for staggered reveal ...
+    </div>
+    <div class="slide__bottom">
+      <span>0NN · Section name</span>
+      <span class="hint">Next teaser <span class="arrow"></span></span>
+    </div>
+  </section>
+
+  When you add a slide:
+  1. Add <a href="#sNN" data-target="sNN"><span>0NN</span></a> to .deck-progress above.
+  2. Update chrome__pageno and slide__bottom counts on all slides.
+═══════════════════════════════════════════════════════════════ -->
+
+
+<!-- 001 Cover -->
+<!-- EDIT: section label, deck title, subtitle, cover-meta -->
+<section class="slide" id="s1">
+  <div class="chrome">
+    <div class="chrome__left">SECTION LABEL <span class="dot"></span> SUBLABEL</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">001 / 004</span>
     </div>
   </div>
-  <div class="slide__bottom"><span>002 · Section</span><span class="hint">Next <span class="arrow"></span></span></div>
+  <div class="frame">
+    <p class="kicker fade-up">Context line — audience, date, version</p>
+    <h1 class="display fade-up d1">Presentation title<br>across two lines with<br><em>italic serif</em> and <span class="accent">accent.</span></h1>
+    <p class="subhead fade-up d2">One or two sentences of context. <strong>Highlight a key point</strong> in medium weight. Keep it under ~200 characters so it lands at a glance.</p>
+    <div class="cover-slot fade-up d3">
+      <div class="cover-meta">
+        <span>N slides</span>
+        <span>~N minute read</span>
+        <span>Date or occasion</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide__bottom">
+    <span>Scroll, arrow keys, or click the index to navigate</span>
+    <span class="hint">Begin <span class="arrow"></span></span>
+  </div>
 </section>
 
-<!-- 003 Closing -->
-<section class="slide" id="s3">
-  <div class="chrome"><div class="chrome__left">CLOSE <span class="dot"></span> THE ASK</div><div class="chrome__right"><span class="chrome__mark">synvert <b>xgeeks</b></span><span class="chrome__pageno">003 / 003</span></div></div>
-  <div class="frame">
-    <p class="kicker fade-up">In one line</p>
-    <p class="pull-quote fade-up d1">Your closing statement, with the part that matters set in <em>serif italic</em>.</p>
+
+<!-- 002 Key insight or overview -->
+<!-- EDIT: section label, headline, content -->
+<section class="slide" id="s2">
+  <div class="chrome">
+    <div class="chrome__left">SECTION LABEL <span class="dot"></span> SUBLABEL</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">002 / 004</span>
+    </div>
   </div>
-  <div class="slide__bottom"><span>003 · Close</span><span class="hint">End</span></div>
+  <div class="frame">
+    <p class="kicker fade-up">Eyebrow / framing line</p>
+    <h2 class="display fade-up d1">Headline that states <em>the point</em> directly.</h2>
+    <p class="subhead fade-up d2">A sentence expanding on the headline. <strong>Bold for a key claim.</strong> Use <em>serif italic</em> for a memorable phrase.</p>
+
+    <!-- Example: 3-column cards — swap for any component from the vocabulary below -->
+    <div class="grid-3 fade-up d3" style="margin-top:42px;">
+      <div class="card is-accent">
+        <div class="card-num">01</div>
+        <div class="card-label">Card heading</div>
+        <div class="card-body">Two or three sentences of supporting detail. Keep each card roughly equal in length for visual balance.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-label">Card heading</div>
+        <div class="card-body">Supporting detail. Cards without a modifier use a neutral surface — use <code>.is-accent</code> or <code>.is-warm</code> to emphasise one.</div>
+      </div>
+      <div class="card is-warm">
+        <div class="card-num">03</div>
+        <div class="card-label">Card heading</div>
+        <div class="card-body">Supporting detail. Warm (coral) signals a contrast track — keep the two-track colour code consistent throughout.</div>
+      </div>
+    </div>
+
+    <p class="plain fade-up d4"><b>Footnote / caveat:</b> use <code>.plain</code> for a small supporting note below the main content. Keep it under two lines.</p>
+  </div>
+  <div class="slide__bottom">
+    <span>002 · Section name</span>
+    <span class="hint">Next section <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 003 Detail slide — KPI + two-column layout example -->
+<!-- EDIT: replace content; keep or swap the layout pattern -->
+<section class="slide" id="s3">
+  <div class="chrome">
+    <div class="chrome__left">SECTION LABEL <span class="dot"></span> SUBLABEL</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">003 / 004</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">Eyebrow line</p>
+    <h2 class="display fade-up d1">Headline with a <em>specific claim</em> or <span class="accent">number.</span></h2>
+
+    <!-- KPI row: 4 metrics across the full width -->
+    <div class="grid-4 fade-up d2" style="margin-top:36px;">
+      <div class="kpi">
+        <span class="kpi-label">Metric label</span>
+        <span class="kpi-value"><em>42</em></span>
+        <span class="kpi-sub">what this measures</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Metric label</span>
+        <span class="kpi-value">86%</span>
+        <span class="kpi-sub">what this measures</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Metric label</span>
+        <span class="kpi-value"><em>~3×</em></span>
+        <span class="kpi-sub">what this measures</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Metric label</span>
+        <span class="kpi-value">14</span>
+        <span class="kpi-sub">what this measures</span>
+      </div>
+    </div>
+
+    <!-- Two-column: body text + accent card -->
+    <div class="grid-2 fade-up d3" style="margin-top:32px;">
+      <div>
+        <p class="body-text">Longer explanatory paragraph. <strong>Bold key phrases.</strong> Use <em>serif italic</em> sparingly for memorable lines. Keep paragraphs to 3–4 sentences — the deck should complement a verbal narrative, not replace it.</p>
+        <p class="body-text" style="margin-top:14px;">A second paragraph if needed. Consider a pull-quote instead if there's a single punchy statement worth isolating.</p>
+      </div>
+      <div class="card is-accent" style="align-self:start;">
+        <div class="card-label" style="margin-top:0;">Supporting point or callout</div>
+        <div class="card-body">Use <code>.card.is-accent</code> to pull out a key insight, recommendation, or data point that should stand apart from the body copy.</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide__bottom">
+    <span>003 · Section name</span>
+    <span class="hint">Close <span class="arrow"></span></span>
+  </div>
+</section>
+
+
+<!-- 004 Closing / recommendation / next steps -->
+<!-- EDIT: section label, headline, action items -->
+<section class="slide" id="s4">
+  <div class="chrome">
+    <div class="chrome__left">NEXT STEPS <span class="dot"></span> THE ASK</div>
+    <div class="chrome__right">
+      <span class="chrome__mark">synvert <b>xgeeks</b></span>
+      <span class="chrome__pageno">004 / 004</span>
+    </div>
+  </div>
+  <div class="frame">
+    <p class="kicker fade-up">What we do next</p>
+    <h2 class="display fade-up d1">The recommendation. <em>Start now.</em></h2>
+
+    <!-- Action items in a tag-row (5 columns by default; adjust grid-template-columns to match count) -->
+    <div class="tag-row fade-up d2" style="grid-template-columns:repeat(3,1fr); margin-top:48px;">
+      <div class="tag">
+        <div class="tag-head">1 · Action item</div>
+        <div class="tag-body">Brief description of what needs to happen and who owns it.</div>
+      </div>
+      <div class="tag">
+        <div class="tag-head">2 · Action item</div>
+        <div class="tag-body">Brief description of what needs to happen and who owns it.</div>
+      </div>
+      <div class="tag">
+        <div class="tag-head">3 · Action item</div>
+        <div class="tag-body">Brief description of what needs to happen and who owns it.</div>
+      </div>
+    </div>
+
+    <div class="divider divider--accent fade-up d3" style="margin-top:48px;"></div>
+
+    <p class="pull-quote fade-up d3" style="font-size:clamp(22px,2.5vw,32px); margin-top:24px;">
+      Close with a single memorable line that captures <em>why this matters.</em>
+    </p>
+
+    <div class="cover-slot fade-up d4" style="margin-top:28px;">
+      <div class="cover-meta">
+        <span>synvert xgeeks</span>
+        <span>Date · Occasion</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide__bottom">
+    <span>004 · The recommendation</span>
+    <span>End · synvert xgeeks</span>
+  </div>
 </section>
 
 </main>

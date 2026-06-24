@@ -1,11 +1,37 @@
-# CLAUDE.md — kcd-sponsor-engagement
+# CLAUDE.md — presentations
 
 Working rules for any AI agent (or human) editing this repo. These override default behavior.
 
 ## What this repo is
 
+A **multi-presentation repo** — each subfolder is one self-contained slide deck, served via
+GitHub Pages. Pure **static site — no build step, no dependencies, no `package.json`, no framework.**
+Hand-written HTML/CSS/vanilla JS. Edit a file, commit, push — that's the whole pipeline. Don't
+introduce a bundler, a package manager, or a JS framework; nothing here needs one and the deploy
+([.github/workflows/pages.yml](.github/workflows/pages.yml)) uploads the repo root verbatim.
+
+## Repo layout — one folder per presentation
+
+```
+_template/          Blank deck with full design system — copy this to start a new presentation
+<deck-slug>/        Each folder is one self-contained presentation
+  index.html        The deck (all CSS/JS inline; no external deps except Google Fonts)
+index.html          Root — currently the KCD sponsor engagement deck (first deck, at root)
+```
+
+**To add a new presentation:**
+1. Copy `_template/` to a new folder named after the deck (e.g., `team-offsite-2026/`).
+2. Edit `_template/index.html` — update the `<title>`, `<meta name="description">`, the `chrome`
+   section labels, slide content, slide count, and `.deck-progress` nav entries.
+3. Remove the `<!-- EDIT: ... -->` comments once the deck is real content.
+4. Commit & push. GitHub Pages serves `<repo-url>/<folder>/` automatically.
+
+**Never** move CSS/JS out of the inline `<style>`/`<script>` blocks — each deck must be
+self-contained so it can be opened standalone without a server.
+
+## KCD sponsor engagement deck (current root index.html)
+
 The **public** GitHub Pages site for synvert xgeeks' KCD Sponsor → Business Development plan.
-Live at: https://fabiosampaio-91.github.io/kcd-sponsor-engagement/
 
 Pure **static site — no build step, no dependencies, no `package.json`, no framework.**
 Hand-written HTML/CSS/vanilla JS plus aggregated, role-based markdown. Edit a file, commit,

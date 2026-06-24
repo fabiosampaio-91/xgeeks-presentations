@@ -1,65 +1,85 @@
 ---
 name: new-presentation
-description: Scaffold a new self-contained slide-deck presentation in its own folder, reusing the synvert xgeeks deck design system, and publish it via GitHub Pages. Use when the user asks to "create a new presentation/deck/slides", "start a new slide deck", or names a presentation to spin up. Takes the presentation name as input.
+description: Scaffold a new self-contained slide-deck presentation in its own folder, reusing the synvert xgeeks deck design system, and publish it via GitHub Pages. Use when the user asks to "create a new presentation/deck/slides", "start a new slide deck", names a specific presentation to spin up (e.g. "create a team-offsite deck", "I need slides for the Q3 review"), or implies they need a new deck even without using the exact word "presentation". Always invoke this skill proactively when the user names a topic or event and the context is this presentations repo — don't wait for them to say "skill".
 ---
 
-# New presentation
+# new-presentation
 
-Creates a new slide deck under `presentations/<slug>/index.html`, carrying the exact deck
-styling from the root [index.html](../../../index.html), then publishes it through the existing
-GitHub Pages Action.
+Scaffold a new deck in this multi-presentation repo. Each presentation is a self-contained subfolder at the repo root with a single `index.html` that carries the full xgeeks design system inline — no build step, no external CSS/JS (only Google Fonts).
 
-## Inputs
+## What you need before starting
 
-- **name** (required) — the human title of the presentation (e.g. "Q3 Pipeline Review").
-- Optional: `slug`, `eyebrow`, `subtitle`, `description`, `date`, `kicker-label`, `kicker-sub`.
+Three things:
 
-If the user only gives a name, that's enough — sensible defaults fill the rest. Derive the date
-from the current date if the user doesn't specify one.
+- **Slug** — lowercase, hyphen-separated folder name (e.g. `team-offsite-2026`, `q3-review`). Derive from the title; never use spaces or uppercase.
+- **Title** — human-readable deck name (e.g. "Team Offsite 2026").
+- **Description** — one sentence for the `<meta>` tag and gallery card.
+
+If the user hasn't given you a title, ask. Derive the slug automatically. Leave description as a placeholder if not supplied — the user can fill it in.
 
 ## Steps
 
-1. **Scaffold the folder.** From the repo root, run the generator (it slugifies the name, creates
-   a separate folder, and refuses to overwrite an existing deck):
+### 1. Create the folder and copy the template
 
-   ```bash
-   python3 .claude/skills/new-presentation/create.py --name "<NAME>" --date "<YYYY-MM-DD>"
-   ```
+```bash
+mkdir -p <slug>
+cp _template/index.html <slug>/index.html
+```
 
-   Pass any optional flags the user provided. The script prints the created path and the live URL.
+The template already has the complete xgeeks design system (all CSS tokens, every component class, the reveal animation, keyboard navigation). You are customising content only — never touch the `<style>` or `<script>` blocks.
 
-2. **Fill in real content.** The scaffold is a 3-slide starter (cover → content → close). Edit
-   `presentations/<slug>/index.html` to add the user's actual slides. **Match the deck design
-   system exactly** — tokens, fonts (Jost / Fraunces italic for emphasis / DM Mono labels), the
-   `slide` → `chrome` → `frame` → `slide__bottom` skeleton, and the component vocabulary
-   (`.card`, `.kpi`, `.lanes`, `.grid-*`, etc.). The full reference is in the **"Presentation
-   styling"** section of [CLAUDE.md](../../../CLAUDE.md); follow it. When you add or remove slides
-   you MUST also update: the `.deck-progress` nav entries, every `chrome__pageno` count, and the
-   `/ NNN` total + cover slide count.
+### 2. Customise the new deck
 
-3. **Respect the PII boundary.** This repo is public and Google-indexable. Company + role only —
-   never personal contact PII, per-deal values, contract contents, or meeting notes. See
-   [CLAUDE.md](../../../CLAUDE.md).
+Read `<slug>/index.html` then make these targeted edits:
 
-4. **Publish (only when the user asks to publish/commit/push).** No workflow change is needed: the
-   Pages deploy in [.github/workflows/pages.yml](../../../.github/workflows/pages.yml) uploads the
-   whole repo root (`path: .`), so any new `presentations/<slug>/` folder is published
-   automatically. To publish, commit and push to `main` (branch first if on `main` and house rules
-   require it) — that triggers the deploy. Confirm the workflow still uploads `path: .`; if it were
-   ever scoped to specific paths, add `presentations/` so the deck ships.
+| What | Where in the file | Target value |
+|---|---|---|
+| `<title>` | `<head>` | `{Title} · synvert xgeeks` |
+| `<meta name="description">` | `<head>` | One-sentence description |
+| Chrome left label (every slide) | `class="chrome__left"` | `SECTION LABEL <span class="dot"></span> SUBLABEL` with real labels |
+| Cover kicker | slide `s1` `.kicker` | Audience · date · version line |
+| Cover `h1.display` | slide `s1` | Headline with `<em>serif</em>` and `<span class="accent">accent</span>` |
+| Cover `.subhead` | slide `s1` | Supporting sentence |
+| Cover `.cover-meta` | slide `s1` | `<span>4 slides</span><span>Date</span>` |
+| Closing `h2.display` | last slide | Closing headline |
+| Closing `.pull-quote` | last slide | Memorable final line |
+| Closing `.cover-meta` | last slide | `<span>synvert xgeeks</span><span>Date · Occasion</span>` |
 
-   ```bash
-   git add presentations/<slug> && git commit -m "Add presentation: <NAME>" && git push
-   ```
+**Remove** the `<!-- EDIT: ... -->` comments as you update each section — they're scaffolding, not permanent. Keep the structural `<!-- NNN Slide title -->` comments; they help navigate the file.
 
-   Then give the user the live URL:
-   `https://fabiosampaio-91.github.io/kcd-sponsor-engagement/presentations/<slug>/`
+**Never change:** the inline `<style>` block, the `<script>` block, or the `.deck-progress` nav element count (it matches the 4 starter slides; the user will update it when they add or remove slides).
 
-## Notes
+### 3. Add the gallery entry
 
-- The deck stays **self-contained**: all CSS/JS is inline in the generated `index.html`; the only
-  external dependency is the Google Fonts `<link>`. Don't link `assets/styles.css` (that's the
-  document-view stylesheet for `analysis.html`, a different design system).
-- `template.html` in this skill folder is the source for the styling and is a verbatim copy of the
-  root deck's `<style>` + `<script>` blocks. If the root deck's design system changes and you want
-  new presentations to inherit it, regenerate `template.html` from the updated `index.html`.
+Open root `index.html`. Find the `<!-- COPY THIS BLOCK -->` comment and insert a new `.deck-card` immediately before it:
+
+```html
+<a class="deck-card" href="<slug>/">
+  <div class="deck-slug"><slug></div>
+  <div class="deck-title"><Title></div>
+  <div class="deck-desc"><One-sentence description.></div>
+  <div class="deck-meta"><span>4 slides</span><span><Date or occasion></span></div>
+  <div class="deck-arrow">View deck →</div>
+</a>
+```
+
+Update the slide count and date to match reality once the deck has real content.
+
+### 4. Report back
+
+Tell the user:
+
+- The deck is at `<slug>/index.html`
+- Preview locally: `open <slug>/index.html` or `python3 -m http.server` from the repo root then visit `http://localhost:8000/<slug>/`
+- What still needs filling in (slide body content, real slide count, gallery description if left as placeholder)
+- Commit & push when ready — GitHub Pages auto-deploys to `<pages-url>/<slug>/`
+
+## Design system quick reference
+
+All component classes are already in the template. Pick from these; don't invent new ones:
+
+`.card` (`.is-accent` / `.is-warm`) · `.kpi` · `.grid-2` / `.grid-3` / `.grid-4` · `.lanes` / `.lane.a` / `.lane.b` · `.rule-strip` · `.dt` (data table) · `.smx` (state matrix) · `.schema` · `.bench` / `.person` · `.doors` / `.door` · `.tiers` / `.tier` · `.board` / `.acct` · `.crm` · `.gantt` · `.msg` / `.pull-quote` · `.heat` / `.tag-pill`
+
+**Two-track colour code** — warm coral (`--warm`) = Track A, accent green (`--accent`) = Track B. Keep this consistent throughout the deck.
+
+Full vocabulary and token list are in `CLAUDE.md`.
