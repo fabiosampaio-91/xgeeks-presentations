@@ -14,17 +14,30 @@ introduce a bundler, a package manager, or a JS framework; nothing here needs on
 
 ```
 _template/          Blank deck with full design system — copy this to start a new presentation
+  index.html        Blank slide deck (dark)
+  analysis.html     Blank long-form document view (light/dark, sticky-TOC) — also self-contained
 <deck-slug>/        Each folder is one self-contained presentation
   index.html        The deck (all CSS/JS inline; no external deps except Google Fonts)
+  analysis.html     Long-form companion to the deck (CSS/JS inline; cross-linked with index.html)
 index.html          Root — currently the KCD sponsor engagement deck (first deck, at root)
 ```
 
+Every presentation ships **two** self-contained files: `index.html` (the deck) and
+`analysis.html` (the long-form document view that argues the full case). They cross-link to each
+other. The per-folder `analysis.html` inlines its CSS/JS — unlike the root KCD `analysis.html`,
+which still uses the shared `assets/` folder (see table below). New decks follow the inline,
+self-contained pattern.
+
 **To add a new presentation:**
-1. Copy `_template/` to a new folder named after the deck (e.g., `team-offsite-2026/`).
-2. Edit `_template/index.html` — update the `<title>`, `<meta name="description">`, the `chrome`
-   section labels, slide content, slide count, and `.deck-progress` nav entries.
-3. Remove the `<!-- EDIT: ... -->` comments once the deck is real content.
+1. Copy `_template/` to a new folder named after the deck (e.g., `team-offsite-2026/`) — both
+   `index.html` and `analysis.html`.
+2. Edit `index.html` — update the `<title>`, `<meta name="description">`, the `chrome` section
+   labels, slide content, slide count, and `.deck-progress` nav entries. Edit `analysis.html` —
+   hero, TOC entries, and `<section id>` content.
+3. Remove the `<!-- EDIT: ... -->` comments once the content is real.
 4. Commit & push. GitHub Pages serves `<repo-url>/<folder>/` automatically.
+
+The [new-presentation skill](.claude/skills/new-presentation/SKILL.md) automates all of this.
 
 **Never** move CSS/JS out of the inline `<style>`/`<script>` blocks — each deck must be
 self-contained so it can be opened standalone without a server.

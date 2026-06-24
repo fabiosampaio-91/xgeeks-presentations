@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- EDIT: title and description (mirror the deck's, suffixed with the doc nature) -->
+<title>Presentation Title · synvert xgeeks</title>
+<meta name="description" content="The full long-form analysis behind this presentation.">
+<meta name="theme-color" content="#03161a">
+<!--
+  Document view (long-form companion to index.html).
+  SELF-CONTAINED: all CSS + JS live inline below so this folder opens standalone.
+  Light + dark via prefers-color-scheme. This is a DIFFERENT design system from
+  index.html (serif body, system sans headings) — do NOT copy deck tokens here.
+-->
+<style>
+/* ============================================================
+   Document-view stylesheet — synvert xgeeks brand palette
+   (Techno Green / Dark Space / coral). Light + dark.
+   ============================================================ */
+:root {
+  --ink: #0c1a1c;
+  --ink-soft: #2a3a3c;
+  --muted: #5b6a6b;
+  --rule: #d5e0dd;
+  --rule-soft: #eef3f1;
+  --accent: #04897a;          /* readable green on light bg */
+  --accent-bright: #00EBB6;   /* Techno Green */
+  --accent-soft: #e6faf4;
+  --accent-strong: #002E33;   /* Dark Space */
+  --warm: #e2643a;            /* coral, darkened for contrast */
+  --bg: #fbfdfc;
+  --bg-card: #ffffff;
+  --bg-callout: #f3f9f7;
+  --good-bg: #e6f7ef; --good-fg: #0a6e4b;
+  --warn-bg: #fdf3df; --warn-fg: #8a5a08;
+  --bad-bg:  #fdeae5; --bad-fg:  #a23a1c;
+  --shadow-sm: 0 1px 2px rgba(0, 46, 51, 0.05);
+  --shadow-md: 0 4px 18px rgba(0, 46, 51, 0.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #eef5f3;
+    --ink-soft: #c5d2cf;
+    --rule: #1f3539;
+    --rule-soft: #15282b;
+    --muted: #879895;
+    --accent: #00EBB6;
+    --accent-bright: #00EBB6;
+    --accent-soft: #0d2a2b;
+    --accent-strong: #8fe9d8;
+    --warm: #ff966e;
+    --bg: #03161a;
+    --bg-card: #082023;
+    --bg-callout: #0a2528;
+    --good-bg: #0a2a1d; --good-fg: #5fe3b0;
+    --warn-bg: #2a1f0a; --warn-fg: #f1c45a;
+    --bad-bg:  #2a1411; --bad-fg:  #f4a48a;
+    --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Charter", "Iowan Old Style", "Georgia", "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, nav, table, .kicker, .pill, .callout-head, code, .mono,
+.hero__meta, .toc, .site-footer, button {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+               "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+code, .mono {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--rule-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--ink);
+}
+/* ---------------- Hero ---------------- */
+.hero {
+  background: linear-gradient(180deg, var(--accent-soft) 0%, transparent 100%);
+  border-bottom: 1px solid var(--rule);
+  padding: 72px 24px 56px;
+}
+.hero__inner { max-width: 1200px; margin: 0 auto; }
+.kicker {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+  margin: 0 0 14px 0;
+  color: var(--ink);
+}
+.hero__subtitle {
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--ink-soft);
+  font-style: italic;
+  max-width: 760px;
+  margin: 0 0 22px 0;
+  line-height: 1.4;
+}
+.hero__lede {
+  max-width: 780px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 16px;
+  margin: 8px 0 0 0;
+}
+.hero__meta {
+  margin-top: 22px;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.hero__meta span + span::before { content: "·"; margin: 0 10px; color: var(--rule); }
+/* ---------------- Layout ---------------- */
+.layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 24px; padding: 24px 18px 64px; }
+}
+/* ---------------- Sticky TOC ---------------- */
+.toc { position: sticky; top: 24px; align-self: start; font-size: 14px; }
+.toc__title {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--rule); }
+.toc li { margin: 0; }
+.toc a {
+  display: block;
+  padding: 8px 0 8px 16px;
+  margin-left: -1px;
+  color: var(--ink-soft);
+  border-left: 2px solid transparent;
+  transition: color 120ms, border-color 120ms;
+  line-height: 1.35;
+}
+.toc a:hover { color: var(--ink); text-decoration: none; border-left-color: var(--rule); }
+.toc a.is-active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+.toc__num { display: inline-block; width: 22px; color: var(--muted); font-weight: 600; }
+.toc a.is-active .toc__num { color: var(--accent); }
+@media (max-width: 900px) {
+  .toc { position: static; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .toc ol { border-left: none; }
+  .toc a { padding-left: 0; border-left: none; }
+  .toc a.is-active { border-left: none; }
+}
+/* ---------------- Content ---------------- */
+.content { max-width: 780px; }
+.content > section { padding-top: 8px; }
+.content > section + section {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.content h2 {
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+  color: var(--ink);
+  margin: 0 0 14px 0;
+  scroll-margin-top: 24px;
+}
+.content h2 .section-num { display: inline-block; margin-right: 12px; color: var(--accent); font-weight: 600; }
+.content h3 { font-size: 19px; line-height: 1.3; font-weight: 650; color: var(--ink); margin: 28px 0 6px 0; }
+.content h4 { font-size: 15px; line-height: 1.35; font-weight: 650; color: var(--ink-soft); margin: 18px 0 6px 0; }
+.content p { margin: 0 0 14px 0; }
+.content ul, .content ol { margin: 0 0 18px 0; padding-left: 26px; }
+.content li { margin-bottom: 8px; }
+.content li > strong, .content em, .content strong { color: var(--ink); }
+/* ---------------- Callouts ---------------- */
+.callout {
+  background: var(--bg-callout);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 22px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: var(--shadow-sm);
+}
+.callout-head { font-weight: 650; color: var(--ink); }
+.callout.warm { border-left-color: var(--warm); }
+/* ---------------- Tables ---------------- */
+.table-wrap {
+  overflow-x: auto;
+  margin: 18px 0 26px 0;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+}
+thead th {
+  background: var(--rule-soft);
+  color: var(--ink-soft);
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink);
+  line-height: 1.5;
+}
+tbody tr:last-child td { border-bottom: none; }
+.pill {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+.pill.good { background: var(--good-bg); color: var(--good-fg); }
+.pill.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.pill.bad  { background: var(--bad-bg);  color: var(--bad-fg); }
+/* ---------------- Footer ---------------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  background: var(--bg-card);
+}
+.site-footer p { margin: 0; }
+.site-footer a { color: var(--ink-soft); }
+/* ---------------- Print fallback ---------------- */
+@media print {
+  .hero { background: none; padding: 24pt 0 12pt; }
+  .toc, .site-footer { display: none; }
+  .layout { display: block; padding: 0; }
+  .content { max-width: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- EDIT: kicker, headline, subtitle, lede, meta dates -->
+<header class="hero">
+  <div class="hero__inner">
+    <span class="kicker">synvert xgeeks · Long-form analysis · v1</span>
+    <h1>The long-form story behind this deck</h1>
+    <p class="hero__subtitle">One-sentence framing of what this document covers and why it exists alongside the slides.</p>
+    <p class="hero__lede">A paragraph of context: the situation, the audience, and the so-what. This is the room the deck distils — here you have space to argue the full case.</p>
+    <p class="hero__meta"><span>Prepared YYYY-MM-DD</span><span>Occasion / anchor event</span><span><a href="index.html">Slide deck →</a></span></p>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- EDIT: one <li> per section; href + text must match each <section id> below -->
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc__title">Contents</p>
+    <ol>
+      <li><a href="#situation"><span class="toc__num">1.</span>Situation &amp; the so-what</a></li>
+      <li><a href="#detail"><span class="toc__num">2.</span>The detail</a></li>
+      <li><a href="#data"><span class="toc__num">3.</span>The data</a></li>
+      <li><a href="#next"><span class="toc__num">4.</span>What happens next</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+
+    <!-- EDIT: each <section id> pairs with a TOC entry above. Add/remove freely. -->
+    <section id="situation">
+      <h2><span class="section-num">1.</span>The situation &amp; the so-what</h2>
+      <p>Open with the context and the single most important takeaway. Lead with the conclusion, then support it.</p>
+      <div class="callout">
+        <span class="callout-head">The recommendation.</span> State the one thing you want the reader to do or believe after reading this document.
+      </div>
+    </section>
+
+    <section id="detail">
+      <h2><span class="section-num">2.</span>The detail</h2>
+      <p>Use <strong>bold</strong> for key terms, <em>italics</em> for emphasis, and <code>code</code> for literals. Sub-points read well as a list:</p>
+      <ul>
+        <li><strong>Point one</strong> — explanation.</li>
+        <li><strong>Point two</strong> — explanation.</li>
+      </ul>
+      <h3>2.1  A sub-section</h3>
+      <p>Break long arguments into <code>h3</code> sub-sections; <code>h4</code> is available for finer headings.</p>
+      <div class="callout warm"><span class="callout-head">Watch out.</span> Use the warm callout variant for caveats and risks.</div>
+    </section>
+
+    <section id="data">
+      <h2><span class="section-num">3.</span>The data</h2>
+      <p>Tables go in a <code>.table-wrap</code> so they scroll on narrow screens. Status uses pills.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Item</th><th>Detail</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><strong>First</strong></td><td>What it is.</td><td><span class="pill good">on track</span></td></tr>
+          <tr><td><strong>Second</strong></td><td>What it is.</td><td><span class="pill warn">at risk</span></td></tr>
+          <tr><td><strong>Third</strong></td><td>What it is.</td><td><span class="pill bad">blocked</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="next">
+      <h2><span class="section-num">4.</span>What happens next</h2>
+      <p>Close with concrete next steps, owners, and timing.</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- EDIT: footer note -->
+<footer class="site-footer">
+  <p>Internal working analysis for synvert xgeeks.</p>
+  <p style="margin-top: 10px;"><a href="index.html">↑  Switch to deck view</a></p>
+</footer>
+
+<script>
+// Sticky-TOC active-section highlighter using IntersectionObserver.
+(function () {
+  const sections = Array.from(document.querySelectorAll(".content > section[id]"));
+  const links = new Map(
+    Array.from(document.querySelectorAll(".toc a[href^='#']"))
+      .map(a => [a.getAttribute("href").slice(1), a])
+  );
+  if (!sections.length || !links.size) return;
+  const setActive = (id) => {
+    links.forEach((a, key) => a.classList.toggle("is-active", key === id));
+  };
+  const io = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top);
+    if (visible.length) setActive(visible[0].target.id);
+  }, { rootMargin: "-30% 0px -55% 0px", threshold: 0 });
+  sections.forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>

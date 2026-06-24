@@ -5,7 +5,12 @@ description: Scaffold a new self-contained slide-deck presentation in its own fo
 
 # new-presentation
 
-Scaffold a new deck in this multi-presentation repo. Each presentation is a self-contained subfolder at the repo root with a single `index.html` that carries the full xgeeks design system inline — no build step, no external CSS/JS (only Google Fonts).
+Scaffold a new deck in this multi-presentation repo. Each presentation is a self-contained subfolder at the repo root with **two** files that carry the full xgeeks design systems inline — no build step, no external CSS/JS (only Google Fonts):
+
+- `index.html` — the **slide deck** (dark, scroll-snap slides).
+- `analysis.html` — the **long-form document view** (light/dark, sticky-TOC) that argues the full case behind the deck. The two are cross-linked.
+
+Both must be produced for every new presentation.
 
 ## What you need before starting
 
@@ -99,9 +104,10 @@ The audience controls **tone, structure, component choices, and how much context
 ```bash
 mkdir -p <slug>
 cp _template/index.html <slug>/index.html
+cp _template/analysis.html <slug>/analysis.html
 ```
 
-The template already has the complete xgeeks design system (all CSS tokens, every component class, the reveal animation, keyboard navigation). You are customising content only — never touch the `<style>` or `<script>` blocks.
+Both templates already carry the complete xgeeks design systems (all CSS tokens, every component class, the reveal animation / sticky-TOC highlighter). They are **self-contained** — `analysis.html` does not use a shared `assets/` folder; its CSS and JS are inline. You are customising content only — never touch the `<style>` or `<script>` blocks in either file.
 
 ### 1b. Look for source content in `Sources/<slug>/`
 
@@ -158,6 +164,28 @@ Read `<slug>/index.html` then make these targeted edits:
 
 **Never change:** the inline `<style>` block, the `<script>` block, or the `.deck-progress` nav (update the nav entries to match the actual slide count once content is settled).
 
+### 2b. Customise the analysis (document view)
+
+`analysis.html` is the long-form companion — where the full argument lives, with room for prose, tables, and caveats the slides only gesture at. It is a **different design system** from the deck (serif body, light/dark, sticky TOC) — keep its conventions; don't copy deck tokens or classes into it.
+
+Read `<slug>/analysis.html` then make these edits:
+
+| What | Where | Target value |
+|---|---|---|
+| `<title>` | `<head>` | `{Title} · synvert xgeeks` |
+| `<meta name="description">` | `<head>` | One-sentence description of the long-form doc |
+| Hero kicker / `h1` / subtitle / lede | `.hero` | Title + the full framing in the profile's tone |
+| Hero meta | `.hero__meta` | `<span>Prepared {date}</span><span>{occasion}</span>` — keep the `Slide deck →` link |
+| TOC entries | `.toc ol` | One `<li>` per section; href + label must match each `<section id>` |
+| Sections | `.content > section` | The full narrative — one `<section id>` per TOC entry |
+| Footer note | `.site-footer` | Profile-appropriate note; keep the `Switch to deck view` link |
+
+Drive the content from the same **audience profile** and any `Sources/<slug>/` material. The deck is the distilled version; the analysis carries the reasoning, the data, and the trade-offs. Keep the deck (`index.html`) ↔ analysis (`analysis.html`) cross-links intact — they're already wired in both templates.
+
+**Component vocabulary (document view — do not reinvent):** `.callout` (+ `.callout.warm` for caveats), `.table-wrap` > `<table>` with `.pill` (`.good` / `.warn` / `.bad`) status chips, `h2`/`h3`/`h4`, ordered/unordered lists, `code`. That's the full set — the document view is intentionally simpler than the deck.
+
+**Remove** the `<!-- EDIT: ... -->` comments as you go. **Never change** the inline `<style>` or `<script>` blocks.
+
 ### 3. Add the gallery entry
 
 Open root `index.html`. Find the `<!-- COPY THIS BLOCK -->` comment and insert a new `.deck-card` immediately before it:
@@ -172,15 +200,36 @@ Open root `index.html`. Find the `<!-- COPY THIS BLOCK -->` comment and insert a
 </a>
 ```
 
-Update the slide count and date to match reality once the deck has real content.
+Update the slide count and date to match reality once the deck has real content. The card links to `<slug>/` (the deck); the deck cover and the analysis hero already cross-link to each other, so a reader reaches `analysis.html` from there.
 
-### 4. Report back
+### 4. Update the README
+
+The root [`README.md`](README.md) lists every presentation in a `## 🎞️ Presentations` table. **Always update it when scaffolding a new deck** so it stays in sync.
+
+Find the `<!-- NEW DECK ROW GOES HERE ... -->` marker inside that table and insert this row immediately **before** it (keep rows alphabetical by folder slug):
+
+```markdown
+| [**<Title>**](<slug>/) | <One-sentence description.> | <N> slides · <occasion> | [deck](https://fabiosampaio-91.github.io/xgeeks-presentations/<slug>/) · [analysis](https://fabiosampaio-91.github.io/xgeeks-presentations/<slug>/analysis.html) |
+```
+
+Don't duplicate a row if one already exists for the slug — update it in place. If the table or marker is missing (older README), recreate the section from the format shown in [`README.md`](README.md).
+
+### 5. Open the presentation
+
+Open the newly created deck in the browser so the user can see it immediately (the analysis is one click away via the cover link):
+
+```bash
+open <slug>/index.html
+```
+
+### 6. Report back
 
 Tell the user:
 
-- The deck is at `<slug>/index.html`
-- Preview locally: `open <slug>/index.html` or `python3 -m http.server` from the repo root then visit `http://localhost:8000/<slug>/`
-- What still needs filling in (slide body content, real slide count, gallery description if left as placeholder)
+- The deck is at `<slug>/index.html` (now open in your browser) and the long-form companion at `<slug>/analysis.html`
+- It has been added to the root [`README.md`](README.md) presentations list
+- Preview the full gallery: `python3 -m http.server` from the repo root then visit `http://localhost:8000/<slug>/`
+- What still needs filling in (slide body content, analysis sections, real slide count, gallery/README description if left as placeholder)
 - Commit & push when ready — GitHub Pages auto-deploys to `<pages-url>/<slug>/`
 
 ## Design system quick reference
@@ -190,5 +239,7 @@ All component classes are already in the template. Pick from these; don't invent
 `.card` (`.is-accent` / `.is-warm`) · `.kpi` · `.grid-2` / `.grid-3` / `.grid-4` · `.lanes` / `.lane.a` / `.lane.b` · `.rule-strip` · `.dt` (data table) · `.smx` (state matrix) · `.schema` · `.bench` / `.person` · `.doors` / `.door` · `.tiers` / `.tier` · `.board` / `.acct` · `.crm` · `.gantt` · `.msg` / `.pull-quote` · `.heat` / `.tag-pill`
 
 **Two-track colour code** — warm coral (`--warm`) = Track A, accent green (`--accent`) = Track B. Keep this consistent throughout the deck.
+
+**Document view (`analysis.html`) — separate, simpler system:** `.callout` (+ `.callout.warm`), `.table-wrap` > `<table>` with `.pill` (`.good` / `.warn` / `.bad`), `h2`/`h3`/`h4`, lists, `code`. Don't cross-contaminate: never copy deck classes/tokens into the analysis or vice-versa.
 
 Full vocabulary and token list are in `CLAUDE.md`.
