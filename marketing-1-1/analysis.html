@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1-1 · Talking Points &amp; Q&amp;A · synvert xgeeks</title>
+<meta name="description" content="Full talking points and Q&A guide for Fábio Sampaio's 1-1 with the Head of Marketing: community as a business channel.">
+<meta name="theme-color" content="#03161a">
+<!--
+  Document view (long-form companion to index.html).
+  SELF-CONTAINED: all CSS + JS live inline below so this folder opens standalone.
+  Light + dark via prefers-color-scheme. This is a DIFFERENT design system from
+  index.html (serif body, system sans headings) — do NOT copy deck tokens here.
+-->
+<style>
+/* ============================================================
+   Document-view stylesheet — synvert xgeeks brand palette
+   (Techno Green / Dark Space / coral). Light + dark.
+   ============================================================ */
+:root {
+  --ink: #0c1a1c;
+  --ink-soft: #2a3a3c;
+  --muted: #5b6a6b;
+  --rule: #d5e0dd;
+  --rule-soft: #eef3f1;
+  --accent: #04897a;          /* readable green on light bg */
+  --accent-bright: #00EBB6;   /* Techno Green */
+  --accent-soft: #e6faf4;
+  --accent-strong: #002E33;   /* Dark Space */
+  --warm: #e2643a;            /* coral, darkened for contrast */
+  --bg: #fbfdfc;
+  --bg-card: #ffffff;
+  --bg-callout: #f3f9f7;
+  --good-bg: #e6f7ef; --good-fg: #0a6e4b;
+  --warn-bg: #fdf3df; --warn-fg: #8a5a08;
+  --bad-bg:  #fdeae5; --bad-fg:  #a23a1c;
+  --shadow-sm: 0 1px 2px rgba(0, 46, 51, 0.05);
+  --shadow-md: 0 4px 18px rgba(0, 46, 51, 0.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #eef5f3;
+    --ink-soft: #c5d2cf;
+    --rule: #1f3539;
+    --rule-soft: #15282b;
+    --muted: #879895;
+    --accent: #00EBB6;
+    --accent-bright: #00EBB6;
+    --accent-soft: #0d2a2b;
+    --accent-strong: #8fe9d8;
+    --warm: #ff966e;
+    --bg: #03161a;
+    --bg-card: #082023;
+    --bg-callout: #0a2528;
+    --good-bg: #0a2a1d; --good-fg: #5fe3b0;
+    --warn-bg: #2a1f0a; --warn-fg: #f1c45a;
+    --bad-bg:  #2a1411; --bad-fg:  #f4a48a;
+    --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Charter", "Iowan Old Style", "Georgia", "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, nav, table, .kicker, .pill, .callout-head, code, .mono,
+.hero__meta, .toc, .site-footer, button {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+               "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+code, .mono {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--rule-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--ink);
+}
+/* ---------------- Hero ---------------- */
+.hero {
+  background: linear-gradient(180deg, var(--accent-soft) 0%, transparent 100%);
+  border-bottom: 1px solid var(--rule);
+  padding: 72px 24px 56px;
+}
+.hero__inner { max-width: 1200px; margin: 0 auto; }
+.kicker {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+  margin: 0 0 14px 0;
+  color: var(--ink);
+}
+.hero__subtitle {
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--ink-soft);
+  font-style: italic;
+  max-width: 760px;
+  margin: 0 0 22px 0;
+  line-height: 1.4;
+}
+.hero__lede {
+  max-width: 780px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 16px;
+  margin: 8px 0 0 0;
+}
+.hero__meta {
+  margin-top: 22px;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.hero__meta span + span::before { content: "·"; margin: 0 10px; color: var(--rule); }
+/* ---------------- Layout ---------------- */
+.layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 24px; padding: 24px 18px 64px; }
+}
+/* ---------------- Sticky TOC ---------------- */
+.toc { position: sticky; top: 24px; align-self: start; font-size: 14px; }
+.toc__title {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--rule); }
+.toc li { margin: 0; }
+.toc a {
+  display: block;
+  padding: 8px 0 8px 16px;
+  margin-left: -1px;
+  color: var(--ink-soft);
+  border-left: 2px solid transparent;
+  transition: color 120ms, border-color 120ms;
+  line-height: 1.35;
+}
+.toc a:hover { color: var(--ink); text-decoration: none; border-left-color: var(--rule); }
+.toc a.is-active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+.toc__num { display: inline-block; width: 22px; color: var(--muted); font-weight: 600; }
+.toc a.is-active .toc__num { color: var(--accent); }
+@media (max-width: 900px) {
+  .toc { position: static; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .toc ol { border-left: none; }
+  .toc a { padding-left: 0; border-left: none; }
+  .toc a.is-active { border-left: none; }
+}
+/* ---------------- Content ---------------- */
+.content { max-width: 780px; }
+.content > section { padding-top: 8px; }
+.content > section + section {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.content h2 {
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+  color: var(--ink);
+  margin: 0 0 14px 0;
+  scroll-margin-top: 24px;
+}
+.content h2 .section-num { display: inline-block; margin-right: 12px; color: var(--accent); font-weight: 600; }
+.content h3 { font-size: 19px; line-height: 1.3; font-weight: 650; color: var(--ink); margin: 28px 0 6px 0; }
+.content h4 { font-size: 15px; line-height: 1.35; font-weight: 650; color: var(--ink-soft); margin: 18px 0 6px 0; }
+.content p { margin: 0 0 14px 0; }
+.content ul, .content ol { margin: 0 0 18px 0; padding-left: 26px; }
+.content li { margin-bottom: 8px; }
+.content li > strong, .content em, .content strong { color: var(--ink); }
+/* ---------------- Callouts ---------------- */
+.callout {
+  background: var(--bg-callout);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 22px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: var(--shadow-sm);
+}
+.callout-head { font-weight: 650; color: var(--ink); }
+.callout.warm { border-left-color: var(--warm); }
+/* ---------------- Tables ---------------- */
+.table-wrap {
+  overflow-x: auto;
+  margin: 18px 0 26px 0;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+}
+thead th {
+  background: var(--rule-soft);
+  color: var(--ink-soft);
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink);
+  line-height: 1.5;
+}
+tbody tr:last-child td { border-bottom: none; }
+.pill {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+.pill.good { background: var(--good-bg); color: var(--good-fg); }
+.pill.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.pill.bad  { background: var(--bad-bg);  color: var(--bad-fg); }
+/* ---------------- Footer ---------------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  background: var(--bg-card);
+}
+.site-footer p { margin: 0; }
+.site-footer a { color: var(--ink-soft); }
+/* ---------------- Print fallback ---------------- */
+@media print {
+  .hero { background: none; padding: 24pt 0 12pt; }
+  .toc, .site-footer { display: none; }
+  .layout { display: block; padding: 0; }
+  .content { max-width: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__inner">
+    <span class="kicker">Fábio Sampaio · 1-1 talking points · v1</span>
+    <h1>1-1 with the Head of Marketing: my prep</h1>
+    <p class="hero__subtitle">Everything I want to be ready to say, in order, plus the questions she is likely to ask and my sharp answers.</p>
+    <p class="hero__lede">The headline she should walk away with: I built a community engine with almost no financial investment, and it is now a real, measurable business channel I am actively working on. Brand, talent and community remain in the story, but as the foundation that made the business channel possible. This document is my full script; the deck is the short version to walk through on screen.</p>
+    <p class="hero__meta"><span>Prepared 2026-07-06</span><span>1-1 · Head of Marketing</span><span><a href="index.html">Slide deck →</a></span></p>
+  </div>
+</header>
+
+<div class="layout">
+
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc__title">Contents</p>
+    <ol>
+      <li><a href="#headline"><span class="toc__num">0.</span>The headline to land</a></li>
+      <li><a href="#intro"><span class="toc__num">1.</span>Who I am &amp; top achievements</a></li>
+      <li><a href="#time"><span class="toc__num">2.</span>How I spend my time</a></li>
+      <li><a href="#in-country"><span class="toc__num">3.</span>What I do in-country</a></li>
+      <li><a href="#group"><span class="toc__num">4.</span>Group / regional marketing</a></li>
+      <li><a href="#superpower"><span class="toc__num">5.</span>Aspiration &amp; superpower</a></li>
+      <li><a href="#growth-talent"><span class="toc__num">6.</span>Growth vs Talent</a></li>
+      <li><a href="#vertical"><span class="toc__num">7.</span>Vertical expertise</a></li>
+      <li><a href="#mission-critical"><span class="toc__num">8.</span>Mission-critical programs</a></li>
+      <li><a href="#qa"><span class="toc__num">9.</span>Likely Q&amp;A</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+
+    <section id="headline">
+      <h2><span class="section-num">0.</span>The headline to land</h2>
+      <p>The single most important angle of this 1-1 is <strong>business</strong>. Everything else supports it.</p>
+      <div class="callout">
+        <span class="callout-head">If she remembers one thing.</span> I built a community engine with almost no financial investment, and it is now a real, measurable business channel that I am actively working on. Brand, talent and community are the foundation that made the business channel possible.
+      </div>
+      <p>Delivery notes: confident, direct and data-driven, but humble and collaborative on the marketing-help topic. We want to learn from her team and get their help to scale this to the next level. Keep it a conversation, not a pitch.</p>
+    </section>
+
+    <section id="intro">
+      <h2><span class="section-num">1.</span>Who I am &amp; top achievements</h2>
+      <p><em>Question: Who are you professionally? Top achievements? Key projects you manage?</em></p>
+      <p><strong>Say it like this:</strong> I am Fábio, Community &amp; Communication Manager at synvert xgeeks, a GlobalLogic Company. I own our external-facing brand through events: our external events strategy and all communication for and with the community. Over the last year I have also become heavily involved in business efforts, working closely with André. The logic was simple: community was already delivering strong results in branding, and we were seeing organic inbound just from our name being present at meetups and events. So we decided to leverage everything we had built, the database, the tracking, the events, the meetups, and turn it into a business development channel.</p>
+      <h3>1.1  Top achievement: KCD Porto</h3>
+      <p>I brought the largest cloud native conference format to Portugal. We did such a strong job that in 2026 DevOpsDays Portugal decided to join forces with us (KCD Porto x DevOpsDays Portugal 2026), and the event is growing from ~330 to 500+ attendees. It reached break even, we have full control of it, and it opens opportunities across talent, brand and business.</p>
+      <h3>1.2  Second achievement: the community footprint</h3>
+      <p>I started in 2023 with 2 meetup groups. Today I run more than 10 at national level, with presence in the North, Center and Lisbon, across cloud, DevOps, engineering leadership and AI. That footprint sits inside a wider ecosystem of 17 groups reaching roughly 24,000 members. Organically, xgeeks became known as a community builder in the Portuguese tech scene. What makes me proud is that all of this was built with very little financial investment.</p>
+      <div class="callout warm"><span class="callout-head">Naming note (confirm before the meeting).</span> The script draft says "Community Specialist"; the External Events deck and KCD sources use "Community &amp; Communication Manager". This document uses the latter for consistency. Pick one and I will align both decks.</div>
+    </section>
+
+    <section id="time">
+      <h2><span class="section-num">2.</span>How I spend my time (BAU)</h2>
+      <p><em>Question: How do you spend your time?</em></p>
+      <p><strong>Say it like this:</strong> My BAU splits into three areas, and over the last year the balance has clearly shifted toward business.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Area</th><th>What I actually do</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Meetups</strong><br>Braga to Lisbon</td><td>Manage and organize all of them end to end: partnerships, speakers, event publishing, check-in curation. A big part is strategic judgment: which venue gives xgeeks more visibility and business opportunity, which speakers to invite and why, which partnerships serve our interests best.</td></tr>
+          <tr><td><strong>KCD Porto</strong><br>Project Manager</td><td>I am the PM. I manage the budget, the P&amp;L and the roadmap, and I own sponsor acquisition and sponsor management.</td></tr>
+          <tr><td><strong>Sales &amp; business</strong><br>with André</td><td>Lead acquisition from meetups and top of funnel, plus managing relationships with potential Portuguese business leads: from organizing the meetings all the way to proposal preparation and delivery.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout"><span class="callout-head">Emphasis.</span> The sales and business support is now a core part of my role, not a side activity. That is the change worth underlining.</div>
+    </section>
+
+    <section id="in-country">
+      <h2><span class="section-num">3.</span>What I do in-country</h2>
+      <p><em>Question: What do you actually do in-country?</em></p>
+      <p><strong>Say it like this:</strong> It is essentially what I just described. My work is fully in-country: the national meetup network, KCD Porto as our flagship, and the business development work that comes out of both. The community footprint <em>is</em> our in-country presence.</p>
+    </section>
+
+    <section id="group">
+      <h2><span class="section-num">4.</span>Group / regional marketing</h2>
+      <p><em>Question: What do you do for group marketing / regional marketing?</em></p>
+      <p><strong>Say it like this:</strong> My contribution to regional marketing is external events and visibility. Everything I do puts the xgeeks brand physically in front of the Portuguese tech community, consistently, across cities and tech domains. It is marketing through presence and community leadership rather than through campaigns.</p>
+      <p>And there is a group angle I would like to propose. This year we would like geekathon to become an aggregator event for the group, creating synergies with GlobalLogic, Hitachi Digital Solutions and the associated companies, with their teams participating in challenges and prizes. <em>From Leiria to the Hitachi group, and from the Hitachi group to Leiria.</em></p>
+      <div class="callout warm"><span class="callout-head">Frame it as a proposal.</span> This is an open invitation to co-build, not a confirmed plan. Possible formats: sponsor prizes tied to challenges that solve their real problems, participate with their own teams, join the jury, and other formats we can shape together.</div>
+    </section>
+
+    <section id="superpower">
+      <h2><span class="section-num">5.</span>Aspiration &amp; superpower</h2>
+      <p><em>Question: What is your aspiration and superpower?</em></p>
+      <p><strong>Say it like this:</strong> My superpower is people. I can handle a large number of people, partners and stakeholders at the same time, and I am people driven in the sense that I always try to align everyone's interests so that expectations are met on both sides, xgeeks and our partners. I would describe my role as a mediator and diplomat between all these parties, and a network builder. Creating and expanding networks is what I do naturally, and it is exactly the skill that turned our community into a business channel.</p>
+    </section>
+
+    <section id="growth-talent">
+      <h2><span class="section-num">6.</span>Growth vs Talent</h2>
+      <p><em>Question: What do you do for Growth vs Talent, specifically?</em></p>
+      <p><strong>Say it like this:</strong> Meetups and events feed both. On the talent side, they remain our most authentic employer-branding channel: people meet us, see how we work, and want to join. But right now my work is more focused on Growth: check-in curation before events, direct contact with potential leads during events, warm follow-up powered by community engagement, and a growing database fed by meetups, KCD Porto and geekathon. This has already produced real leads (CloudZone, Wellhub, UBIO) and a pipeline of approximately 500K EUR.</p>
+    </section>
+
+    <section id="vertical">
+      <h2><span class="section-num">7.</span>Vertical expertise</h2>
+      <p><em>Question: What is your vertical / industry expertise?</em></p>
+      <p><strong>Say it like this:</strong> Community, Events and Growth. That is my vertical. Within that, deep domain familiarity with the cloud native, DevOps and AI ecosystems in Portugal, since those are the communities I run.</p>
+    </section>
+
+    <section id="mission-critical">
+      <h2><span class="section-num">8.</span>Mission-critical programs</h2>
+      <p><em>Question: Which programs are mission critical?</em></p>
+      <p><strong>Say it like this:</strong> KCD Porto. It is mission critical because of its business lead potential. Operationally it costs xgeeks zero euros, it is break even and fully under our control, and if we leverage it well the return is significant: at minimum, the creation and expansion of the network of decision-makers that people inside xgeeks can activate for business.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Business lens</th><th>KCD Porto x DevOpsDays Portugal 2026</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Operational cost to xgeeks</strong></td><td>Zero euros <span class="pill good">no financial risk</span></td></tr>
+          <tr><td><strong>Financials</strong></td><td>Break even, with a ~10k carry-over buffer already in place</td></tr>
+          <tr><td><strong>Control</strong></td><td>Full: synvert xgeeks is the legal entity behind the event</td></tr>
+          <tr><td><strong>Scale 2026</strong></td><td>500+ attendees, 150+ companies, 50+ speakers</td></tr>
+          <tr><td><strong>Business return</strong></td><td>A network of decision-makers xgeeks can activate for business <span class="pill good">high lead potential</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="qa">
+      <h2><span class="section-num">9.</span>Likely Q&amp;A</h2>
+
+      <h3>How do you measure the success of community work?</h3>
+      <p>Three lenses. <strong>Brand:</strong> attendance growth year over year, and the fact that companies now come to us wanting to host and sponsor. <strong>Talent:</strong> candidates who reference our events. <strong>Business:</strong> leads and pipeline, which today stands at around 500K EUR with named leads like CloudZone, Wellhub and UBIO.</p>
+
+      <h3>Is this scalable, or does it depend entirely on you?</h3>
+      <p>The meetups are practically self-sustainable at this point. Companies actively want to give us venues, host and sponsor; sometimes the hardest part is saying no. The playbook is repeatable: what I bring is the network and the partner relationships, and those keep compounding. The honest caveat is on the business side (see risks).</p>
+
+      <h3>What are the risks?</h3>
+      <p>Concentration of knowledge and relationships in few people, and bandwidth. The business dimension of community is only one year old and growing fast, so prioritization between events, meetups and sales support is the main tension. This is exactly where structure and marketing support would help de-risk it.</p>
+
+      <h3>What do you need from marketing? (keep it humble and collaborative)</h3>
+      <p>Honestly, I would love to learn from your team and get your help to scale this. The engine works; what would multiply the impact is content and communication support around the events: pre and post-event content, social amplification, case studies from the leads we generate, and help positioning geekathon at group level with GlobalLogic and Hitachi. Two concrete channels to scale:</p>
+      <ul>
+        <li><strong>Meetups, always-on:</strong> recurring touchpoints with engineers and decision-makers across the country. With content, positioning and follow-up materials, each meetup could convert better.</li>
+        <li><strong>KCD Porto, flagship:</strong> 500+ attendees and a concentrated brand and business moment. With marketing behind it, the impact before, during and after could be multiplied.</li>
+      </ul>
+      <div class="callout"><span class="callout-head">The offer.</span> I bring the community engine and the proven results; marketing brings the expertise to scale it. Let's take this to the next level together.</div>
+
+      <h3>What about your external recognition?</h3>
+      <p>I was invited to be a JNation Champion, the biggest generalist tech conference in Portugal, around 1,500 attendees in Coimbra. I am also an Ambassador for SREday and LLMday, international conference brands running annually in Lisbon and now expanding to Porto with my help. This recognition gives xgeeks presence and credibility on the biggest tech stages in the country at essentially zero cost.</p>
+
+      <h3>Where do you want to take this next?</h3>
+      <p>Three moves. One: consolidate community as a predictable business channel with clear top-of-funnel metrics. Two: make geekathon the group synergy event with GlobalLogic and Hitachi. Three: keep growing KCD Porto as the flagship, now with DevOpsDays Portugal on board and 500+ attendees.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <p>Personal 1-1 preparation · Fábio Sampaio · synvert xgeeks, a GlobalLogic Company.</p>
+  <p style="margin-top: 10px;"><a href="index.html">↑  Switch to deck view</a></p>
+</footer>
+
+<script>
+// Sticky-TOC active-section highlighter using IntersectionObserver.
+(function () {
+  const sections = Array.from(document.querySelectorAll(".content > section[id]"));
+  const links = new Map(
+    Array.from(document.querySelectorAll(".toc a[href^='#']"))
+      .map(a => [a.getAttribute("href").slice(1), a])
+  );
+  if (!sections.length || !links.size) return;
+  const setActive = (id) => {
+    links.forEach((a, key) => a.classList.toggle("is-active", key === id));
+  };
+  const io = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top);
+    if (visible.length) setActive(visible[0].target.id);
+  }, { rootMargin: "-30% 0px -55% 0px", threshold: 0 });
+  sections.forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>
