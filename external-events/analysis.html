@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>External Events · Analysis · synvert xgeeks</title>
+<meta name="description" content="The full case behind synvert xgeeks external events: community meetups as a business engine, geekathon, KCD Porto, and individual recognition on national stages.">
+<meta name="theme-color" content="#03161a">
+<!--
+  Document view (long-form companion to index.html).
+  SELF-CONTAINED: all CSS + JS live inline below so this folder opens standalone.
+  Light + dark via prefers-color-scheme. This is a DIFFERENT design system from
+  index.html (serif body, system sans headings) — do NOT copy deck tokens here.
+-->
+<style>
+/* ============================================================
+   Document-view stylesheet — synvert xgeeks brand palette
+   (Techno Green / Dark Space / coral). Light + dark.
+   ============================================================ */
+:root {
+  --ink: #0c1a1c;
+  --ink-soft: #2a3a3c;
+  --muted: #5b6a6b;
+  --rule: #d5e0dd;
+  --rule-soft: #eef3f1;
+  --accent: #04897a;          /* readable green on light bg */
+  --accent-bright: #00EBB6;   /* Techno Green */
+  --accent-soft: #e6faf4;
+  --accent-strong: #002E33;   /* Dark Space */
+  --warm: #e2643a;            /* coral, darkened for contrast */
+  --bg: #fbfdfc;
+  --bg-card: #ffffff;
+  --bg-callout: #f3f9f7;
+  --good-bg: #e6f7ef; --good-fg: #0a6e4b;
+  --warn-bg: #fdf3df; --warn-fg: #8a5a08;
+  --bad-bg:  #fdeae5; --bad-fg:  #a23a1c;
+  --shadow-sm: 0 1px 2px rgba(0, 46, 51, 0.05);
+  --shadow-md: 0 4px 18px rgba(0, 46, 51, 0.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #eef5f3;
+    --ink-soft: #c5d2cf;
+    --rule: #1f3539;
+    --rule-soft: #15282b;
+    --muted: #879895;
+    --accent: #00EBB6;
+    --accent-bright: #00EBB6;
+    --accent-soft: #0d2a2b;
+    --accent-strong: #8fe9d8;
+    --warm: #ff966e;
+    --bg: #03161a;
+    --bg-card: #082023;
+    --bg-callout: #0a2528;
+    --good-bg: #0a2a1d; --good-fg: #5fe3b0;
+    --warn-bg: #2a1f0a; --warn-fg: #f1c45a;
+    --bad-bg:  #2a1411; --bad-fg:  #f4a48a;
+    --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Charter", "Iowan Old Style", "Georgia", "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, nav, table, .kicker, .pill, .callout-head, code, .mono,
+.hero__meta, .toc, .site-footer, button {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+               "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+code, .mono {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--rule-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--ink);
+}
+/* ---------------- Hero ---------------- */
+.hero {
+  background: linear-gradient(180deg, var(--accent-soft) 0%, transparent 100%);
+  border-bottom: 1px solid var(--rule);
+  padding: 72px 24px 56px;
+}
+.hero__inner { max-width: 1200px; margin: 0 auto; }
+.kicker {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+  margin: 0 0 14px 0;
+  color: var(--ink);
+}
+.hero__subtitle {
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--ink-soft);
+  font-style: italic;
+  max-width: 760px;
+  margin: 0 0 22px 0;
+  line-height: 1.4;
+}
+.hero__lede {
+  max-width: 780px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 16px;
+  margin: 8px 0 0 0;
+}
+.hero__meta {
+  margin-top: 22px;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.hero__meta span + span::before { content: "·"; margin: 0 10px; color: var(--rule); }
+/* ---------------- Layout ---------------- */
+.layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 24px; padding: 24px 18px 64px; }
+}
+/* ---------------- Sticky TOC ---------------- */
+.toc { position: sticky; top: 24px; align-self: start; font-size: 14px; }
+.toc__title {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+.toc ol { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--rule); }
+.toc li { margin: 0; }
+.toc a {
+  display: block;
+  padding: 8px 0 8px 16px;
+  margin-left: -1px;
+  color: var(--ink-soft);
+  border-left: 2px solid transparent;
+  transition: color 120ms, border-color 120ms;
+  line-height: 1.35;
+}
+.toc a:hover { color: var(--ink); text-decoration: none; border-left-color: var(--rule); }
+.toc a.is-active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+.toc__num { display: inline-block; width: 22px; color: var(--muted); font-weight: 600; }
+.toc a.is-active .toc__num { color: var(--accent); }
+@media (max-width: 900px) {
+  .toc { position: static; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .toc ol { border-left: none; }
+  .toc a { padding-left: 0; border-left: none; }
+  .toc a.is-active { border-left: none; }
+}
+/* ---------------- Content ---------------- */
+.content { max-width: 780px; }
+.content > section { padding-top: 8px; }
+.content > section + section {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.content h2 {
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+  color: var(--ink);
+  margin: 0 0 14px 0;
+  scroll-margin-top: 24px;
+}
+.content h2 .section-num { display: inline-block; margin-right: 12px; color: var(--accent); font-weight: 600; }
+.content h3 { font-size: 19px; line-height: 1.3; font-weight: 650; color: var(--ink); margin: 28px 0 6px 0; }
+.content h4 { font-size: 15px; line-height: 1.35; font-weight: 650; color: var(--ink-soft); margin: 18px 0 6px 0; }
+.content p { margin: 0 0 14px 0; }
+.content ul, .content ol { margin: 0 0 18px 0; padding-left: 26px; }
+.content li { margin-bottom: 8px; }
+.content li > strong, .content em, .content strong { color: var(--ink); }
+/* ---------------- Callouts ---------------- */
+.callout {
+  background: var(--bg-callout);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 22px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: var(--shadow-sm);
+}
+.callout-head { font-weight: 650; color: var(--ink); }
+.callout.warm { border-left-color: var(--warm); }
+/* ---------------- Tables ---------------- */
+.table-wrap {
+  overflow-x: auto;
+  margin: 18px 0 26px 0;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+}
+thead th {
+  background: var(--rule-soft);
+  color: var(--ink-soft);
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink);
+  line-height: 1.5;
+}
+tbody tr:last-child td { border-bottom: none; }
+.pill {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+.pill.good { background: var(--good-bg); color: var(--good-fg); }
+.pill.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.pill.bad  { background: var(--bad-bg);  color: var(--bad-fg); }
+/* ---------------- Footer ---------------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  background: var(--bg-card);
+}
+.site-footer p { margin: 0; }
+.site-footer a { color: var(--ink-soft); }
+/* ---------------- Print fallback ---------------- */
+@media print {
+  .hero { background: none; padding: 24pt 0 12pt; }
+  .toc, .site-footer { display: none; }
+  .layout { display: block; padding: 0; }
+  .content { max-width: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__inner">
+    <span class="kicker">synvert xgeeks · Long-form analysis · v1</span>
+    <h1>External events: the full case</h1>
+    <p class="hero__subtitle">Everything synvert xgeeks, a GlobalLogic Company, does in the tech ecosystem: an always-on community engine, two flagship events, and the recognition that puts us on stages we do not even run.</p>
+    <p class="hero__lede">The slide deck is the 7-minute version for the marketing briefing. This document is the reasoning and the data behind it: the community footprint, how meetups became a business engine, the year-over-year growth, the two flagships (geekathon and KCD Porto), and where each is heading. All figures come from our tracking files or official event pages; missing figures are marked [X] rather than invented.</p>
+    <p class="hero__meta"><span>Prepared 2026-07-06</span><span>Marketing briefing · External Events</span><span><a href="index.html">Slide deck →</a></span></p>
+  </div>
+</header>
+
+<div class="layout">
+
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc__title">Contents</p>
+    <ol>
+      <li><a href="#overview"><span class="toc__num">1.</span>Overview &amp; the so-what</a></li>
+      <li><a href="#footprint"><span class="toc__num">2.</span>Community footprint</a></li>
+      <li><a href="#engine"><span class="toc__num">3.</span>Community as a business engine</a></li>
+      <li><a href="#self-sustaining"><span class="toc__num">4.</span>Self-sustaining meetups</a></li>
+      <li><a href="#growth"><span class="toc__num">5.</span>Growth 2023-2026</a></li>
+      <li><a href="#partnerships"><span class="toc__num">6.</span>Co-organizing &amp; Google</a></li>
+      <li><a href="#geekathon"><span class="toc__num">7.</span>geekathon</a></li>
+      <li><a href="#geekathon-2026"><span class="toc__num">8.</span>geekathon 2026 &amp; the group</a></li>
+      <li><a href="#kcd"><span class="toc__num">9.</span>KCD Porto</a></li>
+      <li><a href="#kcd-2026"><span class="toc__num">10.</span>KCD Porto x DevOpsDays 2026</a></li>
+      <li><a href="#recognition"><span class="toc__num">11.</span>Individual recognition</a></li>
+      <li><a href="#marketing"><span class="toc__num">12.</span>How marketing amplifies this</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+
+    <section id="overview">
+      <h2><span class="section-num">1.</span>Overview &amp; the so-what</h2>
+      <p>synvert xgeeks, a GlobalLogic Company, is a driving force in the Portuguese tech ecosystem. We do not simply sponsor events: we found, organize and operate communities, investing our people's time, our spaces and our resources. That work now ladders up to three engines that reinforce each other all year.</p>
+      <ul>
+        <li><strong>Meetups, the always-on engine.</strong> Year-round presence across five cities and six-plus tech domains. Historically about brand, exposure and talent; over the last year, also a live business pipeline.</li>
+        <li><strong>geekathon, the team and group event.</strong> Our own hackathon in Leiria. Excellent for internal team building, increasingly external, and in 2026 the platform for GlobalLogic and Hitachi group synergies.</li>
+        <li><strong>KCD Porto, the flagship.</strong> The largest CNCF event in Portugal. In 2026 it joins forces with DevOpsDays Portugal for a 500+ attendee landmark event.</li>
+      </ul>
+      <div class="callout">
+        <span class="callout-head">The so-what.</span> Community is no longer just a brand and talent play. It is a self-sustaining engine that also produces a real business pipeline (~500K EUR) and earns xgeeks recognition on the largest tech stages in Portugal. This document lays out where each engine is and where it is heading, so marketing can amplify it.
+      </div>
+    </section>
+
+    <section id="footprint">
+      <h2><span class="section-num">2.</span>Community footprint</h2>
+      <p>Our involvement spans Lisbon, Porto, Braga, Viseu and Castelo Branco, and multiple technology domains (Cloud Native, DevOps, AWS, JavaScript, AI/GenAI, engineering leadership). It operates at four distinct levels, from full ownership to strategic partnership.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Tier</th><th>What it means</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tier 1</strong><br>Full ownership</td><td>We own strategy, calendar, content curation, logistics and community relationships end to end.</td><td>Cloud Native Porto, Lisbon GenAI Community, Viseu Tech Talks (and more)</td></tr>
+          <tr><td><strong>Tier 2</strong><br>Co-founded &amp; co-led</td><td>Communities we helped found and continue to co-lead with founding partners.</td><td>LeadDev Lisbon, AWS User Group Porto</td></tr>
+          <tr><td><strong>Tier 3</strong><br>Fundamental co-organizer</td><td>Invited to join as co-organizer, now core to planning, speaker curation, venues and execution.</td><td>DevOps Lisbon, DevOps Braga, Braga JS, JS Lisbon</td></tr>
+          <tr><td><strong>Tier 4</strong><br>Collaboration &amp; partnership</td><td>Co-organization and partnerships that extend our reach beyond the groups we run directly.</td><td>AWS UG Lisbon &amp; Castelo Branco, AI Lisbon, AI.PT, 351 Portuguese Startup Association</td></tr>
+        </tbody>
+      </table></div>
+      <p>This layered involvement gives xgeeks reach into thousands of engineers, tech leads and decision-makers; credibility as builders of the ecosystem; our most authentic employer-branding channel; consistent organic brand presence; and a growing, community-driven business pipeline.</p>
+      <div class="callout warm"><span class="callout-head">Data note.</span> The ecosystem source references four fully controlled groups; three are named publicly here. The exact count of active groups will keep shifting as editions and partnerships evolve. Member counts per group are available in our tracking (for example Cloud Native Lisbon ~1,100, DevOps Lisbon ~4,500, DevOps Porto ~3,500).</p></div>
+    </section>
+
+    <section id="engine">
+      <h2><span class="section-num">3.</span>Community as a business engine</h2>
+      <p>Community-building always served business, talent and brand. About a year ago we started working meetups deliberately as a lead-generation channel. Today our fully operated and co-organized meetups actively generate qualified business leads. The mechanism is simple and repeatable:</p>
+      <ol>
+        <li><strong>Curate.</strong> We screen the check-in lists before each event, identifying potential leads among registrants (companies, roles, seniority, relevance to our services).</li>
+        <li><strong>Connect.</strong> During the event, our team makes direct, personal contact with those leads in a community-first setting. No cold calls, no cold emails.</li>
+        <li><strong>Nurture.</strong> Because prospects already know and trust the community, follow-up after the event lands warm, not cold.</li>
+        <li><strong>Expand.</strong> The database grows from recurring meetups plus larger events (KCD Porto, geekathon, partner conferences), each reaching different audiences and seniority levels.</li>
+      </ol>
+      <p>Community also acts as a trust multiplier: prospects have seen xgeeks organize, host and contribute, not just sell. Repeated touchpoints with the same prospects shorten sales cycles, and our organizers act as the first line of business development.</p>
+      <div class="callout">
+        <span class="callout-head">Proven results.</span> Business leads originated from community include <strong>CloudZone, Wellhub and UBIO</strong>, with more continuing to emerge. Current community-driven pipeline value is <strong>approximately 500K EUR</strong>. This validates community as a genuine, scalable business development engine, not just a brand and talent pillar.
+      </div>
+    </section>
+
+    <section id="self-sustaining">
+      <h2><span class="section-num">4.</span>Self-sustaining meetups</h2>
+      <p>The community has reached a point where the ecosystem comes to us. Companies actively want to provide venues, host events and sponsor them, for the exposure to our audience. Budget is rarely the constraint anymore.</p>
+      <ul>
+        <li><strong>Venues offered.</strong> Companies want to host our meetups in their spaces.</li>
+        <li><strong>Hosts and speakers.</strong> Partners volunteer to co-host and bring speakers, placing their brand alongside ours.</li>
+        <li><strong>Inbound sponsorship.</strong> Sponsors approach us to fund events.</li>
+      </ul>
+      <div class="callout"><span class="callout-head">The signal.</span> When demand outpaces the calendar, the hardest part is saying no. That is the clearest sign the engine is self-sustaining.</div>
+    </section>
+
+    <section id="growth">
+      <h2><span class="section-num">5.</span>Growth 2023-2026</h2>
+      <p>The trend is up every single year, in both the number of meetups held and total attendance. Figures below come directly from our meetups tracking file.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Year</th><th>Meetups held</th><th>Total attendees</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td><strong>2023</strong></td><td>16</td><td>794</td><td>Baseline</td></tr>
+          <tr><td><strong>2024</strong></td><td>21</td><td>943</td><td><span class="pill good">+31% meetups</span></td></tr>
+          <tr><td><strong>2025</strong></td><td>29</td><td>1,180</td><td><span class="pill good">+38% meetups vs 2024</span></td></tr>
+          <tr><td><strong>2026</strong></td><td>16 so far</td><td>[X] pending</td><td><span class="pill warn">attendance not yet consolidated</span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout warm"><span class="callout-head">Data note.</span> 2026 attendance is deliberately left as [X]: the year is in progress and figures are not yet consolidated, so only the meetup count (16 to date) is shown. The 2025 attendance total has one edition with an unrecorded headcount, so 1,180 is a slight undercount.</div>
+    </section>
+
+    <section id="partnerships">
+      <h2><span class="section-num">6.</span>Co-organizing &amp; the Google partnership</h2>
+      <p>A clear trend in the calendar: fewer solo meetups, more joint editions with other meetup groups. Co-organizing means bigger audiences, shared reach and lower cost per event, because each partner brings their own audience, speakers and visibility.</p>
+      <p>The most recent step is a partnership with <strong>Google Developer Groups (GDG)</strong>, with joint meetups in <strong>Braga, Porto and Lisbon</strong> in 2026. Other 2026 joint editions span DevOps Porto, AWS User Groups, OutSystems User Group, OWASP and more. Collaboration is now the default, not the exception.</p>
+    </section>
+
+    <section id="geekathon">
+      <h2><span class="section-num">7.</span>geekathon</h2>
+      <p>geekathon is our community-driven hackathon, held in Leiria and now a flagship tech event in the region. It has run since 2021 and grows edition after edition.</p>
+      <h3>7.1  Internal roots, external growth</h3>
+      <p>geekathon always worked extremely well for <strong>internal team building</strong>, and that remains very important: cross-office teams build together over an intense weekend, framed as learning and upskilling, not just a competition. Over recent years it has become steadily more <strong>external</strong>, with real partners joining in.</p>
+      <h3>7.2  The 2025 edition</h3>
+      <ul>
+        <li><strong>Theme:</strong> "Driving the Future with AI", with two challenge areas, Sustainable Mobility and Smart Factories.</li>
+        <li><strong>Scale:</strong> 17 teams building AI solutions, close to 20 projects delivered, nearly 100 participants.</li>
+        <li><strong>Organizers and partners:</strong> synvert xgeeks, Grupo Lusiaves, BRAINR, Startup Leiria and AWS, with recurring sponsors and 20+ community partners.</li>
+        <li><strong>Prizes:</strong> Best Project (jury), Audience Award, and Sponsor Challenges. Winning teams in 2025 included Os Brunos (Best Project) and Pastel de Data (Audience Favourite).</li>
+        <li><strong>Social component:</strong> 100% of ticket sales donated to a social cause, reinforcing the community-driven mission.</li>
+      </ul>
+      <div class="callout warm"><span class="callout-head">Data note.</span> The internal source note and the public site describe the 2025 edition slightly differently (theme framing and exact date). Team count (17) and the two AI challenge areas are consistent across both, so those are used here.</div>
+    </section>
+
+    <section id="geekathon-2026">
+      <h2><span class="section-num">8.</span>geekathon 2026 &amp; the group</h2>
+      <p>The 2026 vision is to use geekathon to create synergies with GlobalLogic, Hitachi and the associated group companies, positioning it as an <strong>aggregator event</strong>: one shared stage where group companies enter their own teams, with shared prizes, challenges and visibility.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Dimension</th><th>The 2026 play</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Engagement &amp; visibility</strong></td><td>Use the group's internal channels (Slack, Teams, newsletters, all-hands, town halls) to promote geekathon and feature it as a group-wide initiative, and as a pilot format for future internal or hybrid editions.</td></tr>
+          <tr><td><strong>People &amp; talent</strong></td><td>Encourage participation from group teams, positioning geekathon as a learning and upskilling opportunity that shows the group as tech-driven and community-oriented.</td></tr>
+          <tr><td><strong>Leadership &amp; culture</strong></td><td>Invite group management as special guests, opening or closing remarks, judges, and to the sponsor and business dinner.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout"><span class="callout-head">The tagline.</span> From Leiria to the Hitachi group, and from the Hitachi group to Leiria. geekathon becomes both a showcase of local community strength to the group, and a channel for the group to engage with the Portuguese tech ecosystem.</div>
+    </section>
+
+    <section id="kcd">
+      <h2><span class="section-num">9.</span>KCD Porto</h2>
+      <p>KCD Porto (Kubernetes Community Days Porto) is our biggest event and the largest CNCF event in Portugal. It is the only KCD in Portugal and the Iberian Peninsula, built by the community, for the community, supported by the CNCF together with xgeeks. synvert xgeeks holds CNCF Silver Membership, one of the few Portuguese companies with this status.</p>
+      <h3>9.1  Track record (2025)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Metric</th><th>2025</th><th>Context</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Attendees</strong></td><td>329</td><td><span class="pill good">+39% vs 2024, 95% show-up</span></td></tr>
+          <tr><td><strong>Companies represented</strong></td><td>120+</td><td>CTOs, platform engineers, architects</td></tr>
+          <tr><td><strong>Paid sponsors</strong></td><td>16</td><td><span class="pill good">up from 7 in 2024</span></td></tr>
+          <tr><td><strong>Countries represented</strong></td><td>26</td><td>Genuine international reach</td></tr>
+        </tbody>
+      </table></div>
+      <p>The sponsor ecosystem keeps growing: Google Cloud, AWS, Komodor, Blip, Natixis, Euronext, Sky, Volkswagen DS, Kuehne+Nagel, Critical Manufacturing, Feedzai, MC Digital, Mindera, Rumos, Darede and 20+ others. Every edition enriches the community database and business pipeline, and cements xgeeks as the central organizing force in Portuguese cloud native and DevOps.</p>
+    </section>
+
+    <section id="kcd-2026">
+      <h2><span class="section-num">10.</span>KCD Porto x DevOpsDays Portugal 2026</h2>
+      <p>In 2026, KCD Porto joins forces with DevOpsDays Portugal (a global conference series founded in 2009 in Ghent, with 200+ editions across 40+ countries). DevOpsDays Portugal approached us to join forces, recognizing the scale and quality we have built. synvert xgeeks is the legal entity behind both brands.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Detail</th><th>KCD Porto x DevOpsDays Portugal 2026</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dates</strong></td><td>19-20 November 2026</td></tr>
+          <tr><td><strong>Venue</strong></td><td>Super Bock Arena / Palacio de Cristal, Porto</td></tr>
+          <tr><td><strong>Attendees expected</strong></td><td>500+, from 150+ companies</td></tr>
+          <tr><td><strong>Content</strong></td><td>50+ speakers, 4+ keynotes, multiple tracks</td></tr>
+        </tbody>
+      </table></div>
+      <p>This is not just brand visibility; it is institutional weight. synvert xgeeks is now the legal entity behind two of the most recognized tech conference brands in Portugal, with international reach. It remains at CNCF Tier 2 (the maximum category allowed for a KCD, designed not to compete with KubeCon), with a longer-term ambition to elevate KCD Porto from a national event to a European reference.</p>
+    </section>
+
+    <section id="recognition">
+      <h2><span class="section-num">11.</span>Individual recognition on national stages</h2>
+      <p>Beyond the events we own and organize, our community work earns individual recognition. As one of the most active community builders in Portugal, Fábio Sampaio (Community &amp; Communication Manager at xgeeks) has been invited into key roles at major external conferences. This gives xgeeks presence, credibility and network access at the biggest tech stages in the country, at essentially zero cost.</p>
+      <h3>11.1  JNation Champion</h3>
+      <p>Fábio was invited to be a <strong>JNation Champion</strong>. JNation is the biggest generalist tech conference in Portugal, held annually in Coimbra at Convento São Francisco, with around 1,500 participants. It covers Java, JavaScript, Cloud &amp; Infrastructure, AI/ML, Security and Methodologies, with talks, workshops and deep dives from international experts. The 2026 edition (26-27 May) sold out. The Champion role is a recognized community-advocate position: Champions represent and amplify the conference within their communities.</p>
+      <h3>11.2  SREday &amp; LLMday Ambassador</h3>
+      <p>Fábio was also invited to be an <strong>Ambassador for SREday and LLMday</strong>. These are international conference series (US, Europe, Asia) run by the team behind sreday.com, llmday.com, devopsnotdead.com and conf42.com. SREday focuses on reliability, DevOps and cloud (35+ events, 10+ countries, 4,100+ attendees to date); LLMday focuses on LLMs, AI and ML. Smaller than JNation, but international brands with strong technical communities. They currently run once a year in Portugal, in Lisbon (hosted at PagerDuty), and are now expanding to Porto as well, with Fábio helping make the Porto expansion happen. The Ambassador role includes helping bring conferences to new cities and building the local community.</p>
+      <div class="callout"><span class="callout-head">The takeaway.</span> Our community leadership is recognized by others, not just claimed by us. That translates into presence, credibility and network access on the largest and most international tech stages in Portugal, without owning or funding the event.</div>
+    </section>
+
+    <section id="marketing">
+      <h2><span class="section-num">12.</span>How marketing amplifies this</h2>
+      <p>We built the engine. The opportunity for marketing is to amplify it, and to close the loop between community and commercial outcomes.</p>
+      <ul>
+        <li><strong>Storytelling.</strong> Turn our events, numbers and wins into a consistent content narrative across channels.</li>
+        <li><strong>Reach.</strong> Amplify meetups, geekathon and KCD Porto on synvert xgeeks and GlobalLogic channels.</li>
+        <li><strong>Group synergy.</strong> Help land the geekathon 2026 group play across GlobalLogic and Hitachi companies.</li>
+        <li><strong>Business loop.</strong> Connect the community pipeline to marketing and sales so warm leads convert.</li>
+      </ul>
+      <div class="callout"><span class="callout-head">One line to leave with.</span> Community is our brand, our talent channel, and now a business engine. The next step is to tell that story at full volume.</div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <p>Internal briefing analysis · External events · synvert xgeeks, a GlobalLogic Company.</p>
+  <p style="margin-top: 10px;"><a href="index.html">↑  Switch to deck view</a></p>
+</footer>
+
+<script>
+// Sticky-TOC active-section highlighter using IntersectionObserver.
+(function () {
+  const sections = Array.from(document.querySelectorAll(".content > section[id]"));
+  const links = new Map(
+    Array.from(document.querySelectorAll(".toc a[href^='#']"))
+      .map(a => [a.getAttribute("href").slice(1), a])
+  );
+  if (!sections.length || !links.size) return;
+  const setActive = (id) => {
+    links.forEach((a, key) => a.classList.toggle("is-active", key === id));
+  };
+  const io = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top);
+    if (visible.length) setActive(visible[0].target.id);
+  }, { rootMargin: "-30% 0px -55% 0px", threshold: 0 });
+  sections.forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>

@@ -21,6 +21,7 @@
 
 | Deck | What it is | Size | Live |
 |---|---|---|---|
+| [**External Events**](external-events/) | How synvert xgeeks builds brand, talent and business through external events: an always-on community meetup engine (~500K pipeline), geekathon, KCD Porto, and individual recognition on national stages. | 15 slides · Marketing briefing 2026 | [deck](https://fabiosampaio-91.github.io/xgeeks-presentations/external-events/) · [analysis](https://fabiosampaio-91.github.io/xgeeks-presentations/external-events/analysis.html) |
 | [**KCD Porto · A Strategic Asset**](kcd-porto-strategic/) | The leadership case for KCD Porto 2026: how synvert xgeeks turned Iberia's #1 Cloud Native + DevOps event into a positioning engine, BD channel, talent magnet, and brand amplifier. | 12 slides · KCD Porto 2026 | [deck](https://fabiosampaio-91.github.io/xgeeks-presentations/kcd-porto-strategic/) · [analysis](https://fabiosampaio-91.github.io/xgeeks-presentations/kcd-porto-strategic/analysis.html) |
 | [**KCD → Pipeline**](kcd-sponsor-engagement/) | Turning KCD sponsor relationships into engineering pipeline — a dual-track, many-doors, vendor-neutral BD plan anchored to KCD Porto 2026. | 18 slides · KCD Porto 2026 | [deck](https://fabiosampaio-91.github.io/xgeeks-presentations/kcd-sponsor-engagement/) · [analysis](https://fabiosampaio-91.github.io/xgeeks-presentations/kcd-sponsor-engagement/analysis.html) |
 <!-- NEW DECK ROW GOES HERE — copy the format from the note above -->
