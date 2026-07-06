@@ -454,11 +454,11 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
     <p class="kicker fade-up">Meetups · in the room</p>
     <h2 class="display fade-up d1">This is what it <em>looks like.</em></h2>
     <style>
-      .photo-grid { display:grid; gap:16px; margin-top:30px; flex:1; min-height:0; }
+      .photo-grid { display:grid; gap:16px; margin-top:30px; }
       .photo-grid.g3 { grid-template-columns:repeat(3,1fr); }
       .photo-grid.g2 { grid-template-columns:repeat(2,1fr); }
-      .photo-grid .ph { position:relative; border-radius:8px; overflow:hidden; border:1px solid var(--line-2); }
-      .photo-grid .ph img { width:100%; height:100%; object-fit:cover; display:block; }
+      .photo-grid .ph { position:relative; border-radius:8px; overflow:hidden; border:1px solid var(--line-2); background:var(--bg-2); aspect-ratio:3/2; }
+      .photo-grid .ph img { width:100%; height:100%; object-fit:contain; display:block; }
       .photo-grid .cap { position:absolute; left:0; right:0; bottom:0; padding:12px 14px 10px; font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:linear-gradient(0deg,rgba(3,22,26,0.9),transparent); }
       @media (max-width:900px){ .photo-grid.g3, .photo-grid.g2 { grid-template-columns:1fr; } }
     </style>
