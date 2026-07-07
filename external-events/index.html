@@ -361,26 +361,25 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
   <div class="frame">
     <p class="kicker fade-up">Our community footprint</p>
     <h2 class="display fade-up d1">Meetups: we <em>run</em> 17 groups, not just sponsor them.</h2>
-    <p class="subhead fade-up d2">17 active groups across 6 cities (Lisbon, Porto, Braga, Viseu, Leiria, Castelo Branco), spanning Cloud Native, DevOps, AWS, JavaScript and AI. From full ownership to partnership. Each logo links to its group page.</p>
+    <p class="subhead fade-up d2">17 active groups across 6 cities (Lisbon, Porto, Braga, Viseu, Leiria, Castelo Branco), spanning Cloud Native, DevOps, AWS, JavaScript and AI.</p>
 
     <style>
-      .mu-wall { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:26px; }
-      .mu-wall .mu { background:#fff; border-radius:8px; height:92px; display:flex; align-items:center; justify-content:center; padding:14px 16px; text-decoration:none; transition:transform 150ms, box-shadow 150ms; }
-      .mu-wall a.mu:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.4); }
+      .mu-wall { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:24px; }
+      .mu-wall .mu { background:#fff; border-radius:8px; height:90px; display:flex; align-items:center; justify-content:center; padding:14px 16px; }
       .mu-wall .mu img { max-width:100%; max-height:100%; object-fit:contain; }
       @media (max-width:1150px){ .mu-wall { grid-template-columns:repeat(3,1fr); } }
       @media (max-width:700px){ .mu-wall { grid-template-columns:repeat(2,1fr); } }
     </style>
     <div class="mu-wall fade-up d3">
-      <a class="mu" href="https://www.meetup.com/cloud-native-lisbon/" target="_blank" rel="noopener"><img src="logos/mu-cloud-native-lisbon.png" alt="Cloud Native Lisbon"></a>
-      <a class="mu" href="https://www.meetup.com/cloud-native-porto/" target="_blank" rel="noopener"><img src="logos/mu-cloud-native-porto.svg" alt="Cloud Native Porto"></a>
-      <a class="mu" href="https://www.meetup.com/devops-lisbon/" target="_blank" rel="noopener"><img src="logos/mu-devops-lisbon.png" alt="DevOps Lisbon"></a>
-      <a class="mu" href="https://www.meetup.com/devops-porto/" target="_blank" rel="noopener"><img src="logos/mu-devops-porto.png" alt="DevOps Porto"></a>
-      <a class="mu" href="https://www.meetup.com/devops-braga/" target="_blank" rel="noopener"><img src="logos/mu-devops-braga.png" alt="DevOps Braga"></a>
-      <a class="mu" href="https://www.meetup.com/leiria-tech-talks/" target="_blank" rel="noopener"><img src="logos/mu-leiria-tech-talks.png" alt="Leiria Tech Talks"></a>
-      <a class="mu" href="https://www.meetup.com/viseu-tech-talks/" target="_blank" rel="noopener"><img src="logos/mu-viseu-tech-talks.png" alt="Viseu Tech Talks"></a>
-      <a class="mu" href="https://www.meetup.com/aws-user-group-lisbon/" target="_blank" rel="noopener"><img src="logos/mu-aws-ug-lisbon.png" alt="AWS User Group Lisbon"></a>
-      <a class="mu" href="https://www.meetup.com/aws-ug-castelo-branco-beira-baixa-portugal/" target="_blank" rel="noopener"><img src="logos/mu-aws-ug-castelo-branco.png" alt="AWS User Group Castelo Branco &amp; Beira Baixa"></a>
+      <div class="mu"><img src="logos/mu-cloud-native-lisbon.png" alt="Cloud Native Lisbon"></div>
+      <div class="mu"><img src="logos/mu-cloud-native-porto.svg" alt="Cloud Native Porto"></div>
+      <div class="mu"><img src="logos/mu-devops-lisbon.png" alt="DevOps Lisbon"></div>
+      <div class="mu"><img src="logos/mu-devops-porto.png" alt="DevOps Porto"></div>
+      <div class="mu"><img src="logos/mu-devops-braga.png" alt="DevOps Braga"></div>
+      <div class="mu"><img src="logos/mu-leiria-tech-talks.png" alt="Leiria Tech Talks"></div>
+      <div class="mu"><img src="logos/mu-viseu-tech-talks.png" alt="Viseu Tech Talks"></div>
+      <div class="mu"><img src="logos/mu-aws-ug-lisbon.png" alt="AWS User Group Lisbon"></div>
+      <div class="mu"><img src="logos/mu-aws-ug-castelo-branco.png" alt="AWS User Group Castelo Branco &amp; Beira Baixa"></div>
       <div class="mu" style="background:linear-gradient(180deg,rgba(0,235,182,0.10),var(--bg-2)); border:1px solid var(--accent-dim);">
         <div style="text-align:center;">
           <div style="font-family:var(--display); font-weight:400; font-size:28px; line-height:1; color:var(--accent); letter-spacing:-0.02em;"><em style="font-family:var(--serif); font-style:italic;">+8</em></div>
@@ -390,13 +389,15 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
     </div>
 
     <!-- Total reach headline stat -->
-    <div class="fade-up d4" style="margin-top:20px; display:flex; align-items:center; gap:26px; background:linear-gradient(90deg,rgba(0,235,182,0.12),var(--bg-2)); border:1px solid var(--accent-dim); border-radius:6px; padding:14px 26px;">
+    <div class="fade-up d4" style="margin-top:18px; display:flex; align-items:center; gap:26px; background:linear-gradient(90deg,rgba(0,235,182,0.12),var(--bg-2)); border:1px solid var(--accent-dim); border-radius:6px; padding:14px 26px;">
       <div style="font-family:var(--display); font-weight:400; font-size:clamp(36px,5vw,58px); line-height:1; letter-spacing:-0.03em; color:var(--accent); white-space:nowrap;"><em style="font-family:var(--serif); font-style:italic;">~24,000</em></div>
       <div>
         <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink);">Total community reach</div>
         <div style="font-size:13.5px; color:var(--ink-2); margin-top:4px; line-height:1.4;">Combined membership across all 17 groups (24,079), in 6 cities. One audience we reach directly, all year.</div>
       </div>
     </div>
+
+    <p class="plain fade-up d4"><b>How we are involved:</b> four tiers, from full ownership (we run strategy, calendar and logistics end to end), to co-founded and co-led, to fundamental co-organizer, to collaboration and partnership.</p>
   </div>
   <div class="slide__bottom">
     <span>003 · Community footprint</span>
@@ -459,14 +460,18 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
     <h2 class="display fade-up d1">Meetups: always brand and talent, <em>now business too.</em></h2>
     <p class="subhead fade-up d2">Meetups were always about brand, exposure and hiring. About a year ago we started working them as a lead-generation channel too. No cold calls, no cold emails: real conversations at events people chose to attend.</p>
 
-    <div class="grid-2 fade-up d3" style="margin-top:34px; grid-template-columns:1fr 1fr;">
-      <div class="card" style="align-self:start;">
+    <div class="grid-2 fade-up d3" style="margin-top:30px; grid-template-columns:0.82fr 1.18fr; gap:22px; align-items:stretch;">
+      <div class="card">
         <div class="card-label" style="margin-top:0;">Brand &amp; talent · always</div>
         <div class="card-body" style="font-size:14px;">Consistent, organic presence across 6 cities and 6+ tech domains, and our most authentic employer-branding channel: engineers meet engineers.</div>
       </div>
-      <div class="card is-accent" style="align-self:start;">
-        <div class="card-label" style="margin-top:0;">Business · now · <span class="accent">~750K pipeline</span></div>
-        <div class="card-body" style="font-size:14px;">A real, growing pipeline sourced directly from the community. Named leads already: <strong>CloudZone, Wellhub, UBIO</strong>, with more emerging.</div>
+      <div class="card is-accent">
+        <div class="card-label" style="margin-top:0;">Business · now</div>
+        <div style="display:flex; align-items:baseline; gap:16px; margin-top:10px;">
+          <span style="font-family:var(--display); font-weight:400; font-size:clamp(46px,6.5vw,72px); line-height:0.95; letter-spacing:-0.03em; color:var(--accent);"><em style="font-family:var(--serif); font-style:italic;">~750K</em></span>
+          <span style="font-family:var(--mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-3); line-height:1.4;">EUR pipeline,<br>and growing</span>
+        </div>
+        <div class="card-body" style="font-size:16px; margin-top:14px; color:var(--ink-2);">A real, growing pipeline sourced directly from the community. Named leads already: <strong style="color:var(--ink);">CloudZone, Wellhub, UBIO</strong>, with more emerging.</div>
       </div>
     </div>
 
@@ -552,8 +557,17 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
       <div style="text-align:center; font-family:var(--mono); font-size:13px; color:var(--warm);">2026 · so far</div>
     </div>
 
-    <p class="plain fade-up d4"><b>Increasingly co-organized:</b> joint meetups with Google (GDG Braga, Porto, Lisbon), the OutSystems User Groups (Viseu, Leiria, soon Porto), and collaborations with Ministry of Testing and DevOps na Praia. Each partner brings its own audience, so reach grows while cost per event drops. 2026 attendance is not yet consolidated, so only the meetup count is shown.</p>
-    <p class="plain fade-up d4" style="border-left-color:var(--warm);"><b>Largely self-sustaining:</b> companies now offer venues, hosting and sponsorship. Sometimes the hardest part is saying no.</p>
+    <div class="grid-2 fade-up d4" style="margin-top:22px; gap:18px;">
+      <div style="border-left:3px solid var(--accent); background:linear-gradient(90deg,rgba(0,235,182,0.10),transparent); border-radius:0 6px 6px 0; padding:14px 18px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:6px;">Increasingly co-organized</div>
+        <div style="font-size:14.5px; color:var(--ink-2); line-height:1.5;">Joint meetups with <b style="color:var(--ink);">Google</b> (GDG Braga, Porto, Lisbon), the <b style="color:var(--ink);">OutSystems User Groups</b> (Viseu, Leiria, soon Porto), and <b style="color:var(--ink);">Ministry of Testing</b> and <b style="color:var(--ink);">DevOps na Praia</b>. Each partner brings its own audience, so reach grows while cost per event drops.</div>
+      </div>
+      <div style="border-left:3px solid var(--warm); background:linear-gradient(90deg,rgba(255,150,110,0.10),transparent); border-radius:0 6px 6px 0; padding:14px 18px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--warm); margin-bottom:6px;">Largely self-sustaining</div>
+        <div style="font-size:14.5px; color:var(--ink-2); line-height:1.5;">Companies now offer venues, hosting and sponsorship. Sometimes the hardest part is saying no.</div>
+      </div>
+    </div>
+    <p class="plain fade-up d4" style="margin-top:12px;">2026 attendance is not yet consolidated, so only the meetup count is shown.</p>
   </div>
   <div class="slide__bottom">
     <span>006 · Growth &amp; partnerships</span>
@@ -731,7 +745,7 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
 
     <div class="card is-accent fade-up d4" style="margin-top:24px;">
       <div class="card-label" style="margin-top:0;">We organize it, we do not just attend</div>
-      <div class="card-body" style="font-size:14px;">In events like Databricks or AWS conferences, the group participates, which is valuable. With KCD Porto we create and run the entire experience, with full control, and we are recognized as the organizing entity: the responsible specialists in cloud native and DevOps in Portugal. Owning the event is a different position than attending someone else's.</div>
+      <div class="card-body" style="font-size:14px;">In events like Databricks or Big Data conferences, the group participates, which is valuable. With KCD Porto we create and run the entire experience, with full control, and we are recognized as the organizing entity: the responsible specialists in cloud native and DevOps in Portugal. Owning the event is a different position than attending someone else's.</div>
     </div>
   </div>
   <div class="slide__bottom">
@@ -961,10 +975,11 @@ h2.display { font-size:clamp(28px,4.4vw,58px); }
       </div>
     </div>
 
-    <div class="divider divider--accent fade-up d4" style="margin-top:36px;"></div>
+    <div class="divider divider--accent fade-up d4" style="margin-top:32px;"></div>
     <p class="pull-quote fade-up d4" style="font-size:clamp(20px,2.6vw,34px); margin-top:20px;">
       A channel for transversal campaigns, <em>and not only.</em>
     </p>
+    <p class="body-text fade-up d4" style="margin-top:14px; max-width:1040px;">With this plasticity, the channel can carry almost anything: brand and product campaigns, talent drives, business development, and group-wide initiatives. It is a national, always-on asset the whole group can use.</p>
 
     <div class="cover-slot fade-up d4" style="margin-top:24px;">
       <div class="cover-meta">
