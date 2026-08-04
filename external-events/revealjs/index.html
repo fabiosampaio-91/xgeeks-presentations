@@ -1,0 +1,962 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>External Events · synvert xgeeks</title>
+<meta name="description" content="How synvert xgeeks builds brand, talent and business through external events: community meetups, geekathon and KCD Porto.">
+<meta name="theme-color" content="#03161a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Fraunces:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<style>
+/* ─── Design tokens ──────────────────────────────────────────────────────── */
+:root {
+  --bg:#03161a; --bg-2:#082023; --bg-3:#0d2a2e;
+  --ink:#ffffff; --ink-2:#c7d8d4; --ink-3:#7f9591; --ink-4:#4c6562;
+  --line:#143034; --line-2:#1f4247;
+  --accent:#00EBB6; --accent-dim:#11b89a; --accent-deep:#064a40;
+  --warm:#ff966e;
+  --good:#00EBB6; --good-bg:rgba(0,235,182,0.12);
+  --bad:#f87171; --bad-bg:rgba(248,113,113,0.12);
+  --warn:#fbbf24; --warn-bg:rgba(251,191,36,0.12);
+  --display:'Jost','Futura','Century Gothic',system-ui,sans-serif;
+  --sans:'Jost','Futura','Century Gothic',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+/* ─── Reset & base ───────────────────────────────────────────────────────── */
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; background:#000; color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+.deck { display:block; }
+/* ─── Slide shell ────────────────────────────────────────────────────────── */
+.frame { position:relative; flex:1; padding:100px 92px 70px; display:flex; flex-direction:column; z-index:1; max-width:1520px; margin:0 auto; width:100%; }
+/* ─── Chrome (top bar) ───────────────────────────────────────────────────── */
+.chrome { position:absolute; top:28px; left:92px; right:92px; display:flex; justify-content:space-between; align-items:center; z-index:2; font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-3); }
+.chrome .dot { display:inline-block; width:6px; height:6px; background:var(--accent); border-radius:999px; margin:0 12px 2px; vertical-align:middle; box-shadow:0 0 12px rgba(0,235,182,0.6); }
+.chrome__right { display:flex; align-items:center; gap:16px; }
+.chrome__mark { font-family:var(--display); font-weight:600; font-size:14px; letter-spacing:0.04em; text-transform:none; color:var(--ink); }
+.chrome__mark b { color:var(--accent); font-weight:600; }
+.chrome__pageno { border-left:1px solid var(--line-2); padding-left:16px; color:var(--ink-3); }
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+.kicker { font-family:var(--mono); font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); display:inline-flex; align-items:center; gap:14px; margin:0 0 22px 0; }
+.kicker::before { content:''; width:32px; height:1px; background:var(--accent); }
+.display { font-family:var(--display); font-weight:400; line-height:0.98; letter-spacing:-0.025em; color:var(--ink); margin:0; }
+.display em, .display i { font-family:var(--serif); font-style:italic; font-weight:400; letter-spacing:-0.015em; }
+.display .accent { color:var(--accent); }
+h1.display { font-size:clamp(40px,6.2vw,90px); }
+h2.display { font-size:clamp(28px,4.4vw,58px); }
+.subhead { font-family:var(--display); font-weight:300; font-size:clamp(17px,1.85vw,23px); line-height:1.35; color:var(--ink-2); margin:18px 0 0 0; max-width:980px; }
+.subhead em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--ink); }
+.subhead strong { font-weight:500; color:var(--ink); }
+.body-text { font-family:var(--display); font-weight:400; font-size:15.5px; line-height:1.6; color:var(--ink-2); max-width:920px; }
+.body-text strong { color:var(--ink); font-weight:500; }
+.body-text em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--ink); }
+.accent-text { color:var(--accent); } .warm-text { color:var(--warm); } .muted { color:var(--ink-3); }
+.plain { font-family:var(--display); font-size:13px; line-height:1.5; color:var(--ink-3); border-left:2px solid var(--accent-dim); padding:4px 0 4px 14px; margin:14px 0 0; max-width:980px; }
+.plain b { color:var(--ink-2); font-weight:500; }
+.pull-quote { font-family:var(--display); font-weight:300; font-size:clamp(24px,3.5vw,44px); line-height:1.15; letter-spacing:-0.02em; color:var(--ink); max-width:1140px; margin:0; }
+.pull-quote em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }
+/* ─── Bottom bar ─────────────────────────────────────────────────────────── */
+.slide__bottom { position:absolute; bottom:28px; left:92px; right:92px; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-4); z-index:2; }
+.slide__bottom .hint { display:flex; align-items:center; gap:10px; }
+.slide__bottom .hint .arrow { display:inline-block; width:18px; height:1px; background:var(--ink-4); position:relative; }
+.slide__bottom .hint .arrow::after { content:''; position:absolute; right:-1px; top:-3px; width:7px; height:7px; border-right:1px solid var(--ink-4); border-bottom:1px solid var(--ink-4); transform:rotate(-45deg); }
+/* ─── Cover helpers ──────────────────────────────────────────────────────── */
+.cover-slot { margin-top:auto; display:flex; flex-direction:column; gap:16px; }
+.cover-meta { font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-3); display:flex; gap:16px; flex-wrap:wrap; }
+.cover-meta span + span::before { content:'·'; margin-right:16px; color:var(--ink-4); }
+/* ─── Grids ──────────────────────────────────────────────────────────────── */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.divider { height:1px; background:var(--line-2); margin:24px 0; }
+.divider--accent { background:linear-gradient(90deg,var(--accent),transparent); }
+/* ─── Cards ──────────────────────────────────────────────────────────────── */
+.card { background:var(--bg-2); border:1px solid var(--line-2); padding:20px 22px; border-radius:4px; position:relative; overflow:hidden; }
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--line-2),transparent); }
+.card .card-num { font-family:var(--display); font-weight:300; font-size:38px; line-height:0.9; color:var(--ink-4); letter-spacing:-0.02em; }
+.card .card-label { font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink); margin-top:12px; font-weight:500; }
+.card .card-body { font-size:13px; color:var(--ink-2); line-height:1.5; margin-top:8px; }
+.card.is-accent { border-color:var(--accent-dim); background:linear-gradient(180deg,rgba(0,235,182,0.07),var(--bg-2)); }
+.card.is-accent .card-num { color:var(--accent); }
+.card.is-warm { border-color:var(--warm); background:linear-gradient(180deg,rgba(255,150,110,0.07),var(--bg-2)); }
+.card.is-warm .card-num { color:var(--warm); }
+/* ─── KPIs ───────────────────────────────────────────────────────────────── */
+.kpi { background:var(--bg-2); border:1px solid var(--line-2); padding:22px 24px; border-radius:4px; display:flex; flex-direction:column; gap:6px; position:relative; overflow:hidden; }
+.kpi::after { content:''; position:absolute; left:0; right:0; top:0; height:2px; background:linear-gradient(90deg,var(--accent),transparent 80%); }
+.kpi .kpi-label { font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); }
+.kpi .kpi-value { font-family:var(--display); font-weight:400; font-size:48px; line-height:1; color:var(--ink); letter-spacing:-0.025em; margin-top:6px; }
+.kpi .kpi-value em { font-family:var(--serif); font-style:italic; font-weight:400; color:var(--accent); }
+.kpi .kpi-sub { font-family:var(--mono); font-size:12px; color:var(--ink-3); margin-top:4px; }
+/* ─── Lanes (two-track) ──────────────────────────────────────────────────── */
+.lanes { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:24px; }
+.lane { border:1px solid var(--line-2); border-radius:6px; padding:22px 24px; background:var(--bg-2); }
+.lane.a { border-top:3px solid var(--warm); } .lane.b { border-top:3px solid var(--accent); }
+.lane .lane-role { font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); }
+.lane .lane-title { font-family:var(--display); font-weight:500; font-size:20px; color:var(--ink); margin:6px 0 12px; }
+.lane.a .lane-title { color:var(--warm); } .lane.b .lane-title { color:var(--accent); }
+.lane ul { margin:0; padding-left:18px; } .lane li { font-size:13.5px; color:var(--ink-2); line-height:1.5; margin-bottom:7px; }
+/* ─── Rule strip ─────────────────────────────────────────────────────────── */
+.rule-strip { margin-top:22px; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.rule-strip .rule-item { border:1px solid var(--line-2); border-radius:4px; padding:14px 16px; background:var(--bg-2); }
+.rule-strip .rule-n { font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.12em; }
+.rule-strip .rule-t { font-family:var(--display); font-weight:500; font-size:13.5px; color:var(--ink); margin-top:7px; line-height:1.35; }
+.rule-strip .rule-d { font-size:11.5px; color:var(--ink-3); line-height:1.45; margin-top:5px; }
+/* ─── Data table ─────────────────────────────────────────────────────────── */
+.dt { margin-top:18px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; font-size:12.5px; }
+.dt .dt-h, .dt .dt-r { display:grid; align-items:center; }
+.dt .dt-h { background:var(--bg-3); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); padding:10px 16px; }
+.dt .dt-r { padding:10px 16px; border-top:1px solid var(--line); background:var(--bg-2); color:var(--ink-2); }
+.dt .dt-r b { color:var(--ink); font-weight:500; }
+/* ─── Status chips ───────────────────────────────────────────────────────── */
+.heat { font-family:var(--mono); font-size:10px; letter-spacing:0.06em; text-transform:uppercase; padding:2px 9px; border-radius:999px; display:inline-block; }
+.heat.hot { color:var(--warm); border:1px solid var(--warm); }
+.heat.warm { color:var(--warn); border:1px solid rgba(251,191,36,0.5); }
+.heat.cold { color:var(--ink-3); border:1px solid var(--line-2); }
+.tag-pill { font-family:var(--mono); font-size:10px; letter-spacing:0.05em; padding:1px 8px; border-radius:999px; }
+.tag-pill.cli { color:var(--accent); border:1px solid var(--accent-dim); }
+.tag-pill.par { color:var(--warm); border:1px solid var(--warm); }
+.tag-pill.com { color:var(--ink-3); border:1px solid var(--line-2); }
+.tag-pill.yes { color:var(--accent); border:1px solid var(--accent-dim); }
+.tag-pill.no  { color:var(--ink-3); border:1px solid var(--line-2); }
+/* ─── State matrix ───────────────────────────────────────────────────────── */
+.smx { margin-top:20px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; }
+.smx .smx-h, .smx .smx-r { display:grid; grid-template-columns:1.3fr 1fr 1.1fr 1.6fr; }
+.smx .smx-h { background:var(--bg-3); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); }
+.smx .smx-h > div, .smx .smx-r > div { padding:11px 16px; border-top:1px solid var(--line); }
+.smx .smx-r { background:var(--bg-2); font-size:12.5px; color:var(--ink-2); line-height:1.4; }
+.smx .smx-r .st { font-family:var(--display); font-weight:500; color:var(--ink); }
+.smx .smx-r b { color:var(--ink); font-weight:500; }
+.go-yes { color:var(--accent); font-weight:500; } .go-no { color:var(--bad); font-weight:500; } .go-soft { color:var(--warn); font-weight:500; }
+/* ─── Route-in schematic ─────────────────────────────────────────────────── */
+.schema { display:grid; grid-template-columns:1fr 64px 1fr; gap:0; align-items:center; margin-top:24px; }
+.schema .col-h { font-family:var(--mono); font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:12px; }
+.schema .routeins .col-h { color:var(--warm); } .schema .targets .col-h { color:var(--accent); }
+.schema .node { background:var(--bg-2); border:1px solid var(--line-2); border-radius:6px; padding:13px 16px; margin-bottom:10px; }
+.schema .node .nn { font-family:var(--display); font-weight:500; font-size:14px; color:var(--ink); }
+.schema .node .nr { font-size:11.5px; color:var(--ink-3); margin-top:2px; }
+.schema .routeins .node { border-left:3px solid var(--warm); }
+.schema .targets .node { border-left:3px solid var(--accent); }
+.schema .arrow-col { display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--accent); }
+.schema .arrow-col .ln { font-family:var(--mono); font-size:8.5px; letter-spacing:0.08em; color:var(--ink-3); text-transform:uppercase; text-align:center; }
+.schema .arrow-col .ar { font-size:22px; line-height:1; color:var(--accent); }
+/* ─── Person / bench ─────────────────────────────────────────────────────── */
+.bench { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:8px; }
+.person { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:13px 15px; }
+.person .pn { font-family:var(--display); font-weight:500; font-size:15px; color:var(--ink); }
+.person .pr { font-family:var(--mono); font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); margin:3px 0 6px; }
+.person .pb { font-size:12px; color:var(--ink-2); line-height:1.45; }
+.person.open { border-left:3px solid var(--warm); } .person.open .pr { color:var(--warm); }
+.person.tech { border-left:3px solid var(--accent); }
+/* ─── Doors ──────────────────────────────────────────────────────────────── */
+.doors { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; margin-top:22px; }
+.door { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:16px 17px; display:flex; flex-direction:column; gap:7px; }
+.door .door-phase { font-family:var(--mono); font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); }
+.door .door-name { font-family:var(--display); font-weight:500; font-size:15.5px; color:var(--ink); line-height:1.2; }
+.door .door-body { font-size:11.5px; color:var(--ink-2); line-height:1.45; }
+.door.hot { border-color:var(--accent-dim); background:linear-gradient(180deg,rgba(0,235,182,0.06),var(--bg-2)); }
+/* ─── Segmentation table ─────────────────────────────────────────────────── */
+.segtable { margin-top:20px; border:1px solid var(--line-2); border-radius:6px; overflow:hidden; font-size:12px; }
+.segtable .seg-row { display:grid; grid-template-columns:150px 1fr; border-bottom:1px solid var(--line); }
+.segtable .seg-row:last-child { border-bottom:0; }
+.segtable .seg-h { background:var(--bg-3); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:12px 16px; display:flex; align-items:center; }
+.segtable .seg-h.client { color:var(--accent); } .segtable .seg-h.partner { color:var(--warm); } .segtable .seg-h.neutral { color:var(--ink-3); }
+.segtable .seg-names { padding:12px 16px; color:var(--ink-2); line-height:1.55; background:var(--bg-2); }
+.segtable .seg-names b { color:var(--ink); font-weight:500; } .segtable .seg-names .dual { color:var(--warm); }
+/* ─── Tiers ──────────────────────────────────────────────────────────────── */
+.tiers { display:flex; flex-direction:column; gap:11px; margin-top:18px; }
+.tier { display:grid; grid-template-columns:118px 1fr; gap:20px; align-items:center; background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:15px 22px; }
+.tier.t1 { border-left:3px solid var(--accent); } .tier.reach { border-left:3px solid var(--warn); } .tier.t2 { border-left:3px solid var(--warm); } .tier.t3 { border-left:3px solid var(--ink-4); }
+.tier .tier-tag { font-family:var(--display); font-weight:500; font-size:18px; color:var(--ink); }
+.tier .tier-tag small { display:block; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); margin-top:4px; }
+.tier .tier-body { font-size:13.5px; color:var(--ink-2); line-height:1.5; }
+.tier .tier-body strong { color:var(--ink); font-weight:500; }
+/* ─── Account board ──────────────────────────────────────────────────────── */
+.board { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; margin-top:22px; }
+.acct { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:15px 16px; display:flex; flex-direction:column; gap:6px; }
+.acct .acct-name { font-family:var(--display); font-weight:500; font-size:15px; color:var(--ink); }
+.acct .acct-pain { font-size:11.5px; color:var(--ink-2); line-height:1.4; flex:1; }
+.acct .acct-status { font-family:var(--mono); font-size:9px; letter-spacing:0.06em; text-transform:uppercase; }
+.acct .acct-status.closed { color:var(--accent); } .acct .acct-status.live { color:var(--warn); }
+/* ─── CRM tree ───────────────────────────────────────────────────────────── */
+.crm { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:22px; }
+.crm-col { background:var(--bg-2); border:1px solid var(--line-2); border-radius:6px; padding:20px 22px; }
+.crm-col.kcd { border-top:3px solid var(--accent); } .crm-col.meet { border-top:3px solid var(--warm); }
+.crm-col .crm-top { font-family:var(--display); font-weight:500; font-size:18px; margin-bottom:12px; }
+.crm-col.kcd .crm-top { color:var(--accent); } .crm-col.meet .crm-top { color:var(--warm); }
+.crm-col .lab { font-family:var(--mono); font-size:11px; color:var(--ink-2); padding:6px 0 6px 16px; border-left:1px solid var(--line-2); margin-left:4px; }
+.crm-col .lab b { color:var(--ink); }
+.crm-fields { margin-top:18px; border:1px solid var(--line-2); border-radius:6px; padding:16px 20px; background:var(--bg-2); font-size:13px; color:var(--ink-2); line-height:1.6; }
+.crm-fields b { color:var(--ink); font-weight:500; }
+/* ─── Gantt ──────────────────────────────────────────────────────────────── */
+.gantt { margin-top:26px; border-top:1px solid var(--line-2); }
+.gantt-cols { display:grid; grid-template-columns:120px repeat(6,1fr); font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-3); padding:12px 0 14px; border-bottom:1px solid var(--line); }
+.gantt-cols span { text-align:center; } .gantt-cols span:first-child { text-align:left; }
+.gantt-row { display:grid; grid-template-columns:120px 1fr; align-items:center; padding:12px 0; border-bottom:1px solid var(--line); }
+.gantt-row .gantt-lane-label { font-family:var(--display); font-weight:500; font-size:14px; }
+.gantt-row.a .gantt-lane-label { color:var(--warm); } .gantt-row.b .gantt-lane-label { color:var(--accent); }
+.gantt-track { position:relative; height:30px; }
+.bar { position:absolute; top:4px; height:22px; border-radius:4px; display:flex; align-items:center; padding:0 12px; font-size:11px; color:#03161a; font-weight:600; white-space:nowrap; overflow:hidden; }
+.bar.a { background:linear-gradient(90deg,var(--warm),#ffb594); } .bar.b { background:linear-gradient(90deg,var(--accent),#6ff3da); }
+.bar.ghost { background:var(--bg-3); border:1px dashed var(--line-2); color:var(--ink-3); }
+.event-flag { position:absolute; top:-8px; bottom:-8px; width:2px; background:var(--accent); }
+.event-flag span { position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-family:var(--mono); font-size:9px; letter-spacing:0.1em; color:var(--accent); white-space:nowrap; }
+/* ─── Messages ───────────────────────────────────────────────────────────── */
+.msgwrap { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:22px; }
+.msg { border-left:2px solid var(--accent); background:var(--bg-2); padding:13px 18px; border-radius:0 4px 4px 0; margin-bottom:12px; }
+.msg .msg-label { font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+.msg .msg-text { font-family:var(--serif); font-style:italic; font-size:14.5px; color:var(--ink-2); line-height:1.5; }
+.msg .msg-text b { font-style:normal; color:var(--ink); }
+.redline { border-left-color:var(--bad); } .redline .msg-label { color:var(--bad); } .redline .msg-text { font-style:normal; font-family:var(--display); }
+/* ─── Tag row ────────────────────────────────────────────────────────────── */
+.tag-row { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:28px; }
+.tag-row .tag { background:var(--bg-2); border:1px solid var(--line-2); border-radius:4px; padding:16px 18px; }
+.tag .tag-head { font-family:var(--display); font-weight:500; font-size:13.5px; color:var(--ink); margin-bottom:6px; }
+.tag .tag-body { font-size:11.5px; color:var(--ink-3); line-height:1.5; }
+/* ─── Reveal animation ───────────────────────────────────────────────────── */
+.fade-up { opacity:0; transform:translateY(18px); transition:opacity 700ms cubic-bezier(0.2,0.7,0.2,1),transform 700ms cubic-bezier(0.2,0.7,0.2,1); }
+.fade-up.in { opacity:1; transform:translateY(0); }
+.fade-up.d1 { transition-delay:90ms; } .fade-up.d2 { transition-delay:180ms; } .fade-up.d3 { transition-delay:270ms; } .fade-up.d4 { transition-delay:360ms; }
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width:1150px) {
+  .frame { padding:90px 46px 62px; }
+  .chrome, .slide__bottom { left:46px; right:46px; }
+  .grid-2, .lanes, .msgwrap, .crm { grid-template-columns:1fr; gap:22px; }
+  .grid-3, .bench { grid-template-columns:1fr; }
+  .grid-4, .board, .doors, .rule-strip { grid-template-columns:1fr 1fr; }
+  .tag-row { grid-template-columns:1fr 1fr; }
+  .smx .smx-h { display:none; } .smx .smx-r { grid-template-columns:1fr; gap:0; }
+  .schema { grid-template-columns:1fr; } .schema .arrow-col { flex-direction:row; padding:8px 0; }
+  .gantt-cols, .gantt-row { grid-template-columns:90px 1fr; } .gantt-cols span:not(:first-child) { display:none; }
+  .segtable .seg-row, .dt .dt-h, .dt .dt-r { grid-template-columns:1fr !important; }
+}
+@media (max-width:700px) {
+  .frame { padding:78px 20px 54px; }
+  .chrome, .slide__bottom { left:20px; right:20px; font-size:10px; }
+  .grid-4, .board, .doors, .rule-strip, .tag-row, .bench { grid-template-columns:1fr; }
+  .tier { grid-template-columns:1fr; gap:8px; }
+}
+@media (prefers-reduced-motion:reduce) { .fade-up { transition:none; opacity:1; transform:none; } }
+
+/* ─── reveal.js shell mapping ────────────────────────────────────────────── */
+:root {
+  --r-background-color: var(--bg, #000);
+  --r-main-font: var(--display, sans-serif);
+  --r-main-color: var(--ink, #fff);
+}
+.reveal { font-family: var(--display, sans-serif); }
+
+.reveal .slides > section {
+  text-align: left;
+  padding: 0;
+  background: var(--bg, #000);
+  height: 100%;
+}
+
+.reveal .slides > section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 1200px 800px at 8% -10%, rgba(0,235,182,0.08), transparent 60%), radial-gradient(ellipse 900px 600px at 95% 100%, rgba(0,235,182,0.05), transparent 60%);
+}
+
+.reveal .progress,
+.reveal .progress span { background: var(--accent, currentColor); }
+.reveal .slide-number {
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  background: transparent;
+  color: var(--ink-3, #888);
+}
+
+.frame { position: relative; height: 100%; display: flex; flex-direction: column; z-index: 1; box-sizing: border-box; }
+
+.chrome, .slide__bottom, .deck-progress, .alt-view { display: none !important; }
+
+/* ─── Font-size audit overrides (Step 6 policy) ──────────────────────────── */
+.subhead { font-size: clamp(18px, 1.85vw, 23px); }
+.body-text { font-size: 18px; }
+.card .card-label { font-size: 12px; }
+.rule-strip .rule-d { font-size: 13px; }
+.kpi .kpi-label { font-size: 12px; }
+.lane .lane-role { font-size: 12px; }
+.photo-grid .cap { font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+<!-- 001 Cover -->
+<section id="s1">
+  <aside class="notes">
+    Key point: This is the full picture of how synvert xgeeks turns community presence into brand, talent, and now business value.
+    Say: Introduce yourself, frame this as everything we run in the ecosystem end to end — we are not a passive sponsor anywhere in this deck. Fifteen slides, about ten to twelve minutes, then open for questions.
+    Emphasise: "brand, talent and business" — three outcomes from one channel; that's the thesis for the whole deck.
+    Next: Move into the four engines that make this up.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">Internal briefing · Marketing · 2026</p>
+    <h1 class="display fade-up d1">External events:<br>how we build <em>brand</em>,<br><em>talent</em> and <span class="accent">business.</span></h1>
+    <p class="subhead fade-up d2">Everything <strong>synvert xgeeks</strong> does in the tech ecosystem, in one view: an always-on community engine, two flagship events, and the recognition that follows. Where we are, why it matters, and where it is heading.</p>
+    <div class="cover-slot fade-up d3">
+      <div class="cover-meta">
+        <span>15 slides</span>
+        <span>~10-12 minute walk-through</span>
+        <span>Presented by Fábio Sampaio · Business &amp; Community Specialist</span>
+        <span><a href="../analysis.html" style="color:var(--accent);text-decoration:none;">Full analysis →</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 002 Overview: four engines -->
+<section id="s2">
+  <aside class="notes">
+    Key point: We run four distinct engines — meetups, geekathon, KCD Porto, recognition — not passive sponsorships.
+    Say: Walk the four cards left to right. Stress "we found, organize and operate these ourselves." Flag the two-block structure ahead: Community first, then the two flagship events.
+    Emphasise: The word "ourselves" — ownership, not attendance.
+    Next: Zoom into Block 1, starting with the community footprint.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">What we run in the ecosystem</p>
+    <h2 class="display fade-up d1">One ecosystem, <em>four engines</em> working together.</h2>
+    <p class="subhead fade-up d2">We found, organize and operate these events ourselves, we are not only sponsors. The work groups into four engines that run all year.</p>
+
+    <div class="grid-4 fade-up d3" style="margin-top:42px;">
+      <div class="card is-accent">
+        <div class="card-num">01</div>
+        <div class="card-label">Meetups · always-on</div>
+        <div class="card-body">Year-round presence across 6 cities. Brand, talent, and now a business pipeline.</div>
+      </div>
+      <div class="card is-warm">
+        <div class="card-num">02</div>
+        <div class="card-label">geekathon · our hackathon</div>
+        <div class="card-body">Our hackathon in Leiria, external by design and popular internally.</div>
+      </div>
+      <div class="card is-accent">
+        <div class="card-num">03</div>
+        <div class="card-label">KCD Porto · the flagship</div>
+        <div class="card-body">The largest CNCF event in Portugal, run with DevOpsDays Portugal in 2026.</div>
+      </div>
+      <div class="card is-accent">
+        <div class="card-num">04</div>
+        <div class="card-label">Recognition · the stages</div>
+        <div class="card-body">Through our community leadership, xgeeks holds a seat at Portugal's biggest tech conferences.</div>
+      </div>
+    </div>
+
+    <p class="plain fade-up d4"><b>Read this deck in two blocks:</b> first Community and meetups, then the two flagship events. Every number here comes from our tracking files or official event pages.</p>
+  </div>
+</section>
+
+
+<!-- 003 Community footprint / tiers -->
+<section id="s3">
+  <aside class="notes">
+    Key point: 17 active meetup groups across 6 cities add up to a ~24,000-person reach we can activate directly.
+    Say: Point at the logo wall, then land on the reach number. This is a channel, not a one-off event — four tiers of involvement, from full ownership down to partnership.
+    Emphasise: ~24,000 combined reach — the scale number for the whole deck.
+    Next: A quick look at what these meetups actually look like in the room.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">Our community footprint</p>
+    <h2 class="display fade-up d1">Meetups: we <em>run</em> 17 groups, not just sponsor them.</h2>
+    <p class="subhead fade-up d2">17 active groups across 6 cities (Lisbon, Porto, Braga, Viseu, Leiria, Castelo Branco), spanning Cloud Native, DevOps, AWS, JavaScript and AI.</p>
+
+    <style>
+      .mu-wall { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:24px; }
+      .mu-wall .mu { background:#fff; border-radius:8px; height:90px; display:flex; align-items:center; justify-content:center; padding:14px 16px; }
+      .mu-wall .mu img { max-width:100%; max-height:100%; object-fit:contain; }
+      @media (max-width:1150px){ .mu-wall { grid-template-columns:repeat(3,1fr); } }
+      @media (max-width:700px){ .mu-wall { grid-template-columns:repeat(2,1fr); } }
+    </style>
+    <div class="mu-wall fade-up d3">
+      <a href="https://www.meetup.com/cloudnativelx/?eventOrigin=home_groups_you_organize" class="mu"><img src="../logos/mu-cloud-native-lisbon.png" alt="Cloud Native Lisbon"></a>
+      <div class="mu"><img src="../logos/mu-cloud-native-porto.svg" alt="Cloud Native Porto"></div>
+      <div class="mu"><img src="../logos/mu-devops-lisbon.png" alt="DevOps Lisbon"></div>
+      <div class="mu"><img src="../logos/mu-devops-porto.png" alt="DevOps Porto"></div>
+      <div class="mu"><img src="../logos/mu-devops-braga.png" alt="DevOps Braga"></div>
+      <div class="mu"><img src="../logos/mu-leiria-tech-talks.png" alt="Leiria Tech Talks"></div>
+      <div class="mu"><img src="../logos/mu-viseu-tech-talks.png" alt="Viseu Tech Talks"></div>
+      <div class="mu"><img src="../logos/mu-aws-ug-lisbon.png" alt="AWS User Group Lisbon"></div>
+      <div class="mu"><img src="../logos/mu-aws-ug-castelo-branco.png" alt="AWS User Group Castelo Branco &amp; Beira Baixa"></div>
+      <div class="mu" style="background:linear-gradient(180deg,rgba(0,235,182,0.10),var(--bg-2)); border:1px solid var(--accent-dim);">
+        <div style="text-align:center;">
+          <div style="font-family:var(--display); font-weight:400; font-size:28px; line-height:1; color:var(--accent); letter-spacing:-0.02em;"><em style="font-family:var(--serif); font-style:italic;">+8</em></div>
+          <div style="font-family:var(--mono); font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-3); margin-top:6px;">more</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total reach headline stat -->
+    <div class="fade-up d4" style="margin-top:18px; display:flex; align-items:center; gap:26px; background:linear-gradient(90deg,rgba(0,235,182,0.12),var(--bg-2)); border:1px solid var(--accent-dim); border-radius:6px; padding:14px 26px;">
+      <div style="font-family:var(--display); font-weight:400; font-size:clamp(36px,5vw,58px); line-height:1; letter-spacing:-0.03em; color:var(--accent); white-space:nowrap;"><em style="font-family:var(--serif); font-style:italic;">~24,000</em></div>
+      <div>
+        <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink);">Total community reach</div>
+        <div style="font-size:13.5px; color:var(--ink-2); margin-top:4px; line-height:1.4;">Combined membership across all 17 groups (24,079), in 6 cities. One audience we reach directly, all year.</div>
+      </div>
+    </div>
+
+    <p class="plain fade-up d4"><b>How we are involved:</b> four tiers, from full ownership (we run strategy, calendar and logistics end to end), to co-founded and co-led, to fundamental co-organizer, to collaboration and partnership.</p>
+  </div>
+</section>
+
+
+<!-- 003c Meetups photos -->
+<section id="s3c">
+  <aside class="notes">
+    Key point: This is what the meetups look like on the ground — real turnout, real rooms, across multiple cities and partners.
+    Say: Let the photos carry it, one beat per image if needed. Keep this slide brief and move on.
+    Emphasise: The variety of cities and co-organizing partners visible across the photos.
+    Next: The "why it matters" — what these meetups actually deliver.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">Meetups · in the room</p>
+    <h2 class="display fade-up d1">Meetups: this is what it <em>looks like.</em></h2>
+    <style>
+      .photo-grid { display:grid; gap:16px; margin-top:30px; }
+      .photo-grid.g4 { grid-template-columns:repeat(4,1fr); }
+      .photo-grid.g3 { grid-template-columns:repeat(3,1fr); }
+      .photo-grid.g2 { grid-template-columns:repeat(2,1fr); }
+      .photo-grid .ph { position:relative; border-radius:8px; overflow:hidden; border:1px solid var(--line-2); background:var(--bg-2); aspect-ratio:3/2; }
+      .photo-grid .ph img { width:100%; height:100%; object-fit:contain; display:block; }
+      .photo-grid .cap { position:absolute; left:0; right:0; bottom:0; padding:12px 14px 10px; font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:linear-gradient(0deg,rgba(3,22,26,0.9),transparent); }
+      @media (max-width:1150px){ .photo-grid.g4 { grid-template-columns:repeat(2,1fr); } }
+      @media (max-width:900px){ .photo-grid.g3, .photo-grid.g2 { grid-template-columns:1fr; } .photo-grid.g4 { grid-template-columns:1fr; } }
+    </style>
+    <div class="photo-grid g4 fade-up d2">
+      <div class="ph"><img src="../photos/meetup-genai-gdg.jpg" alt="Lisbon GenAI x GDG meetup"><span class="cap">Lisbon GenAI × GDG</span></div>
+      <div class="ph"><img src="../photos/meetup-cnl-devops.jpg" alt="Cloud Native Lisbon x DevOps Lisbon meetup"><span class="cap">Cloud Native × DevOps Lisbon</span></div>
+      <div class="ph"><img src="../photos/meetup-gdg-braga.jpg" alt="GDG Braga x DevOps Braga joint event"><span class="cap">GDG × DevOps Braga</span></div>
+      <div class="ph"><img src="../photos/meetup-devops-braga.jpg" alt="DevOps Braga meetup"><span class="cap">DevOps Braga</span></div>
+      <div class="ph"><img src="../photos/meetup-genai-leaddev.jpg" alt="Lisbon GenAI x LeadDev meetup"><span class="cap">Lisbon GenAI × LeadDev</span></div>
+      <div class="ph"><img src="../photos/meetup-lisbon-view.jpg" alt="Community meetup in Lisbon"><span class="cap">Meetup · Lisbon</span></div>
+      <div class="ph"><img src="../photos/meetup-networking.jpg" alt="Networking at a meetup"><span class="cap">Networking</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 004 Why meetups matter -->
+<section id="s4">
+  <aside class="notes">
+    Key point: Meetups always built brand and talent; for about a year they've also been building a real, warm-sourced business pipeline.
+    Say: Contrast the two cards — always vs. now. No cold outreach, just conversations at events people chose to attend. Walk the four-step curate/connect/nurture/expand loop briefly.
+    Emphasise: ~750K EUR pipeline and the named leads — CloudZone, Wellhub, UBIO.
+    Next: How that growth has tracked year over year.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">What meetups deliver</p>
+    <h2 class="display fade-up d1">Meetups: always brand and talent, <em>now business too.</em></h2>
+    <p class="subhead fade-up d2">Meetups were always about brand, exposure and hiring. About a year ago we started working them as a lead-generation channel too. No cold calls, no cold emails: real conversations at events people chose to attend.</p>
+
+    <div class="grid-2 fade-up d3" style="margin-top:30px; grid-template-columns:0.82fr 1.18fr; gap:22px; align-items:stretch;">
+      <div class="card">
+        <div class="card-label" style="margin-top:0;">Brand &amp; talent · always</div>
+        <div class="card-body" style="font-size:14px;">Consistent, organic presence across 6 cities and 6+ tech domains, and our most authentic employer-branding channel: engineers meet engineers.</div>
+      </div>
+      <div class="card is-accent">
+        <div class="card-label" style="margin-top:0;">Business · now</div>
+        <div style="display:flex; align-items:baseline; gap:16px; margin-top:10px;">
+          <span style="font-family:var(--display); font-weight:400; font-size:clamp(46px,6.5vw,72px); line-height:0.95; letter-spacing:-0.03em; color:var(--accent);"><em style="font-family:var(--serif); font-style:italic;">~750K</em></span>
+          <span style="font-family:var(--mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-3); line-height:1.4;">EUR pipeline,<br>and growing</span>
+        </div>
+        <div class="card-body" style="font-size:16px; margin-top:14px; color:var(--ink-2);">A real, growing pipeline sourced directly from the community. Named leads already: <strong style="color:var(--ink);">CloudZone, Wellhub, UBIO</strong>, with more emerging.</div>
+      </div>
+    </div>
+
+    <div class="rule-strip fade-up d4" style="margin-top:22px;">
+      <div class="rule-item">
+        <div class="rule-n">01 · Curate</div>
+        <div class="rule-t">Pre-event check-in curation</div>
+        <div class="rule-d">Screen registrants: companies, roles, seniority, relevance.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-n">02 · Connect</div>
+        <div class="rule-t">Direct contact at the event</div>
+        <div class="rule-d">Meet identified leads in person, community-first.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-n">03 · Nurture</div>
+        <div class="rule-t">Warm post-event follow-up</div>
+        <div class="rule-d">Prospects already know and trust the community.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-n">04 · Expand</div>
+        <div class="rule-t">Database growth</div>
+        <div class="rule-d">Meetups + KCD Porto + geekathon keep enriching the base.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 007 YoY growth chart -->
+<section id="s7">
+  <aside class="notes">
+    Key point: Meetup count and attendance have grown every single year since 2023, and 2026 is already on pace.
+    Say: Walk the bars left to right — 16 to 21 to 29 meetups, attendance climbing in step. Flag that 2026 attendance isn't consolidated yet, so only the count is shown. Call out the shift toward co-organized editions with Google, OutSystems, Ministry of Testing and DevOps na Praia.
+    Emphasise: 29 meetups / 1,180 attendees in 2025 — the clearest year-over-year proof point.
+    Next: From always-on meetups to the first flagship: geekathon.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">Growth &amp; partnerships</p>
+    <h2 class="display fade-up d1">Up every single year. <em>Meetups and reach.</em></h2>
+    <p class="subhead fade-up d2">From 16 meetups in 2023 to 29 in 2025, with attendance climbing alongside. 2026 is already at 16 and counting, increasingly driven by co-organized editions.</p>
+
+    <!-- Bar chart: bar height = attendees, number inside bar = meetups held -->
+    <div class="fade-up d3" style="margin-top:30px; display:grid; grid-template-columns:repeat(4,1fr); gap:26px; align-items:end; height:270px;">
+      <!-- 2023 -->
+      <div style="height:100%; display:flex; flex-direction:column; justify-content:flex-end;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); text-align:center; margin-bottom:10px;">794 attendees</div>
+        <div style="height:158px; border-radius:6px 6px 0 0; background:linear-gradient(180deg,var(--accent-dim),var(--accent-deep)); display:flex; align-items:flex-start; justify-content:center; padding-top:12px;">
+          <span style="font-family:var(--display); font-weight:600; font-size:36px; color:#03161a;">16</span>
+        </div>
+      </div>
+      <!-- 2024 -->
+      <div style="height:100%; display:flex; flex-direction:column; justify-content:flex-end;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); text-align:center; margin-bottom:10px;">943 attendees</div>
+        <div style="height:191px; border-radius:6px 6px 0 0; background:linear-gradient(180deg,var(--accent-dim),var(--accent-deep)); display:flex; align-items:flex-start; justify-content:center; padding-top:12px;">
+          <span style="font-family:var(--display); font-weight:600; font-size:36px; color:#03161a;">21</span>
+        </div>
+      </div>
+      <!-- 2025 -->
+      <div style="height:100%; display:flex; flex-direction:column; justify-content:flex-end;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-align:center; margin-bottom:10px;">1,180 attendees</div>
+        <div style="height:240px; border-radius:6px 6px 0 0; background:linear-gradient(180deg,var(--accent),#6ff3da); display:flex; align-items:flex-start; justify-content:center; padding-top:12px;">
+          <span style="font-family:var(--display); font-weight:600; font-size:38px; color:#03161a;">29</span>
+        </div>
+      </div>
+      <!-- 2026 -->
+      <div style="height:100%; display:flex; flex-direction:column; justify-content:flex-end;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--warn); text-align:center; margin-bottom:10px;">[X] attendees · pending</div>
+        <div style="height:130px; border-radius:6px 6px 0 0; background:var(--bg-3); border:1px dashed var(--line-2); border-bottom:none; display:flex; align-items:flex-start; justify-content:center; padding-top:12px;">
+          <span style="font-family:var(--display); font-weight:600; font-size:36px; color:var(--warm);">16</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:26px; border-top:1px solid var(--line-2); padding-top:12px; margin-top:0;">
+      <div style="text-align:center; font-family:var(--mono); font-size:13px; color:var(--ink-2);">2023</div>
+      <div style="text-align:center; font-family:var(--mono); font-size:13px; color:var(--ink-2);">2024</div>
+      <div style="text-align:center; font-family:var(--mono); font-size:13px; color:var(--ink);">2025</div>
+      <div style="text-align:center; font-family:var(--mono); font-size:13px; color:var(--warm);">2026 · so far</div>
+    </div>
+
+    <div class="grid-2 fade-up d4" style="margin-top:22px; gap:18px;">
+      <div style="border-left:3px solid var(--accent); background:linear-gradient(90deg,rgba(0,235,182,0.10),transparent); border-radius:0 6px 6px 0; padding:14px 18px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:6px;">Increasingly co-organized</div>
+        <div style="font-size:14.5px; color:var(--ink-2); line-height:1.5;">Joint meetups with <b style="color:var(--ink);">Google</b> (GDG Braga, Porto, Lisbon), the <b style="color:var(--ink);">OutSystems User Groups</b> (Viseu, Leiria, soon Porto), and <b style="color:var(--ink);">Ministry of Testing</b> and <b style="color:var(--ink);">DevOps na Praia</b>. Each partner brings its own audience, so reach grows while cost per event drops.</div>
+      </div>
+      <div style="border-left:3px solid var(--warm); background:linear-gradient(90deg,rgba(255,150,110,0.10),transparent); border-radius:0 6px 6px 0; padding:14px 18px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--warm); margin-bottom:6px;">Largely self-sustaining</div>
+        <div style="font-size:14.5px; color:var(--ink-2); line-height:1.5;">Companies now offer venues, hosting and sponsorship. Sometimes the hardest part is saying no.</div>
+      </div>
+    </div>
+    <p class="plain fade-up d4" style="margin-top:12px;">2026 attendance is not yet consolidated, so only the meetup count is shown.</p>
+  </div>
+</section>
+
+
+<!-- 009 geekathon origin + growth -->
+<section id="s9">
+  <aside class="notes">
+    Key point: geekathon was built as an external event and it works — externally, and, unexpectedly, as a beloved internal moment too.
+    Say: Hit the four KPIs, then the two lanes: external by design (partners, sponsors, growing every edition) and loved internally (our own people's enthusiasm). Mention the charity angle.
+    Emphasise: 100% of ticket sales go to charity — a differentiator worth pausing on.
+    Next: A look at what geekathon looks like in Leiria.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">geekathon · Leiria</p>
+    <h2 class="display fade-up d1">geekathon: <em>external by design,</em> loved internally.</h2>
+    <p class="subhead fade-up d2">geekathon was always conceived as an external event, and it works extremely well on both fronts. Our own people genuinely love it, so it also became a strong internal moment, while growing externally with more partners edition after edition.</p>
+
+    <div class="grid-4 fade-up d3" style="margin-top:36px;">
+      <div class="kpi">
+        <span class="kpi-label">2025 teams</span>
+        <span class="kpi-value"><em>17</em></span>
+        <span class="kpi-sub">building AI solutions</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Editions</span>
+        <span class="kpi-value">5</span>
+        <span class="kpi-sub">since 2021, growing</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">2025 focus</span>
+        <span class="kpi-value" style="font-size:26px; line-height:1.1;">Mobility &amp;<br>Smart Factories</span>
+        <span class="kpi-sub">"Driving the Future with AI"</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Social component</span>
+        <span class="kpi-value">100%</span>
+        <span class="kpi-sub">of ticket sales donated to charity</span>
+      </div>
+    </div>
+
+    <div class="grid-2 fade-up d4" style="margin-top:28px; grid-template-columns:1fr 1fr;">
+      <div class="lane b" style="margin:0;">
+        <div class="lane-role">External by design</div>
+        <div class="lane-title">Open, partner-driven event</div>
+        <ul>
+          <li>Co-organized with Grupo Lusiaves, BRAINR, Startup Leiria and AWS</li>
+          <li>20+ community partners, sponsor challenges, a Leiria landmark, growing edition after edition</li>
+        </ul>
+      </div>
+      <div class="lane a" style="margin:0;">
+        <div class="lane-role">Loved internally</div>
+        <div class="lane-title">A moment our people love</div>
+        <ul>
+          <li>Our own teams genuinely love it, raising more and more internal interest</li>
+          <li>Learning, upskilling and pride, on top of the external draw</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="plain fade-up d4"><b>2025 edition:</b> nearly 100 participants, close to 20 projects delivered, with prizes for Best Project (jury), Audience Award and Sponsor Challenges. Runs since 2021, in Leiria, growing every year.</p>
+  </div>
+</section>
+
+
+<!-- 009b geekathon photos -->
+<section id="s9b">
+  <aside class="notes">
+    Key point: geekathon in the room — scale, energy, and the win moment.
+    Say: Quick visual beat, let the booth and winner photos land. Keep this brief.
+    Emphasise: The winner-announcement photo — it's the emotional peak of the event.
+    Next: What we're proposing for geekathon 2026.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">geekathon · in the room</p>
+    <h2 class="display fade-up d1">geekathon: a weekend that <em>delivers.</em></h2>
+    <div class="photo-grid g4 fade-up d2">
+      <div class="ph"><img src="../photos/geekathon-audience.jpg" alt="geekathon audience in Leiria"><span class="cap">geekathon · Leiria</span></div>
+      <div class="ph"><img src="../photos/geekathon-booth.jpg" alt="synvert xgeeks booth at geekathon"><span class="cap">synvert xgeeks booth</span></div>
+      <div class="ph"><img src="../photos/geekathon-gaming.jpg" alt="Gaming corner at geekathon"><span class="cap">Gaming corner</span></div>
+      <div class="ph"><img src="../photos/geekathon-winner.jpg" alt="geekathon best project winner announcement"><span class="cap">Best project · the winner</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 010 geekathon 2026 vision: Hitachi group synergies -->
+<section id="s10">
+  <aside class="notes">
+    Key point: This is a proposal, not a done deal — an invitation for GlobalLogic, Hitachi Digital Solutions and the group to co-build geekathon with us.
+    Say: Be explicit that this is open, not decided. Walk the two cards: why it makes sense, then the menu of ways they could take part. Land the pull-quote as the emotional close.
+    Emphasise: "A proposal, not a done deal" and "open to explore" — keep the room aware this is a starting point for discussion, not an ask.
+    Next: Shift to the second flagship — KCD Porto — starting with why it matters.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">A proposal · not a done deal</p>
+    <h2 class="display fade-up d1">geekathon: an invitation to <em>co-build</em> with the group.</h2>
+    <p class="subhead fade-up d2">This year we would like to put geekathon on the table as a way to build synergies across <strong>GlobalLogic, Hitachi Digital Solutions</strong> and the associated group companies. It simply makes sense: a great way for the group to see what we do, and for them to show up and take part.</p>
+
+    <div class="grid-2 fade-up d3" style="margin-top:30px; grid-template-columns:1fr 1fr; gap:22px;">
+      <div class="card is-accent" style="align-self:start;">
+        <div class="card-label" style="margin-top:0;">Why it makes sense</div>
+        <div class="card-body" style="font-size:14px;">A window into how synvert xgeeks works: our business, our engineering, and our approach to community, seen up close by the wider group.</div>
+      </div>
+      <div class="card is-warm" style="align-self:start;">
+        <div class="card-label" style="margin-top:0;">Ways they could take part <span style="font-family:var(--mono); font-size:9px; color:var(--warm);">· OPEN TO EXPLORE</span></div>
+        <div class="card-body" style="font-size:14px;">
+          <ul style="margin:2px 0 0; padding-left:16px; line-height:1.55;">
+            <li>Sponsor prizes tied to challenges that solve their <strong>real problems</strong>, with solutions they could actually use afterwards</li>
+            <li>Enter their own teams</li>
+            <li>Join the jury panel</li>
+            <li>Other formats, we are open to explore</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider divider--accent fade-up d4" style="margin-top:26px;"></div>
+    <p class="pull-quote fade-up d4" style="font-size:clamp(20px,2.6vw,34px); margin-top:20px;">
+      From Leiria to the Hitachi group, and from the Hitachi group <em>to Leiria.</em>
+    </p>
+  </div>
+</section>
+
+
+<!-- 010b Context: what the CNCF is and why KCD matters -->
+<section id="s10b">
+  <aside class="notes">
+    Key point: KCD Porto sits inside the CNCF's Kubernetes Community Days program — the official conference tier — and we own the whole thing, not just attend it.
+    Say: Quick chain: what the CNCF is, our CNCF Silver Member standing, what a KCD is. Then land the ownership distinction versus events like Databricks or Big Data conferences, where the group merely participates.
+    Emphasise: "We organize it, we do not just attend" — the core differentiator versus every other event in the deck.
+    Next: Into the numbers behind KCD Porto itself.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">Before the event · the context</p>
+    <h2 class="display fade-up d1">KCD Porto: what the <em>CNCF</em> is, and why it matters.</h2>
+    <p class="subhead fade-up d2">A quick chain of context, because it is what makes KCD Porto significant for our positioning.</p>
+
+    <div class="grid-3 fade-up d3" style="margin-top:34px;">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-label">The CNCF &amp; Cloud Native</div>
+        <div class="card-body" style="font-size:13.5px;">The Cloud Native Computing Foundation is the home of Kubernetes and the cloud native ecosystem. 98% of organizations have adopted cloud native techniques; 82% run Kubernetes in production.</div>
+      </div>
+      <div class="card is-accent">
+        <div class="card-num">02</div>
+        <div class="card-label">Our standing · CNCF Silver Member</div>
+        <div class="card-body" style="font-size:13.5px;">synvert xgeeks is a CNCF Silver Member, one of the few Portuguese companies with this status, and organizes the only two official CNCF meetups in Portugal: Cloud Native Lisbon and Cloud Native Porto.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-label">What a KCD is</div>
+        <div class="card-body" style="font-size:13.5px;">Kubernetes Community Days are the official CNCF community conferences. We run the only one in Portugal and the Iberian Peninsula.</div>
+      </div>
+    </div>
+
+    <div class="card is-accent fade-up d4" style="margin-top:24px;">
+      <div class="card-label" style="margin-top:0;">We organize it, we do not just attend</div>
+      <div class="card-body" style="font-size:14px;">In events like Databricks or Big Data conferences, the group participates, which is valuable. With KCD Porto we create and run the entire experience, with full control, and we are recognized as the organizing entity: the responsible specialists in cloud native and DevOps in Portugal. Owning the event is a different position than attending someone else's.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 011 KCD Porto flagship -->
+<section id="s11">
+  <aside class="notes">
+    Key point: KCD Porto is the largest CNCF event in Portugal — three years running, self-funded, and growing every edition.
+    Say: Walk the four KPIs — attendees up 39%, sponsors more than doubled, 26 countries. Then the sponsor logo wall as visual proof of the ecosystem.
+    Emphasise: 16 paid sponsors, up from 7 in 2024 — the clearest signal the market is buying in.
+    Next: What that looks like on the ground in Porto.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">KCD Porto · our biggest event</p>
+    <h2 class="display fade-up d1">KCD Porto: the largest CNCF event in <em>Portugal.</em></h2>
+    <p class="subhead fade-up d2">The only Kubernetes Community Days in Portugal and the Iberian Peninsula, built and run by synvert xgeeks. Three years running, self-funded, growing every edition.</p>
+
+    <div class="grid-4 fade-up d3" style="margin-top:36px;">
+      <div class="kpi">
+        <span class="kpi-label">Attendees 2025</span>
+        <span class="kpi-value"><em>329</em></span>
+        <span class="kpi-sub">+39% vs 2024 · 95% show-up</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Companies</span>
+        <span class="kpi-value">120+</span>
+        <span class="kpi-sub">CTOs, architects, platform eng.</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Paid sponsors 2025</span>
+        <span class="kpi-value"><em>16</em></span>
+        <span class="kpi-sub">up from 7 in 2024</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Countries</span>
+        <span class="kpi-value">26</span>
+        <span class="kpi-sub">genuine international reach</span>
+      </div>
+    </div>
+
+    <style>
+      .logo-wall { display:grid; grid-template-columns:repeat(7,1fr); gap:10px; }
+      .logo-wall .lg { background:#fff; border-radius:6px; height:58px; display:flex; align-items:center; justify-content:center; padding:9px 12px; }
+      .logo-wall .lg img { max-width:100%; max-height:100%; object-fit:contain; }
+      @media (max-width:1150px){ .logo-wall { grid-template-columns:repeat(4,1fr); } }
+      @media (max-width:700px){ .logo-wall { grid-template-columns:repeat(3,1fr); } }
+    </style>
+    <div class="fade-up d4" style="margin-top:26px;">
+      <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-3); margin-bottom:12px;">A sponsor ecosystem that keeps growing</div>
+      <div class="logo-wall">
+        <div class="lg"><img src="../logos/aws.png" alt="AWS"></div>
+        <div class="lg"><img src="../logos/blip.svg" alt="Blip"></div>
+        <div class="lg"><img src="../logos/komodor.svg" alt="Komodor"></div>
+        <div class="lg"><img src="../logos/feedzai.svg" alt="Feedzai"></div>
+        <div class="lg"><img src="../logos/sky.png" alt="Sky"></div>
+        <div class="lg"><img src="../logos/vw-ds.png" alt="Volkswagen Digital Solutions"></div>
+        <div class="lg"><img src="../logos/critical-manufacturing.png" alt="Critical Manufacturing"></div>
+        <div class="lg"><img src="../logos/critical-techworks.svg" alt="Critical TechWorks"></div>
+        <div class="lg"><img src="../logos/outsystems.png" alt="OutSystems"></div>
+        <div class="lg"><img src="../logos/mc-sonae.jpg" alt="MC Sonae"></div>
+        <div class="lg"><img src="../logos/darede.png" alt="Darede"></div>
+        <div class="lg"><img src="../logos/rumos.png" alt="Rumos"></div>
+        <div class="lg"><img src="../logos/la-redoute.png" alt="La Redoute"></div>
+      </div>
+      <p class="plain" style="margin-top:14px;"><b>Plus</b> Google Cloud, Natixis, Euronext, Kuehne+Nagel, Mindera, MC Digital and 20+ others. Every edition enriches the contact database and business pipeline, and cements xgeeks as the central organizing force in Portuguese cloud native.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- 011b KCD photos -->
+<section id="s11b">
+  <aside class="notes">
+    Key point: KCD Porto at scale — packed rooms, a full sponsor floor, xgeeks visibly the main sponsor and on stage.
+    Say: Let the photos carry it; call out the main-sponsor and on-stage shots specifically.
+    Emphasise: The packed-auditorium photo — it's the scale proof point.
+    Next: Where KCD Porto is headed in 2026.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">KCD Porto · in the room</p>
+    <h2 class="display fade-up d1">KCD Porto: the scale of the <em>flagship.</em></h2>
+    <div class="photo-grid g4 fade-up d2">
+      <div class="ph"><img src="../photos/kcd-crowd.jpg" alt="KCD Porto packed auditorium"><span class="cap">A packed auditorium</span></div>
+      <div class="ph"><img src="../photos/kcd-main-sponsor.jpg" alt="synvert xgeeks as main sponsor at KCD Porto"><span class="cap">Main sponsor · synvert xgeeks</span></div>
+      <div class="ph"><img src="../photos/kcd-booth.jpg" alt="synvert xgeeks and sponsor booths at KCD Porto"><span class="cap">The sponsor floor</span></div>
+      <div class="ph"><img src="../photos/kcd-logo-screen.jpg" alt="KCD Porto on the main screen"><span class="cap">KCD Porto</span></div>
+      <div class="ph"><img src="../photos/kcd-networking.jpg" alt="KCD Porto networking with Porto river view"><span class="cap">Networking · Porto</span></div>
+      <div class="ph"><img src="../photos/kcd-facade.jpg" alt="Evening reception at the venue"><span class="cap">Evening reception</span></div>
+      <div class="ph"><img src="../photos/kcd-stage.jpg" alt="synvert xgeeks talk on stage at KCD Porto"><span class="cap">On stage · KCD Porto</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 012 KCD Porto 2026 x DevOpsDays -->
+<section id="s12">
+  <aside class="notes">
+    Key point: In 2026, KCD Porto and DevOpsDays Portugal join forces into one landmark event, with synvert xgeeks as the legal entity behind both.
+    Say: Dates, venue, and the step-change in scale — 500+ attendees, 150+ companies, 50+ speakers. Note DevOpsDays approached us, not the other way round.
+    Emphasise: "synvert xgeeks is the legal entity behind both" — we now stand behind two of Portugal's most recognized tech conference brands.
+    Next: Beyond our own events — the recognition we get on other stages.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">KCD Porto x DevOpsDays Portugal 2026</p>
+    <h2 class="display fade-up d1">KCD Porto: two communities, <em>one landmark event.</em></h2>
+    <p class="subhead fade-up d2">In 2026, KCD Porto joins forces with DevOpsDays Portugal. synvert xgeeks is the legal entity behind both, now standing behind two of the most recognized tech conference brands in Portugal.</p>
+
+    <div class="grid-4 fade-up d3" style="margin-top:36px;">
+      <div class="kpi">
+        <span class="kpi-label">Dates</span>
+        <span class="kpi-value" style="font-size:30px;">19-20 Nov</span>
+        <span class="kpi-sub">2026</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Venue</span>
+        <span class="kpi-value" style="font-size:24px; line-height:1.15;">Super Bock<br>Arena</span>
+        <span class="kpi-sub">Palacio de Cristal, Porto</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Attendees expected</span>
+        <span class="kpi-value"><em>500+</em></span>
+        <span class="kpi-sub">150+ companies</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Content</span>
+        <span class="kpi-value">50+</span>
+        <span class="kpi-sub">speakers · 4+ keynotes · multi-track</span>
+      </div>
+    </div>
+
+    <div class="grid-2 fade-up d4" style="margin-top:28px; grid-template-columns:1fr 1fr;">
+      <div class="card is-accent" style="align-self:start;">
+        <div class="card-label" style="margin-top:0;">Why it matters for the brand</div>
+        <div class="card-body" style="font-size:14px;">The annual cloud and DevOps gathering in Portugal, and a credible base to grow toward a wider European audience.</div>
+      </div>
+      <div class="card" style="align-self:start;">
+        <div class="card-label" style="margin-top:0;">Backed by CNCF</div>
+        <div class="card-body" style="font-size:14px;">CNCF Silver Member, only KCD in Iberia, at the maximum category CNCF allows. Chosen again on track record and execution quality.</div>
+      </div>
+    </div>
+
+    <p class="plain fade-up d4"><b>DevOpsDays</b> is a global conference series founded in 2009 in Ghent, with 200+ editions across 40+ countries. DevOpsDays Portugal approached us to join forces, recognizing the scale and quality we have built.</p>
+  </div>
+</section>
+
+
+<!-- 013 Block 3 · Individual recognition -->
+<section id="s13">
+  <aside class="notes">
+    Key point: Our community leadership earns xgeeks standing roles at the biggest external stages, at essentially zero cost.
+    Say: Two roles — JNation Champion (~1,500 attendees, sold out 2026) and SREday/LLMday Ambassador. Frame this as presence and network access we didn't have to pay for.
+    Emphasise: "essentially zero cost" — the leverage point.
+    Next: Bring it all together in the closing summary.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">Recognized beyond our own events</p>
+    <h2 class="display fade-up d1">xgeeks holds a seat at the <em>biggest stages.</em></h2>
+    <p class="subhead fade-up d2">Our community leadership earns recognition beyond the events we run. Through it, xgeeks holds standing roles at major external conferences, giving the brand presence and network access at essentially zero cost.</p>
+
+    <div class="grid-2 fade-up d3" style="margin-top:34px; grid-template-columns:1fr 1fr;">
+      <div class="card is-accent" style="align-self:start;">
+        <div class="card-label" style="margin-top:0;">JNation · Champion</div>
+        <div class="card-body" style="font-size:14px;">JNation is the biggest generalist tech conference in Portugal: ~1,500 attendees in Coimbra (Convento São Francisco), covering Java, JavaScript, Cloud, AI/ML, Security and more. The 2026 edition (26-27 May) sold out. xgeeks holds a Champion role, representing and amplifying the event.</div>
+      </div>
+      <div class="card is-accent" style="align-self:start;">
+        <div class="card-label" style="margin-top:0;">SREday &amp; LLMday · Ambassador</div>
+        <div class="card-body" style="font-size:14px;">International conference series (US, Europe, Asia) on reliability, DevOps and cloud (SREday) and on LLMs and AI (LLMday). They run once a year in Lisbon, hosted at PagerDuty. xgeeks holds an Ambassador role and is helping bring them to Porto too.</div>
+      </div>
+    </div>
+
+    <p class="plain fade-up d4"><b>The takeaway:</b> xgeeks is recognized by the wider ecosystem. That means presence, credibility and network access on the largest and most international tech stages in Portugal, without owning or funding those events.</p>
+  </div>
+</section>
+
+
+<!-- 015 Closing · conclusion -->
+<section id="s15">
+  <aside class="notes">
+    Key point: One national, always-on community channel — proven for brand and talent, now proven for business too, and flexible enough to carry whatever the group needs next.
+    Say: Recap the three cards, land the pull-quote, and close on the plasticity idea: this channel can carry brand campaigns, talent drives, business development or group-wide initiatives.
+    Emphasise: "Plasticity" — the single word that should stick after this deck ends.
+    Next: End of deck — open the floor for questions.
+  </aside>
+  <div class="frame">
+    <p class="kicker fade-up">In conclusion</p>
+    <h2 class="display fade-up d1">One community channel, with real <em>plasticity.</em></h2>
+    <p class="subhead fade-up d2">The goal at community level is a single, national, always-on channel that can carry whatever we need it to. It has already proven itself for brand and talent, and now it works for business too.</p>
+
+    <div class="grid-3 fade-up d3" style="margin-top:40px;">
+      <div class="card">
+        <div class="card-label" style="margin-top:0;">Brand · proven</div>
+        <div class="card-body" style="font-size:14px;">Consistent, organic presence across 6 cities and the tech ecosystem, all year.</div>
+      </div>
+      <div class="card">
+        <div class="card-label" style="margin-top:0;">Talent · proven</div>
+        <div class="card-body" style="font-size:14px;">Our most authentic employer-branding channel, where engineers meet engineers.</div>
+      </div>
+      <div class="card is-accent">
+        <div class="card-label" style="margin-top:0;">Business · now</div>
+        <div class="card-body" style="font-size:14px;">A real, community-driven pipeline of ~750K EUR, with named leads and more emerging.</div>
+      </div>
+    </div>
+
+    <div class="divider divider--accent fade-up d4" style="margin-top:32px;"></div>
+    <p class="pull-quote fade-up d4" style="font-size:clamp(20px,2.6vw,34px); margin-top:20px;">
+      A channel for transversal campaigns, <em>and not only.</em>
+    </p>
+    <p class="body-text fade-up d4" style="margin-top:14px; max-width:1040px;">With this plasticity, the channel can carry almost anything: brand and product campaigns, talent drives, business development, and group-wide initiatives. It is a national, always-on asset the whole group can use.</p>
+
+    <div class="cover-slot fade-up d4" style="margin-top:24px;">
+      <div class="cover-meta">
+        <span>synvert xgeeks</span>
+        <span>External Events · Marketing · 2026</span>
+        <span><a href="../analysis.html" style="color:var(--accent);text-decoration:none;">Full analysis →</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+Reveal.initialize({
+  hash: true, history: true, center: false,
+  slideNumber: 'c/t', progress: true, controls: true,
+  controlsTutorial: false, transition: 'fade', transitionSpeed: 'fast',
+  backgroundTransition: 'none', width: 1520, height: 900,
+  margin: 0, minScale: 0.2, maxScale: 2.0,
+  plugins: [ RevealNotes ],
+});
+
+function revealFadeUps(slide) {
+  slide.querySelectorAll('.fade-up').forEach(el => el.classList.add('in'));
+}
+Reveal.on('ready', e => revealFadeUps(e.currentSlide));
+Reveal.on('slidechanged', e => revealFadeUps(e.currentSlide));
+</script>
+</body>
+</html>
