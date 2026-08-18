@@ -16,7 +16,6 @@
   --warm:#e0562b; --band-ink:#ffffff;
   --card-shadow:0 1px 2px rgba(0,46,51,0.06);
 }
-:root:not([data-theme="light"]) { }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg:#03161a; --bg-2:#082023; --bg-3:#0d2a2e;
@@ -45,10 +44,7 @@ body {
   font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size:16px; line-height:1.65;
 }
-.band {
-  background:var(--dark); color:var(--band-ink);
-  border-bottom:3px solid var(--accent);
-}
+.band { background:var(--dark); color:var(--band-ink); border-bottom:3px solid var(--accent); }
 .band-in {
   max-width:960px; margin:0 auto; padding:18px 24px;
   display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
@@ -58,8 +54,7 @@ body {
 .hero { max-width:960px; margin:0 auto; padding:52px 24px 8px; }
 .kicker {
   font-family:"DM Mono", ui-monospace, monospace; font-size:12px;
-  letter-spacing:0.18em; text-transform:uppercase; color:var(--accent-text);
-  margin-bottom:14px;
+  letter-spacing:0.18em; text-transform:uppercase; color:var(--accent-text); margin-bottom:14px;
 }
 h1 {
   font-family:"Jost", -apple-system, sans-serif; font-weight:600;
@@ -75,10 +70,7 @@ h2 {
   padding-bottom:8px; border-bottom:2px solid var(--accent);
   display:inline-block; text-wrap:balance;
 }
-h3 {
-  font-family:"Jost", sans-serif; font-weight:600; font-size:17px;
-  color:var(--ink); margin:22px 0 6px;
-}
+h3 { font-family:"Jost", sans-serif; font-weight:600; font-size:17px; color:var(--ink); margin:22px 0 6px; }
 p { margin:10px 0; max-width:70ch; color:var(--ink-2); }
 ul { margin:10px 0 10px 22px; max-width:70ch; }
 li { margin:7px 0; color:var(--ink-2); }
@@ -88,8 +80,7 @@ strong { color:var(--ink); }
 @media (max-width:700px){ .grid { grid-template-columns:1fr; } }
 .card {
   background:var(--bg-2); border:1px solid var(--line); border-radius:6px;
-  padding:18px 20px; box-shadow:var(--card-shadow);
-  border-top:2px solid var(--accent);
+  padding:18px 20px; box-shadow:var(--card-shadow); border-top:2px solid var(--accent);
 }
 .card h3 { margin:0 0 8px; font-size:15px; }
 .card ul { margin:4px 0 0 18px; }
@@ -109,16 +100,13 @@ table { border-collapse:collapse; width:100%; margin:16px 0; font-size:14.5px; }
 .tblwrap { overflow-x:auto; }
 th {
   font-family:"Jost", sans-serif; font-weight:600; text-align:left;
-  background:var(--dark); color:var(--band-ink);
-  padding:9px 12px; font-size:13px; letter-spacing:0.04em;
+  background:var(--dark); color:var(--band-ink); padding:9px 12px; font-size:13px; letter-spacing:0.04em;
 }
 td { padding:9px 12px; border:1px solid var(--line); color:var(--ink-2); vertical-align:top; }
 tr:nth-child(even) td { background:var(--bg-2); }
 .agenda { display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; margin:16px 0; }
 @media (max-width:700px){ .agenda { grid-template-columns:1fr; } }
-.day {
-  background:var(--bg-2); border:1px solid var(--line); border-radius:6px; overflow:hidden;
-}
+.day { background:var(--bg-2); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
 .day-h {
   background:var(--dark); color:var(--band-ink); padding:8px 16px;
   font-family:"Jost", sans-serif; font-weight:600; font-size:14px; letter-spacing:0.03em;
@@ -134,7 +122,7 @@ tr:nth-child(even) td { background:var(--bg-2); }
 .asset {
   display:block; background:var(--bg-2); border:1px solid var(--line); border-radius:6px;
   padding:16px 18px; text-decoration:none; color:var(--ink);
-  border-top:2px solid var(--accent); transition:border-color 160ms, transform 160ms;
+  border-top:2px solid var(--accent); transition:border-color 160ms;
 }
 .asset:hover { border-color:var(--accent-text); }
 .asset:focus-visible { outline:2px solid var(--accent-text); outline-offset:2px; }
@@ -148,14 +136,10 @@ tr:nth-child(even) td { background:var(--bg-2); }
 .emailbox ol { margin:10px 0 10px 22px; }
 .emailbox ol li { margin:7px 0; color:var(--ink-2); }
 .emailbox .subj { font-weight:600; color:var(--ink); }
-footer {
-  background:var(--dark); color:var(--band-ink); margin-top:56px;
-  border-top:3px solid var(--accent);
-}
+footer { background:var(--dark); color:var(--band-ink); margin-top:56px; border-top:3px solid var(--accent); }
 .foot-in {
   max-width:960px; margin:0 auto; padding:24px;
-  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
-  font-size:13.5px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13.5px;
 }
 .foot-in img { height:26px; width:auto; display:block; opacity:0.95; }
 </style>
@@ -172,14 +156,13 @@ footer {
 <div class="hero">
   <p class="kicker">CJR Renewables · synvert xgeeks · Procurement</p>
   <h1>Plano de Discovery de 2 Semanas</h1>
-  <p class="lede">Duas semanas para compreender os processos de procurement da CJR, identificar em conjunto por onde faz mais sentido começar e fechar o âmbito do piloto, com baseline e KPIs de impacto definidos desde o arranque. A implementação começa na semana seguinte.</p>
+  <p class="lede">Duas semanas para compreender os processos de procurement da CJR e, em parceria, identificar por onde faz mais sentido começar, alinhar o que significa sucesso e fechar o âmbito do piloto. A implementação começa na semana seguinte.</p>
 </div>
 
 <main>
-<!-- ═══════════ Full plan ═══════════ -->
 <section id="objetivo">
   <h2>Objetivo</h2>
-  <p>Em duas semanas, compreender os processos de procurement da CJR e identificar, com base no que a equipa nos mostrar e em conjunto com ela, por onde faz mais sentido começar, alinhar o que significa sucesso e fechar o âmbito do piloto, para que a implementação comece sobre uma base sólida e partilhada por ambas as equipas.</p>
+  <p>Em duas semanas, compreender os processos de procurement da CJR e, em parceria, identificar por onde faz mais sentido começar, alinhar o que significa sucesso e fechar o âmbito do piloto, para que a implementação comece sobre uma base sólida e partilhada por ambas as equipas.</p>
 </section>
 
 <section id="preparacao">
@@ -187,44 +170,44 @@ footer {
   <ul>
     <li>Responsável do workflow de Procurement nomeado do lado da CJR, com ownership desde o primeiro dia.</li>
     <li>Canais de comunicação e ferramentas de trabalho definidos: onde comunicamos no dia a dia (Teams/Slack, email) e que ferramentas usamos, incluindo o espaço de documentação partilhada do projeto, acessível a ambas as equipas.</li>
-    <li>Amostra de tickets de Procurement recentes, de ponta a ponta, para utilizar como material de trabalho nas sessões. Deve cobrir compras de Projeto e de Armazém, incluindo pelo menos um ticket sem requisição SAP prévia e pelo menos um caso de criação de um novo código de material.</li>
-    <li>Dias presenciais confirmados em Leça da Palmeira.</li>
-    <li>Pedidos de acesso aos ambientes de sandbox (SAP/SharePoint) submetidos no dia 1 ou 2 da semana 1. Os circuitos de aprovação que envolvem Compliance e IT demoram semanas; se os pedidos só forem feitos depois de o plano de acessos estar definido na semana 2, o arranque da implementação fica em risco.</li>
+    <li>Amostra de tickets de Procurement recentes para utilizar como material de trabalho nas sessões. Deve cobrir compras de Projeto e de Armazém, incluindo pelo menos um ticket sem requisição SAP prévia e pelo menos um caso de criação de um novo código de material.</li>
+    <li>Confirmar dias presenciais em Leça da Palmeira (conforme explicado na secção das semanas).</li>
+    <li>Pedidos de acesso aos ambientes de sandbox (SAP/SharePoint) submetidos durante a semana.</li>
   </ul>
 </section>
 
-<section id="pessoas">
-  <h2>Pessoas que assumimos necessárias*</h2>
-  <p>As pessoas listadas abaixo não são apenas participantes das sessões: são os stakeholders que assumimos como responsáveis por acompanhar o projeto e trabalhar com a xgeeks, durante as sessões do discovery e ao longo de todo o projeto. Serão elas a apoiar, acompanhar e sustentar o trabalho para além das duas semanas. A disponibilidade das equipas envolvidas (Procurement (P&amp;P), Comercial, Financeiro, Compliance, Qualidade, IT e Construção) deve ficar confirmada na fase de preparação.</p>
+<section id="intervenientes">
+  <h2>Intervenientes &amp; Responsáveis*</h2>
+  <p>Com base no plano das duas semanas e para atingir os resultados esperados, assumimos que as sessões e workflows precisam dos seguintes responsáveis/intervenientes do lado da CJR. A disponibilidade das equipas envolvidas (Procurement, Comercial, Financeiro, Compliance, Qualidade, IT) deve ficar confirmada na fase de preparação com a ajuda da CJR.</p>
   <div class="tblwrap">
   <table>
-    <thead><tr><th>Sessão</th><th>Stakeholders assumidos</th></tr></thead>
+    <thead><tr><th>Sessão</th><th>Pessoas assumidas</th></tr></thead>
     <tbody>
-      <tr><td>Kickoff e sessão com stakeholders</td><td>Sponsor executivo do projeto, responsável de Procurement, responsável do workflow <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
-      <tr><td>Fluxo de procurement de ponta a ponta</td><td>Responsável de Procurement, comprador de Projeto, comprador de Armazém <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
-      <tr><td>Gestão de fornecedores</td><td>Responsável de Procurement, representantes da Qualidade, do Compliance e do Financeiro <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
-      <tr><td>Acompanhamento de tickets reais</td><td>Comprador de Projeto, comprador de Armazém <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
-      <tr><td>Sessão com IT</td><td>Responsável de IT/SAP <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
-      <tr><td>Sessão com Comercial, Financeiro e Legal</td><td>Representantes do Comercial, do Financeiro e do Legal <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
-      <tr><td>Review sessions e sessão final</td><td>Principais stakeholders e liderança <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
+      <tr><td>Kickoff e sessão com stakeholders</td><td>Sponsors, responsável de Procurement, responsável do workflow <span class="ph">[A completar: Alek / Gonçalo com ajuda da CJR]</span></td></tr>
+      <tr><td>Fluxo de procurement</td><td>Responsável de Procurement, comprador de Projeto, comprador de Armazém <span class="ph">[A completar: Alek / Gonçalo com ajuda da CJR]</span></td></tr>
+      <tr><td>Gestão de fornecedores</td><td>Responsável de Procurement, representantes da Qualidade, do Compliance e do Financeiro <span class="ph">[A completar: Alek / Gonçalo com ajuda da CJR]</span></td></tr>
+      <tr><td>Acompanhamento de tickets reais</td><td>Comprador de Projeto, comprador de Armazém <span class="ph">[A completar: Alek / Gonçalo com ajuda da CJR]</span></td></tr>
+      <tr><td>Sessão com IT</td><td>Responsável de IT/SAP <span class="ph">[A completar: Alek / Gonçalo com ajuda da CJR]</span></td></tr>
+      <tr><td>Sessão com Comercial, Financeiro e Legal</td><td>Representantes do Comercial, do Financeiro e do Legal <span class="ph">[A completar: Alek / Gonçalo com ajuda da CJR]</span></td></tr>
+      <tr><td>Review sessions e sessão final</td><td>Principais stakeholders e liderança <span class="ph">[A completar: Alek / Gonçalo com ajuda da CJR]</span></td></tr>
     </tbody>
   </table>
   </div>
-  <p class="note">* Esta lista é um pressuposto da nossa parte, com base no plano. Pedimos o input da CJR para confirmar quem vai acompanhar o projeto connosco e estar presente em cada sessão.</p>
+  <p class="note">* Esta lista é uma assunção da nossa parte, com base no plano. Pedimos o input da CJR para confirmar quem deve estar presente em cada sessão.</p>
 </section>
 
 <section id="formato">
   <h2>Como organizamos as duas semanas</h2>
-  <p>Cada semana tem o mesmo formato: 2 dias presenciais (workshops) e 3 dias de consolidação, fechada com uma review session com os principais stakeholders. Este formato dá flexibilidade: na semana 1 vamos identificar pessoas e temas que precisam de sessões próprias e que não é possível marcar logo nessa semana; as sessões presenciais da semana 2 são marcadas com base no que for identificado na semana 1.</p>
+  <p>Cada semana tem o mesmo formato: 2 dias presenciais (workshops) e 3 dias de consolidação. Fechamos com uma review session com os principais stakeholders. Este formato dá flexibilidade: na semana 1 vamos identificar pessoas e temas que precisam de sessões próprias e que não é possível marcar logo nessa semana; as sessões presenciais da semana 2 são marcadas com base no que for identificado na semana 1.</p>
 </section>
 
 <section id="semana1">
   <h2>Semana 1: 2 dias presenciais (workshops) + 3 dias de consolidação</h2>
   <ul>
-    <li><strong>Kickoff com os principais stakeholders, incluindo o sponsor executivo do projeto:</strong> objetivos do piloto, modelo de trabalho conjunto, cadência semanal e definição dos KPIs de impacto, ligados à baseline, que no fim do piloto permitem demonstrar o impacto real do trabalho. O kickoff abre com a ambição que a CJR já definiu para si: tornar-se uma operação AI-native. Este piloto é o primeiro passo concreto desse caminho, aplicado à realidade EPC da CJR, em que os materiais e os componentes correm contra o calendário de obra.</li>
+    <li><strong>Kickoff com os sponsors:</strong> objetivos do piloto, modelo de trabalho conjunto, cadência semanal e definição dos KPIs, ligados à baseline, que no fim do piloto permitem demonstrar o impacto real do trabalho. O kickoff abre com a ambição de tornar a CJR mais próxima de ser AI-native. Este piloto é o primeiro passo concreto desse caminho.</li>
   </ul>
 
-  <h3>Agenda dos dias presenciais (alto nível)</h3>
+  <h3>Agenda dos dias presenciais</h3>
   <div class="agenda">
     <div class="day">
       <div class="day-h">Dia 1</div>
@@ -244,9 +227,9 @@ footer {
 
   <h3>Sessões e trabalho da semana</h3>
   <ul>
-    <li>Sessões de trabalho para percorrer o fluxo de procurement de ponta a ponta, tal como funciona hoje: ticket no SharePoint, preparação da consulta (template ES/PT), envio aos fornecedores, registo de respostas e revisões nas pastas do SharePoint, mapa comparativo em Excel (técnico, comercial e financeiro), validação técnica (com eventual delegação), decisão comercial, requisição e ordem de compra em SAP, e fecho com o fornecedor.</li>
-    <li>Sessão dedicada à gestão de fornecedores: pré-qualificação acima de 50 mil EUR, questionário (Forms) para fornecedores não qualificados e circulação da informação pela Qualidade, Compliance e Financeiro.</li>
-    <li>Acompanhamento em tempo real de 2 a 3 tickets reais (um de Projeto, um de Armazém) para captar volumes, intervenções manuais e os pontos onde se perde tempo.</li>
+    <li>Sessões de trabalho para percorrer o fluxo de procurement de ponta a ponta, tal como funciona hoje: ticket no SharePoint → preparação da consulta → envio aos fornecedores, registo de respostas e revisões nas pastas do SharePoint → mapa comparativo em Excel (técnico, comercial e financeiro) → validação técnica (com eventual delegação) → decisão comercial → requisição e ordem de compra em SAP → e fecho com o fornecedor.</li>
+    <li>Sessão dedicada à gestão de fornecedores: pré-qualificação acima de 50.000 EUR, questionário (Forms) para fornecedores não qualificados e circulação da informação pela Qualidade, Compliance e Financeiro.</li>
+    <li>Acompanhamento de 2 a 3 tickets reais (um de Projeto, um de Armazém) para captar volumes, intervenções manuais e os pontos onde se perde tempo.</li>
     <li>Sessão com IT para levantamento do panorama de sistemas: mapa de sistemas (SAP, SharePoint, Salesforce, Forms), modelo de acessos e perfis, integrações existentes, ambientes de sandbox/teste e acessos externos (links autenticados de fornecedores a datasheets). Para além do levantamento, confirmar com o IT os objetos SAP concretos do fluxo (requisição, ordem de compra, master data de material) e o caminho para validar leitura e escrita em sandbox.</li>
     <li>Sessão com Comercial, Financeiro e Legal: comentários enviados para o Legal, documentação contratual adicional e casos de compra com e sem requisição SAP.</li>
     <li>Dias de consolidação: organizar o material recolhido, identificar as pessoas e os temas a aprofundar e marcar as sessões presenciais da semana 2.</li>
@@ -259,8 +242,8 @@ footer {
   <h2>Semana 2: 2 dias presenciais + 3 dias de consolidação</h2>
   <p>As sessões presenciais da semana 2 são marcadas a partir das pessoas e dos temas identificados na semana 1, no mesmo formato da semana 1.</p>
   <ul>
-    <li>Documentar o fluxo atual (as-is), incluindo as variantes, as principais exceções e as principais pessoas envolvidas: o papel de cada uma, o fluxo por persona, as ferramentas em que tocam e os pontos de ineficiência. Quantificar a baseline: tempo médio por ticket, intervenções manuais por ticket, número de revisões do mapa comparativo, tempo entre consulta e fecho, percentagem de tickets com criação de material novo e retrabalho causado por informação em falta no ticket inicial. Pessoas envolvidas: <span class="ph">[A completar: Alek / Gonçalo; pedimos o apoio da CJR se necessário]</span>.</li>
-    <li>Consolidar a lista de pontos de dor: bases de fornecedores fragmentadas entre SAP, SharePoint e Salesforce, mapa comparativo manual e dependência do email para a negociação.</li>
+    <li>Documentar o fluxo atual (as-is), incluindo as variantes, as principais exceções e as principais pessoas envolvidas: o papel de cada uma, o fluxo por persona, as ferramentas em que tocam e os pontos de ineficiência. Quantificar a baseline: tempo médio por ticket, número de revisões do mapa comparativo, tempo entre consulta e fecho, percentagem de tickets com criação de material novo e retrabalho causado por informação em falta no ticket inicial. Pessoas envolvidas: <span class="ph">[A completar: Alek / Gonçalo; pedimos o apoio da CJR se necessário]</span>.</li>
+    <li>Consolidar a lista de pain points: bases de fornecedores fragmentadas entre SAP, SharePoint e Salesforce, mapa comparativo manual e dependência do email para a negociação.</li>
     <li>Definir o âmbito do piloto: que fluxos avançam primeiro, quais os critérios de sucesso face à baseline e o corte entre o que fica humano e o que passa a ser agêntico: a equipa da CJR mantém as decisões de negócio (validação técnica e decisão comercial) e o trabalho manual é removido.</li>
     <li>Esboçar os milestones de entrega do piloto.</li>
     <li>Definir o plano de acessos para a implementação: que acessos são necessários, em que ambientes e qual o processo para os obter, para que nada bloqueie o arranque.</li>
@@ -275,16 +258,15 @@ footer {
   <ul>
     <li>Fluxo de procurement atual documentado e validado, incluindo as variantes e as principais exceções.</li>
     <li>Baseline quantificada que define o sucesso do piloto.</li>
-    <li>Âmbito do piloto fechado, com critérios e métricas de sucesso (FTE) e milestones de entrega.</li>
+    <li>Âmbito do piloto fechado, com critérios e métricas de sucesso e milestones.</li>
     <li>Mapa de sistemas (SAP, SharePoint, Salesforce, Forms) e plano de acessos, incluindo ambientes de sandbox/teste.</li>
-    <li>Lista de pontos de dor para orientar o desenho da solução.</li>
+    <li>Lista de pain points para orientar o desenho da solução.</li>
     <li>Responsável do workflow nomeado na CJR, com canais de comunicação e espaço de documentação partilhada em uso pelas duas equipas.</li>
     <li>Plano de implementação: proposta faseada de melhoria do procurement após o discovery, com fases, esforço e sequência.</li>
     <li>KPIs de impacto definidos no arranque, ligados à baseline, que no fim do piloto permitem demonstrar o impacto real do trabalho feito.</li>
   </ul>
 </section>
 
-<!-- ═══════════ Assets ═══════════ -->
 <section id="anexos">
   <h2>Anexos</h2>
   <p>Assets deste plano: o one-pager e o email ao cliente, disponíveis para download no repositório do projeto e incorporados abaixo.</p>
@@ -300,7 +282,7 @@ footer {
       <span class="tag">Estrutura</span>
       <h3>Duas semanas, mesmo formato</h3>
       <ul>
-        <li><strong>Semana 1:</strong> 2 dias presenciais (workshops) + 3 dias de consolidação; definição do working model; review session no fecho.</li>
+        <li><strong>Semana 1:</strong> 2 dias presenciais (workshops) + 3 dias de consolidação; kickoff, workshops do fluxo e working model; review session no fecho.</li>
         <li><strong>Semana 2:</strong> 2 dias presenciais (sessões marcadas a partir da semana 1) + 3 dias de consolidação; review session e sessão final com a liderança.</li>
       </ul>
     </div>
@@ -319,11 +301,11 @@ footer {
       <h3>Inputs para arrancar sem bloqueios</h3>
       <ul>
         <li>Responsável do workflow de Procurement nomeado.</li>
-        <li>Confirmação dos stakeholders que acompanham o projeto (a nossa lista é um pressuposto).</li>
+        <li>Confirmação dos intervenientes e responsáveis por sessão (a nossa lista é uma assunção).</li>
         <li>Disponibilidade das equipas e dias presenciais confirmados.</li>
         <li>Amostra de tickets recentes (Projeto e Armazém).</li>
         <li>Canais de comunicação e ferramentas definidos.</li>
-        <li>Pedidos de acesso sandbox (SAP/SharePoint) no dia 1 ou 2.</li>
+        <li>Pedidos de acesso sandbox (SAP/SharePoint) submetidos durante a semana.</li>
       </ul>
     </div>
     <div class="card">
@@ -331,8 +313,8 @@ footer {
       <h3>O que sai no fim</h3>
       <ul>
         <li>Fluxo as-is documentado e validado, com baseline quantificada.</li>
-        <li>Âmbito do piloto fechado, com critérios de sucesso e milestones.</li>
-        <li>Mapa de sistemas e plano de acessos, incluindo sandbox.</li>
+        <li>Âmbito do piloto fechado, com critérios e métricas de sucesso e milestones.</li>
+        <li>Mapa de sistemas e plano de acessos, incluindo sandbox; lista de pain points.</li>
         <li>KPIs de impacto definidos no arranque, ligados à baseline.</li>
         <li>Plano de implementação faseado: fases, esforço e sequência.</li>
       </ul>
@@ -344,16 +326,16 @@ footer {
     <p class="subj">Assunto: Plano de Discovery, duas semanas para fechar o âmbito do piloto de Procurement</p>
     <p>Olá <span class="ph">[nome]</span>,</p>
     <p>Espero que esteja tudo bem convosco. Enviamos o plano para as duas semanas de discovery, que marca o arranque do nosso trabalho conjunto no procurement.</p>
-    <p>Em resumo: durante duas semanas vamos compreender os vossos processos de procurement e identificar, em conjunto convosco, por onde faz mais sentido começar. Cada semana tem 2 dias presenciais com workshops e 3 dias de consolidação, e fecha com uma review session com os principais stakeholders. No fim, saímos com o fluxo atual documentado, uma baseline quantificada, o âmbito do piloto fechado, os KPIs de impacto definidos e um plano de implementação faseado. A implementação arranca logo na semana seguinte.</p>
+    <p>Em resumo: durante duas semanas vamos compreender os vossos processos de procurement e, em parceria, identificar por onde faz mais sentido começar. Cada semana tem 2 dias presenciais com workshops e 3 dias de consolidação, e fecha com uma review session com os principais stakeholders. No fim, saímos com o fluxo atual documentado, uma baseline quantificada, o âmbito do piloto fechado, os KPIs definidos e um plano de implementação faseado. A implementação arranca logo na semana seguinte.</p>
     <p>Para que tudo corra sem bloqueios, precisamos do vosso apoio em alguns pontos:</p>
     <ol>
-      <li><strong>Stakeholders do projeto:</strong> o plano inclui uma lista das pessoas que assumimos necessárias em cada sessão. Mais do que participantes, são os stakeholders que vão acompanhar o projeto e trabalhar connosco, durante o discovery e ao longo da implementação. Esta lista é um pressuposto da nossa parte; pedimos a vossa ajuda para confirmar quem vai acompanhar o projeto convosco e estar presente em cada sessão.</li>
+      <li><strong>Intervenientes e responsáveis:</strong> o plano inclui uma lista dos responsáveis e intervenientes que assumimos necessários em cada sessão. Esta lista é uma assunção da nossa parte; pedimos a vossa ajuda para confirmar quem deve estar presente em cada sessão.</li>
       <li><strong>Responsável do workflow:</strong> um responsável do workflow de Procurement nomeado do vosso lado, com ownership desde o primeiro dia.</li>
-      <li><strong>Disponibilidade das equipas:</strong> Procurement (P&amp;P), Comercial, Financeiro, Compliance, Qualidade, IT e Construção, nos dias das sessões.</li>
-      <li><strong>Amostra de tickets:</strong> tickets de Procurement recentes, de ponta a ponta, cobrindo compras de Projeto e de Armazém, incluindo pelo menos um ticket sem requisição SAP prévia e um caso de criação de um novo código de material.</li>
+      <li><strong>Disponibilidade das equipas:</strong> Procurement, Comercial, Financeiro, Compliance, Qualidade e IT, nos dias das sessões.</li>
+      <li><strong>Amostra de tickets:</strong> tickets de Procurement recentes, cobrindo compras de Projeto e de Armazém, incluindo pelo menos um ticket sem requisição SAP prévia e um caso de criação de um novo código de material.</li>
       <li><strong>Dias presenciais:</strong> confirmação dos dias presenciais em Leça da Palmeira.</li>
       <li><strong>Comunicação e ferramentas:</strong> onde comunicamos no dia a dia (Teams/Slack, email) e onde fica a documentação partilhada do projeto.</li>
-      <li><strong>Acessos sandbox (SAP/SharePoint):</strong> pedimos que os pedidos de acesso sejam submetidos logo no dia 1 ou 2 da primeira semana. Estes circuitos de aprovação demoram semanas e queremos garantir que nada atrasa o arranque da implementação.</li>
+      <li><strong>Acessos sandbox (SAP/SharePoint):</strong> pedimos que os pedidos de acesso sejam submetidos durante a primeira semana, para que nada bloqueie o arranque da implementação.</li>
     </ol>
     <p>Qualquer dúvida sobre o plano, estamos inteiramente disponíveis para falar antes do kickoff.</p>
     <p>Um abraço,<br><span class="ph">[Nome]</span><br>synvert xgeeks</p>
