@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CJR · Plano de Discovery</title>
+<meta name="description" content="Plano de Discovery de 2 semanas para o procurement da CJR Renewables, por synvert xgeeks.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg:#fbfdfc; --bg-2:#f0f6f4; --bg-3:#e6efec;
+  --ink:#15211f; --ink-2:#3d504d; --ink-3:#5b6f6c;
+  --line:#dce7e4; --line-2:#c9d9d5;
+  --dark:#002E33; --dark-2:#053b40;
+  --accent:#00EBB6; --accent-text:#007a63; --accent-deep:#064a40;
+  --warm:#e0562b; --band-ink:#ffffff;
+  --card-shadow:0 1px 2px rgba(0,46,51,0.06);
+}
+:root:not([data-theme="light"]) { }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#03161a; --bg-2:#082023; --bg-3:#0d2a2e;
+    --ink:#f2f7f6; --ink-2:#c7d8d4; --ink-3:#8fa5a1;
+    --line:#143034; --line-2:#1f4247;
+    --dark:#021014; --dark-2:#062a2f;
+    --accent:#00EBB6; --accent-text:#2fd9ae; --accent-deep:#064a40;
+    --warm:#ff966e; --band-ink:#ffffff;
+    --card-shadow:none;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#03161a; --bg-2:#082023; --bg-3:#0d2a2e;
+  --ink:#f2f7f6; --ink-2:#c7d8d4; --ink-3:#8fa5a1;
+  --line:#143034; --line-2:#1f4247;
+  --dark:#021014; --dark-2:#062a2f;
+  --accent:#00EBB6; --accent-text:#2fd9ae; --accent-deep:#064a40;
+  --warm:#ff966e; --band-ink:#ffffff;
+  --card-shadow:none;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+@media (prefers-reduced-motion:reduce){ html { scroll-behavior:auto; } }
+body {
+  background:var(--bg); color:var(--ink);
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size:16px; line-height:1.65;
+}
+.band {
+  background:var(--dark); color:var(--band-ink);
+  border-bottom:3px solid var(--accent);
+}
+.band-in {
+  max-width:960px; margin:0 auto; padding:18px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.band img { display:block; height:34px; width:auto; }
+.band .xg { height:40px; }
+.hero { max-width:960px; margin:0 auto; padding:52px 24px 8px; }
+.kicker {
+  font-family:"DM Mono", ui-monospace, monospace; font-size:12px;
+  letter-spacing:0.18em; text-transform:uppercase; color:var(--accent-text);
+  margin-bottom:14px;
+}
+h1 {
+  font-family:"Jost", -apple-system, sans-serif; font-weight:600;
+  font-size:clamp(30px, 5vw, 46px); line-height:1.08; letter-spacing:-0.02em;
+  color:var(--ink); text-wrap:balance; margin-bottom:14px;
+}
+.lede { font-size:18px; color:var(--ink-2); max-width:62ch; }
+main { max-width:960px; margin:0 auto; padding:8px 24px 40px; }
+section { margin-top:44px; }
+h2 {
+  font-family:"Jost", sans-serif; font-weight:600; font-size:24px;
+  letter-spacing:-0.01em; color:var(--ink); margin-bottom:6px;
+  padding-bottom:8px; border-bottom:2px solid var(--accent);
+  display:inline-block; text-wrap:balance;
+}
+h3 {
+  font-family:"Jost", sans-serif; font-weight:600; font-size:17px;
+  color:var(--ink); margin:22px 0 6px;
+}
+p { margin:10px 0; max-width:70ch; color:var(--ink-2); }
+ul { margin:10px 0 10px 22px; max-width:70ch; }
+li { margin:7px 0; color:var(--ink-2); }
+li::marker { color:var(--accent-text); }
+strong { color:var(--ink); }
+.grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; margin-top:18px; }
+@media (max-width:700px){ .grid { grid-template-columns:1fr; } }
+.card {
+  background:var(--bg-2); border:1px solid var(--line); border-radius:6px;
+  padding:18px 20px; box-shadow:var(--card-shadow);
+  border-top:2px solid var(--accent);
+}
+.card h3 { margin:0 0 8px; font-size:15px; }
+.card ul { margin:4px 0 0 18px; }
+.card li { font-size:14.5px; margin:5px 0; }
+.card p { font-size:14.5px; margin:4px 0; }
+.tag {
+  font-family:"DM Mono", ui-monospace, monospace; font-size:10.5px;
+  letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-text);
+  display:block; margin-bottom:6px;
+}
+.ph { color:var(--warm); font-weight:600; }
+.note {
+  font-size:14px; color:var(--ink-3); font-style:italic;
+  border-left:3px solid var(--line-2); padding-left:12px; margin:14px 0; max-width:68ch;
+}
+table { border-collapse:collapse; width:100%; margin:16px 0; font-size:14.5px; }
+.tblwrap { overflow-x:auto; }
+th {
+  font-family:"Jost", sans-serif; font-weight:600; text-align:left;
+  background:var(--dark); color:var(--band-ink);
+  padding:9px 12px; font-size:13px; letter-spacing:0.04em;
+}
+td { padding:9px 12px; border:1px solid var(--line); color:var(--ink-2); vertical-align:top; }
+tr:nth-child(even) td { background:var(--bg-2); }
+.agenda { display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; margin:16px 0; }
+@media (max-width:700px){ .agenda { grid-template-columns:1fr; } }
+.day {
+  background:var(--bg-2); border:1px solid var(--line); border-radius:6px; overflow:hidden;
+}
+.day-h {
+  background:var(--dark); color:var(--band-ink); padding:8px 16px;
+  font-family:"Jost", sans-serif; font-weight:600; font-size:14px; letter-spacing:0.03em;
+}
+.day ul { margin:10px 18px 12px 34px; }
+.day li { font-size:14.5px; margin:5px 0; }
+.slot {
+  font-family:"DM Mono", ui-monospace, monospace; font-size:10.5px;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--accent-text);
+}
+.assets { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:18px; }
+@media (max-width:700px){ .assets { grid-template-columns:1fr; } }
+.asset {
+  display:block; background:var(--bg-2); border:1px solid var(--line); border-radius:6px;
+  padding:16px 18px; text-decoration:none; color:var(--ink);
+  border-top:2px solid var(--accent); transition:border-color 160ms, transform 160ms;
+}
+.asset:hover { border-color:var(--accent-text); }
+.asset:focus-visible { outline:2px solid var(--accent-text); outline-offset:2px; }
+.asset b { font-family:"Jost", sans-serif; font-weight:600; font-size:15px; display:block; margin-bottom:4px; color:var(--ink); }
+.asset span { font-size:13.5px; color:var(--ink-3); }
+.emailbox {
+  background:var(--bg-2); border:1px solid var(--line); border-radius:6px;
+  padding:24px 26px; margin-top:16px; max-width:none;
+}
+.emailbox p, .emailbox ol { max-width:none; font-size:15px; }
+.emailbox ol { margin:10px 0 10px 22px; }
+.emailbox ol li { margin:7px 0; color:var(--ink-2); }
+.emailbox .subj { font-weight:600; color:var(--ink); }
+footer {
+  background:var(--dark); color:var(--band-ink); margin-top:56px;
+  border-top:3px solid var(--accent);
+}
+.foot-in {
+  max-width:960px; margin:0 auto; padding:24px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  font-size:13.5px;
+}
+.foot-in img { height:26px; width:auto; display:block; opacity:0.95; }
+</style>
+</head>
+<body>
+
+<header class="band">
+  <div class="band-in">
+    <img class="xg" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FtYWRhXzEiIGRhdGEtbmFtZT0iQ2FtYWRhIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDIzNyA5OCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbC1ydWxlOiBldmVub2RkOwogICAgICB9CgogICAgICAuY2xzLTEsIC5jbHMtMiB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQoKICAgICAgLmNscy0xLCAuY2xzLTIsIC5jbHMtMyB7CiAgICAgICAgc3Ryb2tlLXdpZHRoOiAwcHg7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogIzAwZWJiNjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODkuMDYsNzEuOGMuNDEtLjQxLDEuMDgtLjQxLDEuNDksMGw4LjI2LDguMjZjLjQxLjQxLjQxLDEuMDgsMCwxLjQ5bC00LjMzLDQuMzNjLS40MS40MS0xLjA4LjQxLTEuNDksMGwtOC4yNi04LjI3Yy0uNDEtLjQxLS40MS0xLjA4LDAtMS40OWw0LjMzLTQuMzNaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtOTguODEsNjUuNjZjLjQxLjQxLjQxLDEuMDgsMCwxLjQ5bC0xOC43MywxOC43M2MtLjQxLjQxLTEuMDguNDEtMS40OSwwbC00LjMzLTQuMzNjLS40MS0uNDEtLjQxLTEuMDgsMC0xLjQ5bDE4LjczLTE4LjczYy40MS0uNDEsMS4wOC0uNDEsMS40OSwwbDQuMzMsNC4zM1oiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im03OC42LDYxLjM0Yy40MS0uNDEsMS4wOC0uNDEsMS40OSwwbC44Ni44NmMyLjE2LDIuMTYsMi4xNiw1LjY3LDAsNy44NGwtMS4xNiwxLjE2Yy0uNDEuNDEtMS4wOC40MS0xLjQ5LDBsLTQuMDQtNC4wNGMtLjQxLS40MS0uNDEtMS4wOCwwLTEuNDlsNC4zMy00LjMzWiIvPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMjIwLjgyLDY4LjM2YzAtMS4xNC45NS0xLjk1LDIuMTQtMS45NSwxLjAzLDAsMS44LjQ1LDIuMjgsMS4zLjI5LjUxLjg0Ljg3LDEuNDEuNzJsNC4xNC0xLjA0Yy41OS0uMTUuOTQtLjc2LjctMS4zMS0xLjM3LTMuMTEtNC40Ny01LjA2LTguNDMtNS4wNi01LjI5LDAtOC44NiwzLjYyLTguODYsNy43NywwLDguNzcsMTEuMjksNS45MSwxMS4yOSw5LjYyLDAsMS40OC0xLjE5LDIuMjQtMi42MiwyLjI0cy0yLjY1LS43My0zLjM2LTIuMDljLS4yOC0uNTMtLjg2LS44Ni0xLjQzLS42OWwtNC4xNCwxLjI1Yy0uNTQuMTYtLjg3LjczLS42NiwxLjI2LDEuNDIsMy42NCw1LjQzLDUuNzEsOS41MSw1LjcxLDQuODEsMCw5LjQzLTMuMTQsOS40My04LjA1LDAtOC45Ni0xMS4zOS02LjE1LTExLjM5LTkuNjdaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0yMDMuOTEsNzMuMzZjLS4zMi0uNDEtLjMtLjk5LjA0LTEuMzdsNy43NS04LjYxYy42Mi0uNjkuMTMtMS43OC0uNzktMS43OGgtNS42NWMtLjMxLDAtLjYuMTMtLjguMzdsLTYuNTgsNy41OGMtLjY1Ljc0LTEuODcuMjktMS44Ny0uN3YtMTMuODdjMC0uNTktLjQ4LTEuMDctMS4wNy0xLjA3aC01LjExYy0uNTksMC0xLjA3LjQ4LTEuMDcsMS4wN3YyOS40N2MwLC41OS40OCwxLjA3LDEuMDcsMS4wN2g1LjExYy41OSwwLDEuMDctLjQ4LDEuMDctMS4wN3YtNy4zMmMwLTEuMDEsMS4yNy0xLjQ1LDEuOS0uNjZsNi44OCw4LjY1Yy4yLjI1LjUxLjQuODMuNGg1LjcyYy44OSwwLDEuMzktMS4wMy44My0xLjczbC04LjI3LTEwLjQzWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMTcyLjY5LDYxLjAzYy02LjU4LDAtMTIuMzQsNS4yOS0xMi4zNCwxMi41M3M1Ljc3LDEyLjUzLDEyLjUzLDEyLjUzYzQuMjcsMCw3Ljk3LTEuNzksMTAuMzEtNS4wMi4zMy0uNDYuMTktMS4wOS0uMjctMS40MWwtMy4zNy0yLjMzYy0uNDktLjM0LTEuMTctLjItMS41NC4yNy0xLjI0LDEuNjEtMi43NCwyLjU4LTUuMTMsMi41OHMtNC4zNy0xLjIzLTUuMzctMy4zOWMtLjI5LS42My4yMi0xLjI4LjkxLTEuMjhoMTUuMjJjLjU3LDAsMS4wMy0uNDQsMS4wNC0xLjAxLjA2LTcuNzgtNC41LTEzLjQ4LTExLjk5LTEzLjQ4Wm0zLjg1LDkuOTZoLTcuNzVjLS43MywwLTEuMjQtLjcyLS44Ni0xLjM0LDEuMDYtMS43NSwyLjg0LTIuNzYsNC44Mi0yLjc2LDIuNDgsMCw0LjAyLDEuMzIsNC43LDIuOS4yNi42LS4yNSwxLjItLjksMS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMTQ1LjUyLDYxLjAzYy02LjU4LDAtMTIuMzQsNS4yOS0xMi4zNCwxMi41M3M1Ljc3LDEyLjUzLDEyLjUzLDEyLjUzYzQuMjcsMCw3Ljk2LTEuNzksMTAuMzEtNS4wMi4zMy0uNDYuMTktMS4wOS0uMjctMS40MWwtMy4zNy0yLjMzYy0uNS0uMzQtMS4xNy0uMi0xLjU0LjI3LTEuMjQsMS42MS0yLjc0LDIuNTgtNS4xMywyLjU4cy00LjM3LTEuMjMtNS4zNy0zLjM5Yy0uMjktLjYzLjIyLTEuMjguOTEtMS4yOGgxNS4yMmMuNTcsMCwxLjA0LS40NCwxLjA0LTEuMDEuMDYtNy43OC00LjUtMTMuNDgtMTEuOTktMTMuNDhabTMuODQsOS45NmgtNy43NWMtLjczLDAtMS4yNC0uNzItLjg2LTEuMzQsMS4wNi0xLjc1LDIuODQtMi43Niw0LjgyLTIuNzYsMi40OCwwLDQuMDIsMS4zMiw0LjcsMi45LjI2LjYtLjI1LDEuMi0uOSwxLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0xMjguMTMsNjEuNmgtNS40NWMtLjQsMC0uNzMuMzItLjczLjczLDAsLjY5LS45NywxLjA2LTEuNTIuNjQtMS41MS0xLjE0LTMuNTYtMS45NC01LjkxLTEuOTQtNi41MywwLTExLjgyLDUuMzgtMTEuODIsMTIuNTNzNS4yOSwxMi41MywxMS44MiwxMi41M2MxLjk4LDAsMy43NS0uNTcsNS4xNi0xLjQzLjg1LS41MiwyLjI4LjA2LDIuMjgsMS4wNSwwLDQuMTktMi41Nyw2LjM4LTUuOTYsNi4zOC0yLjc0LDAtNC44MS0xLjM4LTUuNDUtMy43Mi0uMTQtLjUzLS41OS0uOTUtMS4xNC0uOTVoLTUuMDdjLS42MSwwLTEuMS41MS0xLjAxLDEuMTEuODQsNS44Nyw2LjI0LDkuNDcsMTIuNTcsOS40Nyw3LjA1LDAsMTMuMjktNC44MSwxMy4yOS0xMi41OHYtMjIuNzZjMC0uNTktLjQ4LTEuMDctMS4wNy0xLjA3Wm0tMTIuMDgsMTguMjVjLTMuNTMsMC02LjE1LTIuNzItNi4xNS02LjI5czIuNjItNi4yOSw2LjE1LTYuMjksNi4xLDIuNzIsNi4xLDYuMjktMi42Miw2LjI5LTYuMSw2LjI5WiIvPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTIyMC44Miw2OC4zNmMwLTEuMTQuOTUtMS45NSwyLjE0LTEuOTUsMS4wMywwLDEuOC40NSwyLjI4LDEuMy4yOS41MS44NC44NywxLjQxLjcybDQuMTQtMS4wNGMuNTktLjE1Ljk0LS43Ni43LTEuMzEtMS4zNy0zLjExLTQuNDctNS4wNi04LjQzLTUuMDYtNS4yOSwwLTguODYsMy42Mi04Ljg2LDcuNzcsMCw4Ljc3LDExLjI5LDUuOTEsMTEuMjksOS42MiwwLDEuNDgtMS4xOSwyLjI0LTIuNjIsMi4yNHMtMi42NS0uNzMtMy4zNi0yLjA5Yy0uMjgtLjUzLS44Ni0uODYtMS40My0uNjlsLTQuMTQsMS4yNWMtLjU0LjE2LS44Ny43My0uNjYsMS4yNiwxLjQyLDMuNjQsNS40Myw1LjcxLDkuNTEsNS43MSw0LjgxLDAsOS40My0zLjE0LDkuNDMtOC4wNSwwLTguOTYtMTEuMzktNi4xNS0xMS4zOS05LjY3WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMjAzLjkxLDczLjM2Yy0uMzItLjQxLS4zLS45OS4wNC0xLjM3bDcuNzUtOC42MWMuNjItLjY5LjEzLTEuNzgtLjc5LTEuNzhoLTUuNjVjLS4zMSwwLS42LjEzLS44LjM3bC02LjU4LDcuNThjLS42NS43NC0xLjg3LjI5LTEuODctLjd2LTEzLjg3YzAtLjU5LS40OC0xLjA3LTEuMDctMS4wN2gtNS4xMWMtLjU5LDAtMS4wNy40OC0xLjA3LDEuMDd2MjkuNDdjMCwuNTkuNDgsMS4wNywxLjA3LDEuMDdoNS4xMWMuNTksMCwxLjA3LS40OCwxLjA3LTEuMDd2LTcuMzJjMC0xLjAxLDEuMjctMS40NSwxLjktLjY2bDYuODgsOC42NWMuMi4yNS41MS40LjgzLjRoNS43MmMuODksMCwxLjM5LTEuMDMuODMtMS43M2wtOC4yNy0xMC40M1oiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTE3Mi42OSw2MS4wM2MtNi41OCwwLTEyLjM0LDUuMjktMTIuMzQsMTIuNTNzNS43NywxMi41MywxMi41MywxMi41M2M0LjI3LDAsNy45Ny0xLjc5LDEwLjMxLTUuMDIuMzMtLjQ2LjE5LTEuMDktLjI3LTEuNDFsLTMuMzctMi4zM2MtLjQ5LS4zNC0xLjE3LS4yLTEuNTQuMjctMS4yNCwxLjYxLTIuNzQsMi41OC01LjEzLDIuNThzLTQuMzctMS4yMy01LjM3LTMuMzljLS4yOS0uNjMuMjItMS4yOC45MS0xLjI4aDE1LjIyYy41NywwLDEuMDMtLjQ0LDEuMDQtMS4wMS4wNi03Ljc4LTQuNS0xMy40OC0xMS45OS0xMy40OFptMy44NSw5Ljk2aC03Ljc1Yy0uNzMsMC0xLjI0LS43Mi0uODYtMS4zNCwxLjA2LTEuNzUsMi44NC0yLjc2LDQuODItMi43NiwyLjQ4LDAsNC4wMiwxLjMyLDQuNywyLjkuMjYuNi0uMjUsMS4yLS45LDEuMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTE0NS41Miw2MS4wM2MtNi41OCwwLTEyLjM0LDUuMjktMTIuMzQsMTIuNTNzNS43NywxMi41MywxMi41MywxMi41M2M0LjI3LDAsNy45Ni0xLjc5LDEwLjMxLTUuMDIuMzMtLjQ2LjE5LTEuMDktLjI3LTEuNDFsLTMuMzctMi4zM2MtLjUtLjM0LTEuMTctLjItMS41NC4yNy0xLjI0LDEuNjEtMi43NCwyLjU4LTUuMTMsMi41OHMtNC4zNy0xLjIzLTUuMzctMy4zOWMtLjI5LS42My4yMi0xLjI4LjkxLTEuMjhoMTUuMjJjLjU3LDAsMS4wNC0uNDQsMS4wNC0xLjAxLjA2LTcuNzgtNC41LTEzLjQ4LTExLjk5LTEzLjQ4Wm0zLjg0LDkuOTZoLTcuNzVjLS43MywwLTEuMjQtLjcyLS44Ni0xLjM0LDEuMDYtMS43NSwyLjg0LTIuNzYsNC44Mi0yLjc2LDIuNDgsMCw0LjAyLDEuMzIsNC43LDIuOS4yNi42LS4yNSwxLjItLjksMS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMTI4LjEzLDYxLjZoLTUuNDVjLS40LDAtLjczLjMyLS43My43MywwLC42OS0uOTcsMS4wNi0xLjUyLjY0LTEuNTEtMS4xNC0zLjU2LTEuOTQtNS45MS0xLjk0LTYuNTMsMC0xMS44Miw1LjM4LTExLjgyLDEyLjUzczUuMjksMTIuNTMsMTEuODIsMTIuNTNjMS45OCwwLDMuNzUtLjU3LDUuMTYtMS40My44NS0uNTIsMi4yOC4wNiwyLjI4LDEuMDUsMCw0LjE5LTIuNTcsNi4zOC01Ljk2LDYuMzgtMi43NCwwLTQuODEtMS4zOC01LjQ1LTMuNzItLjE0LS41My0uNTktLjk1LTEuMTQtLjk1aC01LjA3Yy0uNjEsMC0xLjEuNTEtMS4wMSwxLjExLjg0LDUuODcsNi4yNCw5LjQ3LDEyLjU3LDkuNDcsNy4wNSwwLDEzLjI5LTQuODEsMTMuMjktMTIuNTh2LTIyLjc2YzAtLjU5LS40OC0xLjA3LTEuMDctMS4wN1ptLTEyLjA4LDE4LjI1Yy0zLjUzLDAtNi4xNS0yLjcyLTYuMTUtNi4yOXMyLjYyLTYuMjksNi4xNS02LjI5LDYuMSwyLjcyLDYuMSw2LjI5LTIuNjIsNi4yOS02LjEsNi4yOVoiLz4KICA8L2c+CiAgPHBhdGggY2xhc3M9ImNscy0zIiBkPSJtMjguNjIsMTMuMjhsMTQuMTEsMjQuOTdjLjM4LjY0LjM4LDEuMjEuMDYsMS43OWwtMTIuMDcsMjIuMjljLS40NS44OS0uMDYsMS41My44OSwxLjUzaDguNDljLjg5LDAsMS40Ny0uMzgsMS44NS0xLjE1bDI1LjkzLTQ5LjQzYy41Ny0xLjE1LjA2LTEuOTItMS4xNS0xLjkyaC04LjM3Yy0uNywwLTEuMTUuMzItMS40Ny45NmwtNy4zNCwxNC42OWMtLjI2LjUxLS41MS43LS44OS43cy0uNjQtLjE5LS44OS0uN2wtNy43OS0xNC43NWMtLjMyLS42NC0uODMtLjg5LTEuNTMtLjg5aC04Ljc1Yy0xLjIxLDAtMS43Mi43Ny0xLjA5LDEuOTJabTE5MS42NCwzMy4wOGg4LjA1Yy44MywwLDEuMjgtLjQ1LDEuMjgtMS4yOHYtMjIuNDFjMC0uODMuNDUtMS4yOCwxLjI4LTEuMjhoNC40N2MuODMsMCwxLjI4LS40NSwxLjI4LTEuMjh2LTcuNDdjMC0uODMtLjQ1LTEuMjgtMS4yOC0xLjI4aC00LjQ3Yy0uODMsMC0xLjI4LS40NS0xLjI4LTEuMjhWMS4yOGMwLS44My0uNDUtMS4yOC0xLjI4LTEuMjhoLTguMDVjLS44MywwLTEuMjguNDUtMS4yOCwxLjI4djguODFjMCwuODMtLjQ1LDEuMjgtMS4yOCwxLjI4aC0yLjc1Yy0uODMsMC0xLjI4LjQ1LTEuMjgsMS4yOHY3LjQ3YzAsLjgzLjQ1LDEuMjgsMS4yOCwxLjI4aDIuNzVjLjgzLDAsMS4yOC40NSwxLjI4LDEuMjh2MjIuNDFjMCwuODMuNDUsMS4yOCwxLjI4LDEuMjhabS0xNi43OS0yMy45NWgyLjU1YzMsMCw1LjExLTIuMTEsNS4xMS01LjExdi0xLjE1YzAtMy0yLjExLTUuMTEtNS4xMS01LjExaC0yLjU1Yy0zLDAtNS4xMSwyLjExLTUuMTEsNS4xMXYxLjE1YzAsMywyLjExLDUuMTEsNS4xMSw1LjExWm0tMTYuOTksMjMuOTVoOC4wNWMuODMsMCwxLjI4LS40NSwxLjI4LTEuMjhWMTIuNjRjMC0uODMtLjQ1LTEuMjgtMS4yOC0xLjI4aC04LjA1Yy0uODMsMC0xLjI4LjQ1LTEuMjgsMS4yOHYzMi40NGMwLC44My40NSwxLjI4LDEuMjgsMS4yOFptLTMwLjcyLTIyLjQxYzEuMjEtMyw0LjM0LTQuODUsNy41NC00Ljg1LDMuOTYsMCw2LjI2LDIuMzYsNy4wOSw0LjkyLjE5LjctLjEzLDEuMDktLjc3LDEuMDloLTEzLjIyYy0uNTcsMC0uOTYtLjQ1LS42NC0xLjE1Wm03LjczLDIzLjI0YzYuMzIsMCwxMS44MS0yLjY4LDE1LjI2LTcuNTQuNDUtLjY0LjMyLTEuMjEtLjM4LTEuNzJsLTUuMzYtMy43Yy0uNy0uNTEtMS4yOC0uMzItMS43OS4zMi0xLjkyLDIuNDktNC4wOSw0LjAyLTcuNzMsNC4wMi0zLjgzLDAtNy4wMi0yLjExLTguMjQtNS43NS0uMjYtLjY0LjA2LTEuMDkuNzctMS4wOWgyMy4zN2MuNzcsMCwxLjM0LS40NSwxLjM0LTEuMjguMTktMTEuNDktNi40NS0xOS45Mi0xNy41LTE5LjkyLTkuNjQsMC0xOC4wNyw3LjA5LTE4LjA3LDE4LjMzLDAsMTAuNTQsNy43OSwxOC4zMywxOC4zMywxOC4zM1ptLTQwLjU1LS44M2g2LjA3Yy43LDAsMS4xNS0uMjYsMS40Ny0uOTZsMTQuODItMzIuMThjLjUxLTEuMTUsMC0xLjg1LTEuMjEtMS44NWgtNy43OWMtLjcsMC0xLjE1LjI2LTEuNDcuOTZsLTcuODUsMTcuODhjLS4yNS41Ny0uNTEuNy0uODMuN3MtLjU3LS4xMy0uODMtLjdsLTcuODYtMTcuODhjLS4zMi0uNy0uNzctLjk2LTEuNDctLjk2aC04LjExYy0xLjIxLDAtMS43Mi43LTEuMjEsMS44NWwxNC44MiwzMi4xOGMuMzIuNy43Ny45NiwxLjQ3Ljk2Wm0tNTAuMTksMGg4LjA1Yy44MywwLDEuMjgtLjQ1LDEuMjgtMS4yOHYtMTcuOTRjMC00LjE1LDIuMzYtNy4xNSw2LjMyLTcuMTVzNS44MSwyLjY4LDUuODEsNi4zMnYxOC43N2MwLC44My40NSwxLjI4LDEuMjgsMS4yOGg4LjA1Yy44MywwLDEuMjgtLjQ1LDEuMjgtMS4yOHYtMjEuNzFjMC03LjYtNC43OS0xMi44NC0xMi41Mi0xMi44NC0yLjk0LDAtNC45OC44OS03LjE1LDIuMzYtLjgzLjU3LTEuMzQuODktMS44NS44OS0uNzcsMC0xLjE1LS40NS0xLjIxLTEuMTUtLjA2LS44My0uMzgtMS4yOC0xLjI4LTEuMjhoLTguMDVjLS44MywwLTEuMjguNDUtMS4yOCwxLjI4djMyLjQ0YzAsLjgzLjQ1LDEuMjgsMS4yOCwxLjI4Wm0tNTguMzcuODNjOC4zNywwLDEzLjkyLTQuNjYsMTMuOTItMTEuODgsMC04LjE3LTYuMjYtOS42NC0xMS4xOC0xMC45Mi0zLjA3LS43Ny01LjYyLTEuMjgtNS42Mi0zLjMyLDAtMS42LDEuNC0yLjQzLDMuMDctMi40MywxLjUzLDAsMi42OC44MywzLjM4LDIuMTcuNDUuODMuOTYsMS4wOSwxLjk4LjgzbDYuNDUtMS42NmMuOTYtLjI2LDEuMjgtLjg5Ljk2LTEuNzktMS45Mi00LjY2LTYuNjQtNy42Ni0xMi41OC03LjY2LTcuNzksMC0xMy4wOSw0LjczLTEzLjA5LDExLjA1LDAsNy43Myw2LDkuMzIsMTAuNzMsMTAuNjYsMy4yNi45Niw1Ljk0LDEuNTMsNS45NCwzLjgzLDAsMS45Mi0xLjUzLDIuOTQtMy43LDIuOTRzLTMuODMtMS4xNS01LjA0LTMuMzhjLS40NS0uODMtMS4wMi0xLjA5LTIuMDQtLjc3bC02LjM5LDEuOTJjLS43Ny4yNi0xLjIxLjk2LS44OSwxLjc5LDEuOTgsNS40OSw4LjA1LDguNjIsMTQuMTEsOC42MloiLz4KPC9zdmc+" alt="synvert xgeeks">
+    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjA2IiBoZWlnaHQ9IjcyIiB2aWV3Qm94PSIwIDAgMjA2IDcyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTM4LjE5MDQgNDYuODkzN0wxMi44Mjc0IDIxLjcwMjlDMTIuODI3NCAyMS43MDI5IDYuODQxODQgMTYuNDQ5NCA4LjczNjU0IDEwLjkzNzVDOC43MzY1NCAxMC45Mzc1IDcuNjYwMDEgMTEuNTgzNSA2LjU0MDQxIDE2LjgzNjlDNS4zNzc3NiAyMi4xMzM1IDAuNDI1NzIxIDM5Ljc0NTUgMC40MjU3MjEgMzkuNzQ1NUMwLjQyNTcyMSAzOS43NDU1IC0xLjIxMDYxIDQ0LjQ4MjIgMS45MzI4NiA0Ny42MjU3QzUuMDc2MzMgNTAuNzY5MiAyMi41NTkyIDY4LjEyMjkgMjIuNTU5MiA2OC4xMjI5QzIyLjU1OTIgNjguMTIyOSAyNC40NTM5IDcwLjQ0ODIgMjcuMzM5IDY5Ljk3NDVDMjguMjAwMiA2OS44NDUzIDI4LjcxNjkgNjkuNDE0NyAyOS43OTM1IDY4LjU5NjVDMzQuMDEzNSA2NS4zMjM5IDM1LjkwODIgNTUuNzIxMiAzNy42MzA2IDQ5LjEzMjhMMzguMTkwNCA0Ni44OTM3WiIgZmlsbD0iI0ZDQjAyNiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTM5Ljc2NjggMC41NTk3OTZMMTIuOTM5NiA3Ljc1MTAyQzEyLjkzOTYgNy43NTEwMiAxMC42MTQzIDguNjEyMjUgOS40MDg2MyAxMC42MzYxQzcuNTEzOTMgMTYuMTQ4IDEzLjQ5OTQgMjEuNDAxNCAxMy40OTk0IDIxLjQwMTRMMjMuNzA1IDMxLjUyMDhMNDQuMjQ1MiAyNi4xODEyTDU5Ljc5MDMgMjIuMDA0M0M1OS43OTAzIDIyLjAwNDMgNjcuMjM5OSAxOS45MzczIDcwLjM4MzMgMjcuMjE0N0M3MC4zODMzIDI3LjIxNDcgNzAuNzcwOSAyNC4zMjk2IDY4LjQ0NTYgMjIuMDQ3M0M2NS41NjA1IDE5LjIwNTMgNDguMDc3NiAxLjgwODU3IDQ4LjA3NzYgMS44MDg1N0M0OC4wNzc2IDEuODA4NTcgNDUuODM4NCAwIDQyLjY5NSAwQzQxLjc5MDcgMCA0MC44MDAzIDAuMTcyMjQ1IDM5Ljc2NjggMC41NTk3OTZaIiBmaWxsPSIjMUUzRUY2Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNTkuOTc5NCAyMy4yOTYxTDQ0LjQzNDMgMjcuNDczMUwzOC40OTE5IDUwLjE2NjNDMzguMjU5OCA1MS4wNTM5IDM4LjAyNTQgNTEuOTk2MiAzNy43ODMxIDUyLjk3MDRDMzYuMjI2NyA1OS4yMjcyIDM0LjM0MzQgNjYuNzk4MiAzMC42NTQ3IDY5LjYzQzI5LjU3ODIgNzAuNDkxMiAyOS4wNjE1IDcwLjg3ODggMjguMTU3MiA3MS4wMDc5QzI4LjE1NzIgNzEuMDA3OSAzMS4yNTc2IDcwLjc0OTYgMzIuNzY0NyA3MC4zMTlDMzYuODk4NiA2OS4xNTYzIDUxLjc1NDcgNjUuMDY1NSA1Ni41MzQ1IDYzLjkwMjhDNjIuMTMyNSA2Mi41MjQ5IDYzLjE2NTkgNTguMTMyNiA2My4xNjU5IDU4LjEzMjZMNjQuODQ1MyA1Mi4xMDQxQzY0Ljg0NTMgNTIuMTA0MSA2Ni40Mzg2IDQ1LjY0NDkgNjkuODgzNSAzMy4xMTQxQzcwLjQwMDIgMzEuMjYyNCA3MC41NzI1IDI5Ljc1NTMgNzAuNTI5NCAyOC41MDY1QzY4LjUwNTUgMjMuODU1OSA2NC43NTkyIDIzLjAzNzggNjIuMzA0NyAyMy4wMzc4QzYwLjkyNjggMjMuMDM3OCA1OS45Nzk0IDIzLjI5NjEgNTkuOTc5NCAyMy4yOTYxWk05NS4yNDY2IDY3LjMwNDdMOTEuOTMwOCA2Mi44Njk0SDg4LjY1ODJWNjcuMzQ3N0g4Ny4zNjYzVjU1Ljg5MzVIOTIuMzE4NEM5NC44NTkgNTUuODkzNSA5Ni40NTIzIDU3LjIyODQgOTYuNDUyMyA1OS4yOTUzQzk2LjQ1MjMgNjEuMjMzMSA5NS4xNjA0IDYyLjMwOTYgOTMuMzUxOSA2Mi42NTQxTDk2Ljg4MjkgNjcuMzQ3N0w5NS4yNDY2IDY3LjMwNDdaTTkyLjE0NjEgNTcuMDU2MUg4OC42MTUxVjYxLjcwNjdIOTIuMTQ2MUM5My44Njg2IDYxLjcwNjcgOTUuMTE3NCA2MC44MDI0IDk1LjA3NDMgNTkuMzM4NEM5NS4wNzQzIDU3Ljg3NDMgOTMuOTk3OCA1Ny4wNTYxIDkyLjE0NjEgNTcuMDU2MVpNMTAwLjQ1NyA1Ny4wMTMxSDEwNy40NzZWNTUuODUwNEg5OS4xNjUxVjY3LjMwNDdIMTA3LjU2MlY2Ni4xNDJIMTAwLjQ1N1Y2Mi4xMzc0TDEwNi43NDQgNjIuMDk0M1Y2MC45MzE2SDEwMC40NTdWNTcuMDEzMVpNMTE4LjU4NiA1NS44MDczSDExOS44NzhWNjcuMzA0N0gxMTguODQ0TDExMS40MzggNTcuODc0M1Y2Ny4zMDQ3SDExMC4xNDZWNTUuODUwNEwxMTEuMzUxIDU1LjgwNzNMMTE4LjU4NiA2NS4wMjI0VjU1LjgwNzNaTTEyNC4zOTkgNTcuMDEzMUwxMzEuNDE4IDU2Ljk3VjU1LjgwNzNIMTIzLjEwN1Y2Ny4zMDQ3TDEzMS41MDQgNjcuMjYxNlY2Ni4wOTlIMTI0LjM5OVY2Mi4wOTQzSDEzMC42ODZWNjAuODg4NkgxMjQuMzk5VjU3LjAxMzFaTTE0MS4wMjEgNTUuNzY0M0gxNDIuMDk3TDE0NS4yNDEgNjUuMzIzOUwxNDguNTEzIDU1Ljc2NDNIMTQ5Ljg5MUwxNDUuOCA2Ny4zNDc3SDE0NC43MjRMMTQxLjUzNyA1OC4wNDY1TDEzOC4zOTQgNjcuMzQ3N0gxMzcuMzE3TDEzMy4xODMgNTUuODA3M0gxMzQuNjA1TDEzNy45MiA2NS4zNjY5TDE0MS4wMjEgNTUuNzY0M1pNMTYxLjU2MSA2Ny4yMTg2SDE2Mi45MzlMMTU3LjY4NSA1NS42NzgySDE1Ni40OEwxNTEuMjY5IDY3LjIxODZIMTUyLjYwNEwxNTMuOTgyIDY0LjIwNDNIMTYwLjIyNkwxNjEuNTYxIDY3LjIxODZaTTE1NC40NTYgNjMuMDQxNkwxNTcuMDgyIDU3LjE4NTNMMTU5LjY2NiA2My4wNDE2SDE1NC40NTZaTTE3My43OSA1OC42MDYzQzE3My43OSA2MC4xMTM1IDE3Mi44ODYgNjAuODg4NiAxNzEuOTgyIDYxLjI3NjFDMTczLjM2IDYxLjY2MzcgMTc0LjQzNiA2Mi40ODE4IDE3NC40MzYgNjQuMDc1MUMxNzQuNDM2IDY2LjA1NTkgMTcyLjggNjcuMjE4NiAxNzAuMjU5IDY3LjIxODZIMTY1LjE3OFY1NS43NjQzSDE3MC4wNDRDMTcyLjMyNiA1NS43NjQzIDE3My43OSA1Ni44ODM5IDE3My43OSA1OC42MDYzWk0xNzIuNDk4IDU4LjgyMTZDMTcyLjQ5OCA1Ny42NTkgMTcxLjU5NCA1Ni45MjY5IDE2OS45NTggNTYuOTI2OUgxNjYuNDdWNjAuODg4NkgxNjkuODcyQzE3MS40MjIgNjAuODg4NiAxNzIuNDk4IDYwLjE1NjUgMTcyLjQ5OCA1OC44MjE2Wk0xNzMuMTQ0IDYzLjk4OUMxNzMuMTQ0IDYyLjc0MDIgMTcyLjExMSA2Mi4wMDgyIDE3MC4wODcgNjIuMDA4MkgxNjYuNDdWNjYuMDU1OUgxNzAuMzAyQzE3Mi4wNjggNjYuMDU1OSAxNzMuMTQ0IDY1LjI4MDggMTczLjE0NCA2My45ODlaTTE3OC4zMTIgNTUuNzY0M0gxNzcuMDJWNjcuMjE4NkgxODQuNzcxVjY2LjAxMjlIMTc4LjMxMlY1NS43NjQzWk0xOTUuNDUgNTYuOTI2OUgxODguNDc0VjYwLjg0NTVIMTk0LjcxOFY2Mi4wMDgySDE4OC40NzRWNjYuMDEyOUgxOTUuNTM2VjY3LjIxODZIMTg3LjE4MlY1NS43MjEySDE5NS40NVY1Ni45MjY5Wk0yMDYgNjQuMTE4MkMyMDYgNjIuMzUyNiAyMDQuNzk0IDYxLjQwNTMgMjAyLjI1NCA2MC44NDU1QzE5OS43NTYgNjAuMjg1NyAxOTkuMTUzIDU5LjY4MjkgMTk5LjExIDU4LjYwNjNDMTk5LjExIDU3LjU3MjkgMjAwLjA1OCA1Ni43NTQ3IDIwMS41NjUgNTYuNzU0N0MyMDIuNzI3IDU2Ljc1NDcgMjAzLjgwNCA1Ny4xNDIyIDIwNC44OCA1OC4wMDM1TDIwNS42MTIgNTcuMDEzMUMyMDQuNDUgNTYuMDY1NyAyMDMuMjQ0IDU1LjU5MiAyMDEuNTY1IDU1LjU5MkMxOTkuNDEyIDU1LjU5MiAxOTcuODE4IDU2Ljg4MzkgMTk3LjgxOCA1OC43MzU1QzE5Ny44NjEgNjAuNjMwMiAxOTkuMDY3IDYxLjQ5MTQgMjAxLjY5NCA2Mi4wNTEyQzIwNC4xMDUgNjIuNTY4IDIwNC42NjUgNjMuMTcwOCAyMDQuNjY1IDY0LjI0NzNDMjA0LjY2NSA2NS40MSAyMDMuNjc1IDY2LjIyODIgMjAyLjEyNSA2Ni4yMjgyQzIwMC41MzEgNjYuMjI4MiAxOTkuNDEyIDY1LjY2ODQgMTk4LjIwNiA2NC41OTE4TDE5Ny4zODggNjUuNTM5MkMxOTguNzY2IDY2Ljc4OCAyMDAuMjczIDY3LjM5MDggMjAyLjA4MSA2Ny4zOTA4QzIwNC4zNjQgNjcuMzkwOCAyMDYgNjYuMDk5IDIwNiA2NC4xMTgyWiIgZmlsbD0iIzgwQzI0MSIvPgo8cGF0aCBkPSJNMTAzLjU1NyA0NS42MDE4QzEwMC43NTggNDUuNjAxOCA5OC4wODg2IDQ1LjA4NTEgOTUuNjM0MSA0NC4wOTQ3QzkzLjE3OTYgNDMuMTA0MyA5MS4wMjY1IDQxLjY4MzMgODkuMTc0OSAzOS44NzQ3Qzg3LjM2NjMgMzguMDY2MSA4NS45MDIyIDM1LjkxMzEgODQuODI1NyAzMy40MTU1QzgzLjc0OTIgMzAuOTE3OSA4My4yMzI1IDI4LjIwNTEgODMuMjMyNSAyNS4yNzY5VjI1LjE0NzdDODMuMjMyNSAyMi4zMDU3IDgzLjc0OTIgMTkuNjM1OSA4NC43ODI3IDE3LjEzODRDODUuODE2MSAxNC42NDA4IDg3LjI4MDIgMTIuNDQ0NyA4OS4wODg4IDEwLjU5MzFDOTAuOTQwNCA4Ljc0MTQyIDkzLjA5MzUgNy4yNzczNCA5NS42MzQxIDYuMjQzODdDOTguMTc0NyA1LjIxMDQgMTAwLjkzMSA0LjY1MDYgMTAzLjk0NSA0LjY1MDZDMTA1Ljk2OSA0LjY1MDYgMTA3LjgyIDQuODIyODUgMTA5LjQ1NyA1LjI1MzQ2QzExMS4wOTMgNS42NDEwMSAxMTIuNiA2LjIwMDgxIDExMy45NzggNi45MzI4NUMxMTUuMzU2IDcuNjY0ODkgMTE2LjYwNSA4LjUyNjExIDExNy42ODEgOS41NTk1OEMxMTguODAxIDEwLjU1IDExOS43OTEgMTEuNjY5NiAxMjAuNjUzIDEyLjg3NTNMMTEyLjQyOCAxOS4yNDg0QzExMS4zMDggMTcuODI3MyAxMTAuMDYgMTYuNzA3NyAxMDguNzI1IDE1Ljg4OTZDMTA3LjM5IDE1LjA3MTQgMTA1Ljc1MyAxNC42NDA4IDEwMy44MTYgMTQuNjQwOEMxMDIuNDM4IDE0LjY0MDggMTAxLjE0NiAxNC44OTkyIDEwMC4wMjYgMTUuNDU5Qzk4Ljg2MzcgMTYuMDE4OCA5Ny45MTYzIDE2Ljc1MDggOTcuMDU1MSAxNy42OTgyQzk2LjIzNjkgMTguNjQ1NSA5NS41OTEgMTkuNzY1MSA5NS4xMTczIDIxLjAxMzlDOTQuNjQzNyAyMi4zMDU3IDk0LjQyODQgMjMuNjQwNiA5NC40Mjg0IDI1LjA2MTZWMjUuMTkwOEM5NC40Mjg0IDI2LjY1NDkgOTQuNjQzNyAyOC4wMzI4IDk1LjExNzMgMjkuMzI0N0M5NS41OTEgMzAuNjE2NSA5Ni4yMzY5IDMxLjczNjEgOTcuMDU1MSAzMi42ODM1Qzk3Ljg3MzMgMzMuNjMwOCA5OC44NjM3IDM0LjM2MjggMTAwLjAyNiAzNC45MjI2QzEwMS4xODkgMzUuNDgyNCAxMDIuNDM4IDM1Ljc0MDggMTAzLjgxNiAzNS43NDA4QzEwNC44NDkgMzUuNzQwOCAxMDUuNzUzIDM1LjYxMTYgMTA2LjYxNSAzNS4zOTYzQzEwNy40NzYgMzUuMTgxIDEwOC4yMDggMzQuODM2NSAxMDguOTQgMzQuNDA1OUMxMDkuNjI5IDMzLjk3NTMgMTEwLjI3NSAzMy40NTg2IDExMC45MjEgMzIuODk4OEMxMTEuNTI0IDMyLjI5NTkgMTEyLjEyNyAzMS42NSAxMTIuNzI5IDMwLjk2MUwxMjAuOTU0IDM2LjgxNzNDMTIwLjAwNyAzOC4xMDkyIDExOS4wMTYgMzkuMjcxOCAxMTcuODk3IDQwLjM0ODRDMTE2Ljc3NyA0MS40MjQ5IDExNS41MjggNDIuMzcyMiAxMTQuMTUgNDMuMTQ3M0MxMTIuNzI5IDQzLjkyMjQgMTExLjE3OSA0NC41Njg0IDEwOS40MTQgNDQuOTk5QzEwNy42OTEgNDUuMzQzNSAxMDUuNzEgNDUuNjAxOCAxMDMuNTU3IDQ1LjYwMThaTTExMy4yMDMgNDYuNjM1M0MxMTMuMDMxIDQ2LjU5MjIgMTEzLjE2IDQ2LjYzNTMgMTEzLjIwMyA0Ni42MzUzQzExNy4zOCA0NC45OTkgMTIzLjgzOSA0MC4wOSAxMjQuNTcxIDM1LjAwODhDMTI0Ljc0MyAzMy44MDMxIDEyNC45MTYgMzIuMTY2NyAxMjQuOTE2IDMwLjMxNTFMMTI0Ljg3MyA1LjM4MjY0SDEzNS43MjRMMTM1Ljc2NyAzNS4zNTMzQzEzNS43NjcgNDcuMjgxMiAxMTguNTg2IDQ5LjQzNDMgMTEzLjIwMyA0Ni42MzUzWk0xMzguNTY2IDUuMzgyNjRMMTU3LjE2OSA1LjMzOTU4QzE2MC4yMjYgNS4zMzk1OCAxNjIuNzY3IDUuNzI3MTMgMTY0Ljg3NyA2LjQ1OTE4QzE2Ni45ODcgNy4xOTEyMiAxNjguNjY2IDguMjY3NzUgMTcwLjAwMSA5LjYwMjY0QzE3Mi4zMjYgMTEuODQxOCAxNzMuNDg5IDE0Ljg5OTIgMTczLjQ4OSAxOC43NzQ3VjE4LjkwMzlDMTczLjQ4OSAyMS45NjEyIDE3Mi43NTcgMjQuNDU4OCAxNzEuMjkzIDI2LjQzOTZDMTY5LjgyOSAyOC40MjA0IDE2Ny44NDggMjkuOTcwNiAxNjUuMzkzIDMxLjAwNDFMMTc0LjgyNCA0NC43NDA2SDE2Mi4yMDdMMTU0LjI0IDMyLjgxMjZIMTU0LjExMUgxNDkuNDYxVjQ0Ljc0MDZIMTM4LjU2NlY1LjM4MjY0Wk0xNTYuNjk1IDI0LjI0MzVDMTU4LjU5IDI0LjI0MzUgMTYwLjAxMSAyMy44MTI4IDE2MS4wNDQgMjIuOTUxNkMxNjIuMDM0IDIyLjA5MDQgMTYyLjU1MSAyMC45NzA4IDE2Mi41NTEgMTkuNTQ5OFYxOS40MjA2QzE2Mi41NTEgMTcuODI3MyAxNjIuMDM0IDE2LjY2NDcgMTYwLjk1OCAxNS44ODk2QzE1OS45MjQgMTUuMTE0NSAxNTguNDYgMTQuNzI2OSAxNTYuNjA5IDE0LjcyNjlIMTQ5LjQ2MVYyNC4xNTczTDE1Ni42OTUgMjQuMjQzNVoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=" alt="CJR Renewables">
+  </div>
+</header>
+
+<div class="hero">
+  <p class="kicker">CJR Renewables · synvert xgeeks · Procurement</p>
+  <h1>Plano de Discovery de 2 Semanas</h1>
+  <p class="lede">Duas semanas para compreender os processos de procurement da CJR, identificar em conjunto por onde faz mais sentido começar e fechar o âmbito do piloto, com baseline e KPIs de impacto definidos desde o arranque. A implementação começa na semana seguinte.</p>
+</div>
+
+<main>
+<!-- ═══════════ Full plan ═══════════ -->
+<section id="objetivo">
+  <h2>Objetivo</h2>
+  <p>Em duas semanas, compreender os processos de procurement da CJR e identificar, com base no que a equipa nos mostrar e em conjunto com ela, por onde faz mais sentido começar, alinhar o que significa sucesso e fechar o âmbito do piloto, para que a implementação comece sobre uma base sólida e partilhada por ambas as equipas.</p>
+</section>
+
+<section id="preparacao">
+  <h2>Preparação</h2>
+  <ul>
+    <li>Responsável do workflow de Procurement nomeado do lado da CJR, com ownership desde o primeiro dia.</li>
+    <li>Canais de comunicação e ferramentas de trabalho definidos: onde comunicamos no dia a dia (Teams/Slack, email) e que ferramentas usamos, incluindo o espaço de documentação partilhada do projeto, acessível a ambas as equipas.</li>
+    <li>Amostra de tickets de Procurement recentes, de ponta a ponta, para utilizar como material de trabalho nas sessões. Deve cobrir compras de Projeto e de Armazém, incluindo pelo menos um ticket sem requisição SAP prévia e pelo menos um caso de criação de um novo código de material.</li>
+    <li>Dias presenciais confirmados em Leça da Palmeira.</li>
+    <li>Pedidos de acesso aos ambientes de sandbox (SAP/SharePoint) submetidos no dia 1 ou 2 da semana 1. Os circuitos de aprovação que envolvem Compliance e IT demoram semanas; se os pedidos só forem feitos depois de o plano de acessos estar definido na semana 2, o arranque da implementação fica em risco.</li>
+  </ul>
+</section>
+
+<section id="pessoas">
+  <h2>Pessoas que assumimos necessárias*</h2>
+  <p>As pessoas listadas abaixo não são apenas participantes das sessões: são os stakeholders que assumimos como responsáveis por acompanhar o projeto e trabalhar com a xgeeks, durante as sessões do discovery e ao longo de todo o projeto. Serão elas a apoiar, acompanhar e sustentar o trabalho para além das duas semanas. A disponibilidade das equipas envolvidas (Procurement (P&amp;P), Comercial, Financeiro, Compliance, Qualidade, IT e Construção) deve ficar confirmada na fase de preparação.</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>Sessão</th><th>Stakeholders assumidos</th></tr></thead>
+    <tbody>
+      <tr><td>Kickoff e sessão com stakeholders</td><td>Sponsor executivo do projeto, responsável de Procurement, responsável do workflow <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
+      <tr><td>Fluxo de procurement de ponta a ponta</td><td>Responsável de Procurement, comprador de Projeto, comprador de Armazém <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
+      <tr><td>Gestão de fornecedores</td><td>Responsável de Procurement, representantes da Qualidade, do Compliance e do Financeiro <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
+      <tr><td>Acompanhamento de tickets reais</td><td>Comprador de Projeto, comprador de Armazém <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
+      <tr><td>Sessão com IT</td><td>Responsável de IT/SAP <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
+      <tr><td>Sessão com Comercial, Financeiro e Legal</td><td>Representantes do Comercial, do Financeiro e do Legal <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
+      <tr><td>Review sessions e sessão final</td><td>Principais stakeholders e liderança <span class="ph">[A completar: Alek / Gonçalo]</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">* Esta lista é um pressuposto da nossa parte, com base no plano. Pedimos o input da CJR para confirmar quem vai acompanhar o projeto connosco e estar presente em cada sessão.</p>
+</section>
+
+<section id="formato">
+  <h2>Como organizamos as duas semanas</h2>
+  <p>Cada semana tem o mesmo formato: 2 dias presenciais (workshops) e 3 dias de consolidação, fechada com uma review session com os principais stakeholders. Este formato dá flexibilidade: na semana 1 vamos identificar pessoas e temas que precisam de sessões próprias e que não é possível marcar logo nessa semana; as sessões presenciais da semana 2 são marcadas com base no que for identificado na semana 1.</p>
+</section>
+
+<section id="semana1">
+  <h2>Semana 1: 2 dias presenciais (workshops) + 3 dias de consolidação</h2>
+  <ul>
+    <li><strong>Kickoff com os principais stakeholders, incluindo o sponsor executivo do projeto:</strong> objetivos do piloto, modelo de trabalho conjunto, cadência semanal e definição dos KPIs de impacto, ligados à baseline, que no fim do piloto permitem demonstrar o impacto real do trabalho. O kickoff abre com a ambição que a CJR já definiu para si: tornar-se uma operação AI-native. Este piloto é o primeiro passo concreto desse caminho, aplicado à realidade EPC da CJR, em que os materiais e os componentes correm contra o calendário de obra.</li>
+  </ul>
+
+  <h3>Agenda dos dias presenciais (alto nível)</h3>
+  <div class="agenda">
+    <div class="day">
+      <div class="day-h">Dia 1</div>
+      <ul>
+        <li><span class="slot">Manhã</span> · welcome; visita às instalações da CJR; sessão com stakeholders; almoço</li>
+        <li><span class="slot">Tarde</span> · sessão de trabalho sobre o fluxo de procurement; workshop de gestão de fornecedores</li>
+      </ul>
+    </div>
+    <div class="day">
+      <div class="day-h">Dia 2</div>
+      <ul>
+        <li><span class="slot">Manhã</span> · sessão com IT</li>
+        <li><span class="slot">Tarde</span> · sessão com Comercial, Financeiro e Legal; wrap-up do dia</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Sessões e trabalho da semana</h3>
+  <ul>
+    <li>Sessões de trabalho para percorrer o fluxo de procurement de ponta a ponta, tal como funciona hoje: ticket no SharePoint, preparação da consulta (template ES/PT), envio aos fornecedores, registo de respostas e revisões nas pastas do SharePoint, mapa comparativo em Excel (técnico, comercial e financeiro), validação técnica (com eventual delegação), decisão comercial, requisição e ordem de compra em SAP, e fecho com o fornecedor.</li>
+    <li>Sessão dedicada à gestão de fornecedores: pré-qualificação acima de 50 mil EUR, questionário (Forms) para fornecedores não qualificados e circulação da informação pela Qualidade, Compliance e Financeiro.</li>
+    <li>Acompanhamento em tempo real de 2 a 3 tickets reais (um de Projeto, um de Armazém) para captar volumes, intervenções manuais e os pontos onde se perde tempo.</li>
+    <li>Sessão com IT para levantamento do panorama de sistemas: mapa de sistemas (SAP, SharePoint, Salesforce, Forms), modelo de acessos e perfis, integrações existentes, ambientes de sandbox/teste e acessos externos (links autenticados de fornecedores a datasheets). Para além do levantamento, confirmar com o IT os objetos SAP concretos do fluxo (requisição, ordem de compra, master data de material) e o caminho para validar leitura e escrita em sandbox.</li>
+    <li>Sessão com Comercial, Financeiro e Legal: comentários enviados para o Legal, documentação contratual adicional e casos de compra com e sem requisição SAP.</li>
+    <li>Dias de consolidação: organizar o material recolhido, identificar as pessoas e os temas a aprofundar e marcar as sessões presenciais da semana 2.</li>
+    <li>Definição e proposta do working model, que pode incluir uma daily com os principais stakeholders, se necessário.</li>
+    <li>Review session de fecho de semana com os principais stakeholders.</li>
+  </ul>
+</section>
+
+<section id="semana2">
+  <h2>Semana 2: 2 dias presenciais + 3 dias de consolidação</h2>
+  <p>As sessões presenciais da semana 2 são marcadas a partir das pessoas e dos temas identificados na semana 1, no mesmo formato da semana 1.</p>
+  <ul>
+    <li>Documentar o fluxo atual (as-is), incluindo as variantes, as principais exceções e as principais pessoas envolvidas: o papel de cada uma, o fluxo por persona, as ferramentas em que tocam e os pontos de ineficiência. Quantificar a baseline: tempo médio por ticket, intervenções manuais por ticket, número de revisões do mapa comparativo, tempo entre consulta e fecho, percentagem de tickets com criação de material novo e retrabalho causado por informação em falta no ticket inicial. Pessoas envolvidas: <span class="ph">[A completar: Alek / Gonçalo; pedimos o apoio da CJR se necessário]</span>.</li>
+    <li>Consolidar a lista de pontos de dor: bases de fornecedores fragmentadas entre SAP, SharePoint e Salesforce, mapa comparativo manual e dependência do email para a negociação.</li>
+    <li>Definir o âmbito do piloto: que fluxos avançam primeiro, quais os critérios de sucesso face à baseline e o corte entre o que fica humano e o que passa a ser agêntico: a equipa da CJR mantém as decisões de negócio (validação técnica e decisão comercial) e o trabalho manual é removido.</li>
+    <li>Esboçar os milestones de entrega do piloto.</li>
+    <li>Definir o plano de acessos para a implementação: que acessos são necessários, em que ambientes e qual o processo para os obter, para que nada bloqueie o arranque.</li>
+    <li>Avaliar as competências internas de desenvolvimento da CJR e a capacidade de manutenção da infraestrutura, para planear o suporte adequado no período pós-entrega.</li>
+    <li>Review session de fecho de semana com os principais stakeholders.</li>
+    <li>Sessão final de apresentação à liderança: âmbito, baseline e plano de desenvolvimento e monitorização. Alinhamento e aprovação, para que a implementação arranque na semana seguinte.</li>
+  </ul>
+</section>
+
+<section id="resultados">
+  <h2>Resultados</h2>
+  <ul>
+    <li>Fluxo de procurement atual documentado e validado, incluindo as variantes e as principais exceções.</li>
+    <li>Baseline quantificada que define o sucesso do piloto.</li>
+    <li>Âmbito do piloto fechado, com critérios e métricas de sucesso (FTE) e milestones de entrega.</li>
+    <li>Mapa de sistemas (SAP, SharePoint, Salesforce, Forms) e plano de acessos, incluindo ambientes de sandbox/teste.</li>
+    <li>Lista de pontos de dor para orientar o desenho da solução.</li>
+    <li>Responsável do workflow nomeado na CJR, com canais de comunicação e espaço de documentação partilhada em uso pelas duas equipas.</li>
+    <li>Plano de implementação: proposta faseada de melhoria do procurement após o discovery, com fases, esforço e sequência.</li>
+    <li>KPIs de impacto definidos no arranque, ligados à baseline, que no fim do piloto permitem demonstrar o impacto real do trabalho feito.</li>
+  </ul>
+</section>
+
+<!-- ═══════════ Assets ═══════════ -->
+<section id="anexos">
+  <h2>Anexos</h2>
+  <p>Assets deste plano: o one-pager e o email ao cliente, disponíveis para download no repositório do projeto e incorporados abaixo.</p>
+  <div class="assets">
+    <a class="asset" href="CJR_Plano_de_Discovery.docx"><b>Plano de Discovery</b><span>Documento completo do plano de 2 semanas (.docx)</span></a>
+    <a class="asset" href="CJR_One_Pager.pdf"><b>One-pager</b><span>Resumo visual de uma página (PDF; fonte editável em .docx)</span></a>
+    <a class="asset" href="CJR_Email_Cliente.docx"><b>Email ao cliente</b><span>Email de apresentação do plano (.docx)</span></a>
+  </div>
+
+  <h3>One-pager (conteúdo)</h3>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Estrutura</span>
+      <h3>Duas semanas, mesmo formato</h3>
+      <ul>
+        <li><strong>Semana 1:</strong> 2 dias presenciais (workshops) + 3 dias de consolidação; definição do working model; review session no fecho.</li>
+        <li><strong>Semana 2:</strong> 2 dias presenciais (sessões marcadas a partir da semana 1) + 3 dias de consolidação; review session e sessão final com a liderança.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag">Agenda presencial</span>
+      <h3>Dois dias por semana, em Leça da Palmeira</h3>
+      <ul>
+        <li><strong>Dia 1, manhã:</strong> welcome; visita às instalações; sessão com stakeholders.</li>
+        <li><strong>Dia 1, tarde:</strong> fluxo de procurement; gestão de fornecedores.</li>
+        <li><strong>Dia 2, manhã:</strong> sessão com IT.</li>
+        <li><strong>Dia 2, tarde:</strong> Comercial, Financeiro e Legal; wrap-up.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag">O que precisamos da CJR</span>
+      <h3>Inputs para arrancar sem bloqueios</h3>
+      <ul>
+        <li>Responsável do workflow de Procurement nomeado.</li>
+        <li>Confirmação dos stakeholders que acompanham o projeto (a nossa lista é um pressuposto).</li>
+        <li>Disponibilidade das equipas e dias presenciais confirmados.</li>
+        <li>Amostra de tickets recentes (Projeto e Armazém).</li>
+        <li>Canais de comunicação e ferramentas definidos.</li>
+        <li>Pedidos de acesso sandbox (SAP/SharePoint) no dia 1 ou 2.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag">Resultados</span>
+      <h3>O que sai no fim</h3>
+      <ul>
+        <li>Fluxo as-is documentado e validado, com baseline quantificada.</li>
+        <li>Âmbito do piloto fechado, com critérios de sucesso e milestones.</li>
+        <li>Mapa de sistemas e plano de acessos, incluindo sandbox.</li>
+        <li>KPIs de impacto definidos no arranque, ligados à baseline.</li>
+        <li>Plano de implementação faseado: fases, esforço e sequência.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Email ao cliente (conteúdo)</h3>
+  <div class="emailbox">
+    <p class="subj">Assunto: Plano de Discovery, duas semanas para fechar o âmbito do piloto de Procurement</p>
+    <p>Olá <span class="ph">[nome]</span>,</p>
+    <p>Espero que esteja tudo bem convosco. Enviamos o plano para as duas semanas de discovery, que marca o arranque do nosso trabalho conjunto no procurement.</p>
+    <p>Em resumo: durante duas semanas vamos compreender os vossos processos de procurement e identificar, em conjunto convosco, por onde faz mais sentido começar. Cada semana tem 2 dias presenciais com workshops e 3 dias de consolidação, e fecha com uma review session com os principais stakeholders. No fim, saímos com o fluxo atual documentado, uma baseline quantificada, o âmbito do piloto fechado, os KPIs de impacto definidos e um plano de implementação faseado. A implementação arranca logo na semana seguinte.</p>
+    <p>Para que tudo corra sem bloqueios, precisamos do vosso apoio em alguns pontos:</p>
+    <ol>
+      <li><strong>Stakeholders do projeto:</strong> o plano inclui uma lista das pessoas que assumimos necessárias em cada sessão. Mais do que participantes, são os stakeholders que vão acompanhar o projeto e trabalhar connosco, durante o discovery e ao longo da implementação. Esta lista é um pressuposto da nossa parte; pedimos a vossa ajuda para confirmar quem vai acompanhar o projeto convosco e estar presente em cada sessão.</li>
+      <li><strong>Responsável do workflow:</strong> um responsável do workflow de Procurement nomeado do vosso lado, com ownership desde o primeiro dia.</li>
+      <li><strong>Disponibilidade das equipas:</strong> Procurement (P&amp;P), Comercial, Financeiro, Compliance, Qualidade, IT e Construção, nos dias das sessões.</li>
+      <li><strong>Amostra de tickets:</strong> tickets de Procurement recentes, de ponta a ponta, cobrindo compras de Projeto e de Armazém, incluindo pelo menos um ticket sem requisição SAP prévia e um caso de criação de um novo código de material.</li>
+      <li><strong>Dias presenciais:</strong> confirmação dos dias presenciais em Leça da Palmeira.</li>
+      <li><strong>Comunicação e ferramentas:</strong> onde comunicamos no dia a dia (Teams/Slack, email) e onde fica a documentação partilhada do projeto.</li>
+      <li><strong>Acessos sandbox (SAP/SharePoint):</strong> pedimos que os pedidos de acesso sejam submetidos logo no dia 1 ou 2 da primeira semana. Estes circuitos de aprovação demoram semanas e queremos garantir que nada atrasa o arranque da implementação.</li>
+    </ol>
+    <p>Qualquer dúvida sobre o plano, estamos inteiramente disponíveis para falar antes do kickoff.</p>
+    <p>Um abraço,<br><span class="ph">[Nome]</span><br>synvert xgeeks</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FtYWRhXzEiIGRhdGEtbmFtZT0iQ2FtYWRhIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDIzNyA5OCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbC1ydWxlOiBldmVub2RkOwogICAgICB9CgogICAgICAuY2xzLTEsIC5jbHMtMiB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQoKICAgICAgLmNscy0xLCAuY2xzLTIsIC5jbHMtMyB7CiAgICAgICAgc3Ryb2tlLXdpZHRoOiAwcHg7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogIzAwZWJiNjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtODkuMDYsNzEuOGMuNDEtLjQxLDEuMDgtLjQxLDEuNDksMGw4LjI2LDguMjZjLjQxLjQxLjQxLDEuMDgsMCwxLjQ5bC00LjMzLDQuMzNjLS40MS40MS0xLjA4LjQxLTEuNDksMGwtOC4yNi04LjI3Yy0uNDEtLjQxLS40MS0xLjA4LDAtMS40OWw0LjMzLTQuMzNaIi8+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJtOTguODEsNjUuNjZjLjQxLjQxLjQxLDEuMDgsMCwxLjQ5bC0xOC43MywxOC43M2MtLjQxLjQxLTEuMDguNDEtMS40OSwwbC00LjMzLTQuMzNjLS40MS0uNDEtLjQxLTEuMDgsMC0xLjQ5bDE4LjczLTE4LjczYy40MS0uNDEsMS4wOC0uNDEsMS40OSwwbDQuMzMsNC4zM1oiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Im03OC42LDYxLjM0Yy40MS0uNDEsMS4wOC0uNDEsMS40OSwwbC44Ni44NmMyLjE2LDIuMTYsMi4xNiw1LjY3LDAsNy44NGwtMS4xNiwxLjE2Yy0uNDEuNDEtMS4wOC40MS0xLjQ5LDBsLTQuMDQtNC4wNGMtLjQxLS40MS0uNDEtMS4wOCwwLTEuNDlsNC4zMy00LjMzWiIvPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMjIwLjgyLDY4LjM2YzAtMS4xNC45NS0xLjk1LDIuMTQtMS45NSwxLjAzLDAsMS44LjQ1LDIuMjgsMS4zLjI5LjUxLjg0Ljg3LDEuNDEuNzJsNC4xNC0xLjA0Yy41OS0uMTUuOTQtLjc2LjctMS4zMS0xLjM3LTMuMTEtNC40Ny01LjA2LTguNDMtNS4wNi01LjI5LDAtOC44NiwzLjYyLTguODYsNy43NywwLDguNzcsMTEuMjksNS45MSwxMS4yOSw5LjYyLDAsMS40OC0xLjE5LDIuMjQtMi42MiwyLjI0cy0yLjY1LS43My0zLjM2LTIuMDljLS4yOC0uNTMtLjg2LS44Ni0xLjQzLS42OWwtNC4xNCwxLjI1Yy0uNTQuMTYtLjg3LjczLS42NiwxLjI2LDEuNDIsMy42NCw1LjQzLDUuNzEsOS41MSw1LjcxLDQuODEsMCw5LjQzLTMuMTQsOS40My04LjA1LDAtOC45Ni0xMS4zOS02LjE1LTExLjM5LTkuNjdaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0yMDMuOTEsNzMuMzZjLS4zMi0uNDEtLjMtLjk5LjA0LTEuMzdsNy43NS04LjYxYy42Mi0uNjkuMTMtMS43OC0uNzktMS43OGgtNS42NWMtLjMxLDAtLjYuMTMtLjguMzdsLTYuNTgsNy41OGMtLjY1Ljc0LTEuODcuMjktMS44Ny0uN3YtMTMuODdjMC0uNTktLjQ4LTEuMDctMS4wNy0xLjA3aC01LjExYy0uNTksMC0xLjA3LjQ4LTEuMDcsMS4wN3YyOS40N2MwLC41OS40OCwxLjA3LDEuMDcsMS4wN2g1LjExYy41OSwwLDEuMDctLjQ4LDEuMDctMS4wN3YtNy4zMmMwLTEuMDEsMS4yNy0xLjQ1LDEuOS0uNjZsNi44OCw4LjY1Yy4yLjI1LjUxLjQuODMuNGg1LjcyYy44OSwwLDEuMzktMS4wMy44My0xLjczbC04LjI3LTEwLjQzWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMTcyLjY5LDYxLjAzYy02LjU4LDAtMTIuMzQsNS4yOS0xMi4zNCwxMi41M3M1Ljc3LDEyLjUzLDEyLjUzLDEyLjUzYzQuMjcsMCw3Ljk3LTEuNzksMTAuMzEtNS4wMi4zMy0uNDYuMTktMS4wOS0uMjctMS40MWwtMy4zNy0yLjMzYy0uNDktLjM0LTEuMTctLjItMS41NC4yNy0xLjI0LDEuNjEtMi43NCwyLjU4LTUuMTMsMi41OHMtNC4zNy0xLjIzLTUuMzctMy4zOWMtLjI5LS42My4yMi0xLjI4LjkxLTEuMjhoMTUuMjJjLjU3LDAsMS4wMy0uNDQsMS4wNC0xLjAxLjA2LTcuNzgtNC41LTEzLjQ4LTExLjk5LTEzLjQ4Wm0zLjg1LDkuOTZoLTcuNzVjLS43MywwLTEuMjQtLjcyLS44Ni0xLjM0LDEuMDYtMS43NSwyLjg0LTIuNzYsNC44Mi0yLjc2LDIuNDgsMCw0LjAyLDEuMzIsNC43LDIuOS4yNi42LS4yNSwxLjItLjksMS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMTQ1LjUyLDYxLjAzYy02LjU4LDAtMTIuMzQsNS4yOS0xMi4zNCwxMi41M3M1Ljc3LDEyLjUzLDEyLjUzLDEyLjUzYzQuMjcsMCw3Ljk2LTEuNzksMTAuMzEtNS4wMi4zMy0uNDYuMTktMS4wOS0uMjctMS40MWwtMy4zNy0yLjMzYy0uNS0uMzQtMS4xNy0uMi0xLjU0LjI3LTEuMjQsMS42MS0yLjc0LDIuNTgtNS4xMywyLjU4cy00LjM3LTEuMjMtNS4zNy0zLjM5Yy0uMjktLjYzLjIyLTEuMjguOTEtMS4yOGgxNS4yMmMuNTcsMCwxLjA0LS40NCwxLjA0LTEuMDEuMDYtNy43OC00LjUtMTMuNDgtMTEuOTktMTMuNDhabTMuODQsOS45NmgtNy43NWMtLjczLDAtMS4yNC0uNzItLjg2LTEuMzQsMS4wNi0xLjc1LDIuODQtMi43Niw0LjgyLTIuNzYsMi40OCwwLDQuMDIsMS4zMiw0LjcsMi45LjI2LjYtLjI1LDEuMi0uOSwxLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Im0xMjguMTMsNjEuNmgtNS40NWMtLjQsMC0uNzMuMzItLjczLjczLDAsLjY5LS45NywxLjA2LTEuNTIuNjQtMS41MS0xLjE0LTMuNTYtMS45NC01LjkxLTEuOTQtNi41MywwLTExLjgyLDUuMzgtMTEuODIsMTIuNTNzNS4yOSwxMi41MywxMS44MiwxMi41M2MxLjk4LDAsMy43NS0uNTcsNS4xNi0xLjQzLjg1LS41MiwyLjI4LjA2LDIuMjgsMS4wNSwwLDQuMTktMi41Nyw2LjM4LTUuOTYsNi4zOC0yLjc0LDAtNC44MS0xLjM4LTUuNDUtMy43Mi0uMTQtLjUzLS41OS0uOTUtMS4xNC0uOTVoLTUuMDdjLS42MSwwLTEuMS41MS0xLjAxLDEuMTEuODQsNS44Nyw2LjI0LDkuNDcsMTIuNTcsOS40Nyw3LjA1LDAsMTMuMjktNC44MSwxMy4yOS0xMi41OHYtMjIuNzZjMC0uNTktLjQ4LTEuMDctMS4wNy0xLjA3Wm0tMTIuMDgsMTguMjVjLTMuNTMsMC02LjE1LTIuNzItNi4xNS02LjI5czIuNjItNi4yOSw2LjE1LTYuMjksNi4xLDIuNzIsNi4xLDYuMjktMi42Miw2LjI5LTYuMSw2LjI5WiIvPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTIyMC44Miw2OC4zNmMwLTEuMTQuOTUtMS45NSwyLjE0LTEuOTUsMS4wMywwLDEuOC40NSwyLjI4LDEuMy4yOS41MS44NC44NywxLjQxLjcybDQuMTQtMS4wNGMuNTktLjE1Ljk0LS43Ni43LTEuMzEtMS4zNy0zLjExLTQuNDctNS4wNi04LjQzLTUuMDYtNS4yOSwwLTguODYsMy42Mi04Ljg2LDcuNzcsMCw4Ljc3LDExLjI5LDUuOTEsMTEuMjksOS42MiwwLDEuNDgtMS4xOSwyLjI0LTIuNjIsMi4yNHMtMi42NS0uNzMtMy4zNi0yLjA5Yy0uMjgtLjUzLS44Ni0uODYtMS40My0uNjlsLTQuMTQsMS4yNWMtLjU0LjE2LS44Ny43My0uNjYsMS4yNiwxLjQyLDMuNjQsNS40Myw1LjcxLDkuNTEsNS43MSw0LjgxLDAsOS40My0zLjE0LDkuNDMtOC4wNSwwLTguOTYtMTEuMzktNi4xNS0xMS4zOS05LjY3WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMjAzLjkxLDczLjM2Yy0uMzItLjQxLS4zLS45OS4wNC0xLjM3bDcuNzUtOC42MWMuNjItLjY5LjEzLTEuNzgtLjc5LTEuNzhoLTUuNjVjLS4zMSwwLS42LjEzLS44LjM3bC02LjU4LDcuNThjLS42NS43NC0xLjg3LjI5LTEuODctLjd2LTEzLjg3YzAtLjU5LS40OC0xLjA3LTEuMDctMS4wN2gtNS4xMWMtLjU5LDAtMS4wNy40OC0xLjA3LDEuMDd2MjkuNDdjMCwuNTkuNDgsMS4wNywxLjA3LDEuMDdoNS4xMWMuNTksMCwxLjA3LS40OCwxLjA3LTEuMDd2LTcuMzJjMC0xLjAxLDEuMjctMS40NSwxLjktLjY2bDYuODgsOC42NWMuMi4yNS41MS40LjgzLjRoNS43MmMuODksMCwxLjM5LTEuMDMuODMtMS43M2wtOC4yNy0xMC40M1oiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTE3Mi42OSw2MS4wM2MtNi41OCwwLTEyLjM0LDUuMjktMTIuMzQsMTIuNTNzNS43NywxMi41MywxMi41MywxMi41M2M0LjI3LDAsNy45Ny0xLjc5LDEwLjMxLTUuMDIuMzMtLjQ2LjE5LTEuMDktLjI3LTEuNDFsLTMuMzctMi4zM2MtLjQ5LS4zNC0xLjE3LS4yLTEuNTQuMjctMS4yNCwxLjYxLTIuNzQsMi41OC01LjEzLDIuNThzLTQuMzctMS4yMy01LjM3LTMuMzljLS4yOS0uNjMuMjItMS4yOC45MS0xLjI4aDE1LjIyYy41NywwLDEuMDMtLjQ0LDEuMDQtMS4wMS4wNi03Ljc4LTQuNS0xMy40OC0xMS45OS0xMy40OFptMy44NSw5Ljk2aC03Ljc1Yy0uNzMsMC0xLjI0LS43Mi0uODYtMS4zNCwxLjA2LTEuNzUsMi44NC0yLjc2LDQuODItMi43NiwyLjQ4LDAsNC4wMiwxLjMyLDQuNywyLjkuMjYuNi0uMjUsMS4yLS45LDEuMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0ibTE0NS41Miw2MS4wM2MtNi41OCwwLTEyLjM0LDUuMjktMTIuMzQsMTIuNTNzNS43NywxMi41MywxMi41MywxMi41M2M0LjI3LDAsNy45Ni0xLjc5LDEwLjMxLTUuMDIuMzMtLjQ2LjE5LTEuMDktLjI3LTEuNDFsLTMuMzctMi4zM2MtLjUtLjM0LTEuMTctLjItMS41NC4yNy0xLjI0LDEuNjEtMi43NCwyLjU4LTUuMTMsMi41OHMtNC4zNy0xLjIzLTUuMzctMy4zOWMtLjI5LS42My4yMi0xLjI4LjkxLTEuMjhoMTUuMjJjLjU3LDAsMS4wNC0uNDQsMS4wNC0xLjAxLjA2LTcuNzgtNC41LTEzLjQ4LTExLjk5LTEzLjQ4Wm0zLjg0LDkuOTZoLTcuNzVjLS43MywwLTEuMjQtLjcyLS44Ni0xLjM0LDEuMDYtMS43NSwyLjg0LTIuNzYsNC44Mi0yLjc2LDIuNDgsMCw0LjAyLDEuMzIsNC43LDIuOS4yNi42LS4yNSwxLjItLjksMS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJtMTI4LjEzLDYxLjZoLTUuNDVjLS40LDAtLjczLjMyLS43My43MywwLC42OS0uOTcsMS4wNi0xLjUyLjY0LTEuNTEtMS4xNC0zLjU2LTEuOTQtNS45MS0xLjk0LTYuNTMsMC0xMS44Miw1LjM4LTExLjgyLDEyLjUzczUuMjksMTIuNTMsMTEuODIsMTIuNTNjMS45OCwwLDMuNzUtLjU3LDUuMTYtMS40My44NS0uNTIsMi4yOC4wNiwyLjI4LDEuMDUsMCw0LjE5LTIuNTcsNi4zOC01Ljk2LDYuMzgtMi43NCwwLTQuODEtMS4zOC01LjQ1LTMuNzItLjE0LS41My0uNTktLjk1LTEuMTQtLjk1aC01LjA3Yy0uNjEsMC0xLjEuNTEtMS4wMSwxLjExLjg0LDUuODcsNi4yNCw5LjQ3LDEyLjU3LDkuNDcsNy4wNSwwLDEzLjI5LTQuODEsMTMuMjktMTIuNTh2LTIyLjc2YzAtLjU5LS40OC0xLjA3LTEuMDctMS4wN1ptLTEyLjA4LDE4LjI1Yy0zLjUzLDAtNi4xNS0yLjcyLTYuMTUtNi4yOXMyLjYyLTYuMjksNi4xNS02LjI5LDYuMSwyLjcyLDYuMSw2LjI5LTIuNjIsNi4yOS02LjEsNi4yOVoiLz4KICA8L2c+CiAgPHBhdGggY2xhc3M9ImNscy0zIiBkPSJtMjguNjIsMTMuMjhsMTQuMTEsMjQuOTdjLjM4LjY0LjM4LDEuMjEuMDYsMS43OWwtMTIuMDcsMjIuMjljLS40NS44OS0uMDYsMS41My44OSwxLjUzaDguNDljLjg5LDAsMS40Ny0uMzgsMS44NS0xLjE1bDI1LjkzLTQ5LjQzYy41Ny0xLjE1LjA2LTEuOTItMS4xNS0xLjkyaC04LjM3Yy0uNywwLTEuMTUuMzItMS40Ny45NmwtNy4zNCwxNC42OWMtLjI2LjUxLS41MS43LS44OS43cy0uNjQtLjE5LS44OS0uN2wtNy43OS0xNC43NWMtLjMyLS42NC0uODMtLjg5LTEuNTMtLjg5aC04Ljc1Yy0xLjIxLDAtMS43Mi43Ny0xLjA5LDEuOTJabTE5MS42NCwzMy4wOGg4LjA1Yy44MywwLDEuMjgtLjQ1LDEuMjgtMS4yOHYtMjIuNDFjMC0uODMuNDUtMS4yOCwxLjI4LTEuMjhoNC40N2MuODMsMCwxLjI4LS40NSwxLjI4LTEuMjh2LTcuNDdjMC0uODMtLjQ1LTEuMjgtMS4yOC0xLjI4aC00LjQ3Yy0uODMsMC0xLjI4LS40NS0xLjI4LTEuMjhWMS4yOGMwLS44My0uNDUtMS4yOC0xLjI4LTEuMjhoLTguMDVjLS44MywwLTEuMjguNDUtMS4yOCwxLjI4djguODFjMCwuODMtLjQ1LDEuMjgtMS4yOCwxLjI4aC0yLjc1Yy0uODMsMC0xLjI4LjQ1LTEuMjgsMS4yOHY3LjQ3YzAsLjgzLjQ1LDEuMjgsMS4yOCwxLjI4aDIuNzVjLjgzLDAsMS4yOC40NSwxLjI4LDEuMjh2MjIuNDFjMCwuODMuNDUsMS4yOCwxLjI4LDEuMjhabS0xNi43OS0yMy45NWgyLjU1YzMsMCw1LjExLTIuMTEsNS4xMS01LjExdi0xLjE1YzAtMy0yLjExLTUuMTEtNS4xMS01LjExaC0yLjU1Yy0zLDAtNS4xMSwyLjExLTUuMTEsNS4xMXYxLjE1YzAsMywyLjExLDUuMTEsNS4xMSw1LjExWm0tMTYuOTksMjMuOTVoOC4wNWMuODMsMCwxLjI4LS40NSwxLjI4LTEuMjhWMTIuNjRjMC0uODMtLjQ1LTEuMjgtMS4yOC0xLjI4aC04LjA1Yy0uODMsMC0xLjI4LjQ1LTEuMjgsMS4yOHYzMi40NGMwLC44My40NSwxLjI4LDEuMjgsMS4yOFptLTMwLjcyLTIyLjQxYzEuMjEtMyw0LjM0LTQuODUsNy41NC00Ljg1LDMuOTYsMCw2LjI2LDIuMzYsNy4wOSw0LjkyLjE5LjctLjEzLDEuMDktLjc3LDEuMDloLTEzLjIyYy0uNTcsMC0uOTYtLjQ1LS42NC0xLjE1Wm03LjczLDIzLjI0YzYuMzIsMCwxMS44MS0yLjY4LDE1LjI2LTcuNTQuNDUtLjY0LjMyLTEuMjEtLjM4LTEuNzJsLTUuMzYtMy43Yy0uNy0uNTEtMS4yOC0uMzItMS43OS4zMi0xLjkyLDIuNDktNC4wOSw0LjAyLTcuNzMsNC4wMi0zLjgzLDAtNy4wMi0yLjExLTguMjQtNS43NS0uMjYtLjY0LjA2LTEuMDkuNzctMS4wOWgyMy4zN2MuNzcsMCwxLjM0LS40NSwxLjM0LTEuMjguMTktMTEuNDktNi40NS0xOS45Mi0xNy41LTE5LjkyLTkuNjQsMC0xOC4wNyw3LjA5LTE4LjA3LDE4LjMzLDAsMTAuNTQsNy43OSwxOC4zMywxOC4zMywxOC4zM1ptLTQwLjU1LS44M2g2LjA3Yy43LDAsMS4xNS0uMjYsMS40Ny0uOTZsMTQuODItMzIuMThjLjUxLTEuMTUsMC0xLjg1LTEuMjEtMS44NWgtNy43OWMtLjcsMC0xLjE1LjI2LTEuNDcuOTZsLTcuODUsMTcuODhjLS4yNS41Ny0uNTEuNy0uODMuN3MtLjU3LS4xMy0uODMtLjdsLTcuODYtMTcuODhjLS4zMi0uNy0uNzctLjk2LTEuNDctLjk2aC04LjExYy0xLjIxLDAtMS43Mi43LTEuMjEsMS44NWwxNC44MiwzMi4xOGMuMzIuNy43Ny45NiwxLjQ3Ljk2Wm0tNTAuMTksMGg4LjA1Yy44MywwLDEuMjgtLjQ1LDEuMjgtMS4yOHYtMTcuOTRjMC00LjE1LDIuMzYtNy4xNSw2LjMyLTcuMTVzNS44MSwyLjY4LDUuODEsNi4zMnYxOC43N2MwLC44My40NSwxLjI4LDEuMjgsMS4yOGg4LjA1Yy44MywwLDEuMjgtLjQ1LDEuMjgtMS4yOHYtMjEuNzFjMC03LjYtNC43OS0xMi44NC0xMi41Mi0xMi44NC0yLjk0LDAtNC45OC44OS03LjE1LDIuMzYtLjgzLjU3LTEuMzQuODktMS44NS44OS0uNzcsMC0xLjE1LS40NS0xLjIxLTEuMTUtLjA2LS44My0uMzgtMS4yOC0xLjI4LTEuMjhoLTguMDVjLS44MywwLTEuMjguNDUtMS4yOCwxLjI4djMyLjQ0YzAsLjgzLjQ1LDEuMjgsMS4yOCwxLjI4Wm0tNTguMzcuODNjOC4zNywwLDEzLjkyLTQuNjYsMTMuOTItMTEuODgsMC04LjE3LTYuMjYtOS42NC0xMS4xOC0xMC45Mi0zLjA3LS43Ny01LjYyLTEuMjgtNS42Mi0zLjMyLDAtMS42LDEuNC0yLjQzLDMuMDctMi40MywxLjUzLDAsMi42OC44MywzLjM4LDIuMTcuNDUuODMuOTYsMS4wOSwxLjk4LjgzbDYuNDUtMS42NmMuOTYtLjI2LDEuMjgtLjg5Ljk2LTEuNzktMS45Mi00LjY2LTYuNjQtNy42Ni0xMi41OC03LjY2LTcuNzksMC0xMy4wOSw0LjczLTEzLjA5LDExLjA1LDAsNy43Myw2LDkuMzIsMTAuNzMsMTAuNjYsMy4yNi45Niw1Ljk0LDEuNTMsNS45NCwzLjgzLDAsMS45Mi0xLjUzLDIuOTQtMy43LDIuOTRzLTMuODMtMS4xNS01LjA0LTMuMzhjLS40NS0uODMtMS4wMi0xLjA5LTIuMDQtLjc3bC02LjM5LDEuOTJjLS43Ny4yNi0xLjIxLjk2LS44OSwxLjc5LDEuOTgsNS40OSw4LjA1LDguNjIsMTQuMTEsOC42MloiLz4KPC9zdmc+" alt="synvert xgeeks">
+    <div>CJR Renewables · Discovery de Procurement · synvert xgeeks</div>
+  </div>
+</footer>
+
+</body>
+</html>

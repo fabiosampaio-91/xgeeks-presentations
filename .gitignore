@@ -17,3 +17,8 @@ node_modules/
 .env.*
 
 Sources/
+# cjr-discovery is published here by explicit decision (2026-08-18); its Word/PDF
+# deliverables are allowed as an exception to the global *.docx rule.
+!cjr-discovery/*.docx
+# Word lock files
+~$*
